@@ -8,8 +8,9 @@
     <string name="drawer_close">Close navigation drawer</string>
 
     <string-array name="navigation_drawer_items_array">
-        <item>Connect</item>
-        <item>Fixtures</item>
-        <item>Table</item>
+        <item>Receipes</item>
+        <item>Favorites</item>
+        <item>Schedule</item>
+        <item>About</item>
     </string-array>
 </resources>

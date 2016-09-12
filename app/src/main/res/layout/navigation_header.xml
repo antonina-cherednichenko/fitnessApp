@@ -9,8 +9,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#88f3f3f3"
-        android:text="Text Name"
+        android:text="Detox receipes"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
