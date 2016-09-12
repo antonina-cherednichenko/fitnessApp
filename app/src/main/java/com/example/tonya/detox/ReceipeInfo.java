@@ -17,4 +17,25 @@ public class ReceipeInfo implements Serializable {
         this.photoId = photoId;
         this.liked = liked;
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        ReceipeInfo that = (ReceipeInfo) o;
+//
+//        if (photoId != that.photoId) return false;
+//        if (!name.equals(that.name)) return false;
+//        return description.equals(that.description);
+//
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = name.hashCode();
+//        result = 31 * result + description.hashCode();
+//        result = 31 * result + photoId;
+//        return result;
+//    }
 }

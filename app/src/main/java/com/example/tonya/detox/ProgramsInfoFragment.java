@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
@@ -17,9 +18,6 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
  * Created by tonya on 9/8/16.
  */
 public class ProgramsInfoFragment extends Fragment {
-
-    private List<ReceipeInfo> receipes;
-
 
     @Nullable
     @Override
@@ -35,11 +33,13 @@ public class ProgramsInfoFragment extends Fragment {
         recList.setLayoutManager(llm);
 
         Bundle args = getArguments();
-        receipes = (List<ReceipeInfo>) args.getSerializable("receipes");
+        List<ReceipeInfo> receipes = (List<ReceipeInfo>) args.getSerializable("receipes");
+        boolean likedOnlyMode = (boolean) args.getSerializable("mode");
 
-        ReceipeAdapter adapter = new ReceipeAdapter(getActivity(), receipes);
+        ReceipeAdapter adapter = new ReceipeAdapter(getActivity(), receipes, likedOnlyMode);
         recList.setAdapter(adapter);
 
         return rootView;
     }
+
 }

@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,20 +20,27 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
 
     private List<ReceipeInfo> receipeList;
     private Context context;
+    private boolean likedMode;
+    private List<ReceipeInfo> likedList;
 
-    public ReceipeAdapter(Context context, List<ReceipeInfo> receipeList) {
+    public ReceipeAdapter(Context context, List<ReceipeInfo> receipeList, boolean likedMode) {
         this.context = context;
         this.receipeList = receipeList;
+        this.likedMode = likedMode;
+        if (likedMode) {
+            likedList = filterLikedReceipes();
+        }
     }
 
     @Override
     public int getItemCount() {
-        return receipeList.size();
+
+        return likedMode ? likedList.size() : receipeList.size();
     }
 
     @Override
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
-        ReceipeInfo ri = receipeList.get(i);
+        ReceipeInfo ri = likedMode ? likedList.get(i) : receipeList.get(i);
         receipeViewHolder.name.setText(ri.name);
         receipeViewHolder.description.setText(ri.description);
         receipeViewHolder.image.setImageResource(ri.photoId);
@@ -61,22 +69,27 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
 
         final ImageButton likeButton = (ImageButton) view.findViewById(R.id.btnLike);
         likeButton.setOnClickListener(new ImageButton.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
-                    ReceipeInfo element = receipeList.get(position);
-                    if (element.liked) {
+                    if (likedMode) {
+                        ReceipeInfo likedElement = likedList.get(position);
+                        ReceipeInfo origElement = receipeList.get(receipeList.indexOf(likedElement));
                         likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
-                        element.liked = false;
-
+                        origElement.liked = false;
                     } else {
-                        likeButton.setImageResource(R.drawable.ic_heart_red);
-                        element.liked = true;
-                    }
+                        ReceipeInfo element = receipeList.get(position);
+                        if (element.liked) {
+                            likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
+                            element.liked = false;
 
+                        } else {
+                            likeButton.setImageResource(R.drawable.ic_heart_red);
+                            element.liked = true;
+                        }
+                    }
                 }
             }
         });
@@ -84,6 +97,15 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
         return holder;
     }
 
+    private List<ReceipeInfo> filterLikedReceipes() {
+        List<ReceipeInfo> liked = new ArrayList<>();
+        for (ReceipeInfo receipe : receipeList) {
+            if (receipe.liked) {
+                liked.add(receipe);
+            }
+        }
+        return liked;
+    }
 
     public class ReceipeViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
