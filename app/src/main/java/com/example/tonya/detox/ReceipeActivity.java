@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +22,11 @@ import java.util.List;
 public class ReceipeActivity extends AppCompatActivity {
 
     private int position;
+    private String programName;
+    private String programDescription;
+
+    private int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
+            R.drawable.juice_detox_program, R.drawable.rice_detox_program};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +44,6 @@ public class ReceipeActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle("HELLLO");
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -46,6 +51,10 @@ public class ReceipeActivity extends AppCompatActivity {
 
         DayAdapter adapter = new DayAdapter(this, createDayList(position));
         dayList.setAdapter(adapter);
+
+        collapsingToolbar.setTitle(this.programName);
+        ImageView programImage = (ImageView) findViewById(R.id.toolbar_header_image);
+        programImage.setImageResource(images[position]);
     }
 
     private List<DayInfo> createDayList(int position) {
@@ -56,6 +65,8 @@ public class ReceipeActivity extends AppCompatActivity {
             JSONArray allPrograms = jsonData.getJSONArray("data");
             JSONObject program = allPrograms.getJSONObject(position);
             JSONArray schedule = program.getJSONArray("schedule");
+            this.programName = program.getString("name");
+            this.programDescription = program.getString("description");
             for (int i = 0; i < schedule.length(); i++) {
                 JSONObject day = schedule.getJSONObject(i);
                 days.add(new DayInfo(day.getString("name"), day.getString("description")));
