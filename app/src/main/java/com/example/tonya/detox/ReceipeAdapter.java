@@ -25,7 +25,6 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
         this.receipeList = receipeList;
     }
 
-
     @Override
     public int getItemCount() {
         return receipeList.size();
@@ -37,7 +36,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
         receipeViewHolder.name.setText(ri.name);
         receipeViewHolder.description.setText(ri.description);
         receipeViewHolder.image.setImageResource(ri.photoId);
-        receipeViewHolder.liked.setImageResource(ri.liked);
+        receipeViewHolder.liked.setImageResource(ri.liked ? R.drawable.ic_heart_red : R.drawable.ic_heart_outline_grey);
 
     }
 
@@ -68,8 +67,16 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 final int position = holder.getAdapterPosition();
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
-                    likeButton.setImageResource(R.drawable.ic_heart_red);
-                    receipeList.get(position).liked = R.drawable.ic_heart_red;
+                    ReceipeInfo element = receipeList.get(position);
+                    if (element.liked) {
+                        likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
+                        element.liked = false;
+
+                    } else {
+                        likeButton.setImageResource(R.drawable.ic_heart_red);
+                        element.liked = true;
+                    }
+
                 }
             }
         });
