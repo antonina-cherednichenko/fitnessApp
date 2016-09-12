@@ -48,20 +48,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/program_info"
-            android:layout_marginTop="2dp"
             android:padding="8dp"
             android:textSize="14dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/read_more"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/receipe_description"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/colorBlue"
-            android:text="READ MORE" />
+            android:layout_below="@+id/receipe_description"
+            android:text="@string/read_more"
+            android:textColor="@color/colorBlue" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

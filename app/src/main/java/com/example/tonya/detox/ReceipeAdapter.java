@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,6 +56,20 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 inflate(R.layout.receipe_layout, viewGroup, false);
         final ReceipeViewHolder holder = new ReceipeViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int position = holder.getAdapterPosition();
+                //check if position exists
+                if (position != RecyclerView.NO_POSITION) {
+                    Intent intent = new Intent(context, ReceipeActivity.class);
+                    intent.putExtra("receipe_position", position);
+                    context.startActivity(intent);
+                }
+            }
+        });
+
+        final Button readMoreButton = (Button) view.findViewById(R.id.read_more);
+        readMoreButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
