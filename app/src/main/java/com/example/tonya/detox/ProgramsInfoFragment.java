@@ -55,7 +55,7 @@ public class ProgramsInfoFragment extends Fragment {
             JSONArray allPrograms = jsonData.getJSONArray("data");
             for (int i = 0; i < allPrograms.length(); i++) {
                 JSONObject program = allPrograms.getJSONObject(i);
-                receipes.add(new ReceipeInfo(program.getString("name"), program.getString("description"), images[i]));
+                receipes.add(new ReceipeInfo(program.getString("name"), program.getString("description"), images[i], R.drawable.ic_heart_outline_grey));
 
             }
 

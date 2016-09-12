@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
         receipeViewHolder.name.setText(ri.name);
         receipeViewHolder.description.setText(ri.description);
         receipeViewHolder.image.setImageResource(ri.photoId);
+        receipeViewHolder.liked.setImageResource(ri.liked);
 
     }
 
@@ -58,16 +60,29 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
             }
         });
 
+        final ImageButton likeButton = (ImageButton) view.findViewById(R.id.btnLike);
+        likeButton.setOnClickListener(new ImageButton.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                final int position = holder.getAdapterPosition();
+                //check if position exists
+                if (position != RecyclerView.NO_POSITION) {
+                    likeButton.setImageResource(R.drawable.ic_heart_red);
+                    receipeList.get(position).liked = R.drawable.ic_heart_red;
+                }
+            }
+        });
+
         return holder;
     }
 
 
-
     public class ReceipeViewHolder extends RecyclerView.ViewHolder {
-
-        protected TextView name;
-        protected TextView description;
-        protected ImageView image;
+        public TextView name;
+        public TextView description;
+        public ImageView image;
+        public ImageButton liked;
 
 
         public ReceipeViewHolder(View v) {
@@ -75,6 +90,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
             name = (TextView) v.findViewById(R.id.receipe_name);
             description = (TextView) v.findViewById(R.id.receipe_description);
             image = (ImageView) v.findViewById(R.id.receipe_image);
+            liked = (ImageButton) v.findViewById(R.id.btnLike);
         }
     }
 }
