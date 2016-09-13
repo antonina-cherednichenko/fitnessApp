@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/food1_1"
     android:alpha="0.8"
+    android:background="@drawable/food1_1"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,26 +12,26 @@
         android:id="@+id/hello_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello Healthy"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textSize="30sp"
+        android:text="Hello Healthy"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorWhite"
+        android:textSize="30sp"
         tools:ignore="UnusedAttribute" />
 
     <TextView
         android:id="@+id/find_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/hello_text"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
         android:text="Find new detox programs"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorWhite"
+        android:textSize="20sp"
         tools:ignore="UnusedAttribute" />
 
     <TextView
@@ -39,12 +39,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/find_text"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Follow the recommendations"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorWhite"
+        android:textSize="20sp"
         tools:ignore="UnusedAttribute" />
 
     <TextView
@@ -52,36 +52,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/follow_text"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Be healthy, Stay tuned"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorWhite"
+        android:textSize="20sp"
         tools:ignore="UnusedAttribute" />
 
     <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/login_button"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:background="@color/colorPrimary"
-        android:layout_centerHorizontal="true"
         android:onClick="onInfoClicked"
-        android:textColor="@color/colorWhite"
-        android:layout_above="@+id/login_button"
-        android:text="Read more" />
+        android:text="@string/read_more"
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="onLoginClicked"
-        android:textColor="@color/colorWhite"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
+        android:onClick="onLoginClicked"
+        android:text="@string/explore"
 
-        android:text="Login" />
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

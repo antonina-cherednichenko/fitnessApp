@@ -7,6 +7,8 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="read_more">READ MORE</string>
+    <string name="schedule">SCHEDULE</string>
+    <string name="explore">EXPLORE</string>
 
     <string-array name="navigation_drawer_items_array">
         <item>Receipes</item>

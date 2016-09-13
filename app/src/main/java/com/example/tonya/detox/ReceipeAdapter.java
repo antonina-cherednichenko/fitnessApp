@@ -2,6 +2,7 @@ package com.example.tonya.detox;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.CalendarContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -63,9 +65,33 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ReceipeActivity.class);
-                    intent.putExtra("receipe_info", receipeList.get(position));
+                    intent.putExtra("receipe_info", likedMode ? likedList.get(position) : receipeList.get(position));
                     context.startActivity(intent);
                 }
+            }
+        });
+
+        final Button scheduleButton = (Button) view.findViewById(R.id.schedule);
+        scheduleButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int position = holder.getAdapterPosition();
+                ReceipeInfo receipe = likedMode ? likedList.get(position) : receipeList.get(position);
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setType("vnd.android.cursor.item/event");
+
+                Calendar cal = Calendar.getInstance();
+                long startTime = cal.getTimeInMillis();
+                long endTime = cal.getTimeInMillis() + receipe.duration * 24 * 60 * 60 * 1000;
+
+                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
+                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
+                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
+
+                intent.putExtra(CalendarContract.Events.TITLE, receipe.name);
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.shortDescription);
+
+                context.startActivity(intent);
             }
         });
 
@@ -77,7 +103,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ReceipeActivity.class);
-                    intent.putExtra("receipe_info", receipeList.get(position));
+                    intent.putExtra("receipe_info", likedMode ? likedList.get(position) : receipeList.get(position));
                     context.startActivity(intent);
                 }
             }
