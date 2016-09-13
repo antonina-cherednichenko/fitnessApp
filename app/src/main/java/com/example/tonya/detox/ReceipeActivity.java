@@ -18,13 +18,6 @@ import java.util.Calendar;
 public class ReceipeActivity extends AppCompatActivity {
 
     private ReceipeInfo receipe;
-    private String programName;
-    private String programDescription;
-    private String shortDescription;
-    private int programDuration;
-
-    private int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
-            R.drawable.juice_detox_program, R.drawable.rice_detox_program};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +43,7 @@ public class ReceipeActivity extends AppCompatActivity {
         DayAdapter adapter = new DayAdapter(this, receipe.days);
         dayList.setAdapter(adapter);
 
-        collapsingToolbar.setTitle(this.programName);
+        collapsingToolbar.setTitle(receipe.name);
         ImageView programImage = (ImageView) findViewById(R.id.toolbar_header_image);
         programImage.setImageResource(receipe.photoId);
 
@@ -63,14 +56,14 @@ public class ReceipeActivity extends AppCompatActivity {
 
                 Calendar cal = Calendar.getInstance();
                 long startTime = cal.getTimeInMillis();
-                long endTime = cal.getTimeInMillis() + programDuration * 24 * 60 * 60 * 1000;
+                long endTime = cal.getTimeInMillis() + receipe.duration * 24 * 60 * 60 * 1000;
 
                 intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
                 intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
                 intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
 
-                intent.putExtra(CalendarContract.Events.TITLE, programName);
-                intent.putExtra(CalendarContract.Events.DESCRIPTION, shortDescription);
+                intent.putExtra(CalendarContract.Events.TITLE, receipe.name);
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.shortDescription);
 
 
                 startActivity(intent);

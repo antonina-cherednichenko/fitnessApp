@@ -22,7 +22,6 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
         this.dayList = dayList;
     }
 
-
     @Override
     public int getItemCount() {
         return dayList.size();
