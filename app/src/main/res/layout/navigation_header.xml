@@ -3,13 +3,16 @@
     android:id="@+id/navigation_header"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/schedule">
+    android:background="@drawable/drawer_header">
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detox receipes"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="4dp"
+        android:text="Detox menu"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

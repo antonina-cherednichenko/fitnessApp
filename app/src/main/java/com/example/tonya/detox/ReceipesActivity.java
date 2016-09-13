@@ -49,10 +49,10 @@ public class ReceipesActivity extends AppCompatActivity {
 
         NavigationDataModel[] drawerItems = new NavigationDataModel[4];
 
-        drawerItems[0] = new NavigationDataModel(R.drawable.com_facebook_button_like_icon_selected, "Receipes");
-        drawerItems[1] = new NavigationDataModel(R.drawable.com_facebook_send_button_icon, "Favorites");
-        drawerItems[2] = new NavigationDataModel(R.drawable.com_facebook_button_send_icon_white, "Schedule");
-        drawerItems[3] = new NavigationDataModel(R.drawable.com_facebook_button_send_icon_white, "About");
+        drawerItems[0] = new NavigationDataModel(R.drawable.drawable_receipes, "Receipes");
+        drawerItems[1] = new NavigationDataModel(R.drawable.drawable_favourite, "Favorites");
+        drawerItems[2] = new NavigationDataModel(R.drawable.drawable_time, "Schedule");
+        drawerItems[3] = new NavigationDataModel(R.drawable.drawable_about, "About");
 
         navigationItems = getResources().getStringArray(R.array.navigation_drawer_items_array);
 
@@ -130,12 +130,12 @@ public class ReceipesActivity extends AppCompatActivity {
             }
             case 3: {
                 //Schedule item
-                fragment = null;
+                fragment = new ScheduleFragment();
                 break;
             }
             case 4: {
                 //About item
-                fragment = null;
+                fragment = new AboutFragment();
                 break;
             }
             default: {

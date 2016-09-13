@@ -3,6 +3,7 @@ package com.example.tonya.detox;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.CalendarContract;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -121,18 +122,23 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                         ReceipeInfo origElement = receipeList.get(receipeList.indexOf(likedElement));
                         likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
                         origElement.liked = false;
+                        showLikedSnackbar(v, likedElement.name + " unliked!");
                     } else {
                         ReceipeInfo element = receipeList.get(position);
                         if (element.liked) {
                             likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
                             element.liked = false;
+                            showLikedSnackbar(v, element.name + " unliked!");
 
                         } else {
                             likeButton.setImageResource(R.drawable.ic_heart_red);
                             element.liked = true;
+                            showLikedSnackbar(v, element.name + " liked!");
                         }
+
                     }
                 }
+
             }
         });
 
@@ -163,6 +169,10 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
             image = (ImageView) v.findViewById(R.id.receipe_image);
             liked = (ImageButton) v.findViewById(R.id.btnLike);
         }
+    }
+
+    public void showLikedSnackbar(View view, String info) {
+        Snackbar.make(view, info, Snackbar.LENGTH_SHORT).show();
     }
 }
 
