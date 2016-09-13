@@ -10,7 +10,6 @@ public class NavigationDataModel {
 
     // Constructor.
     public NavigationDataModel(int icon, String name) {
-
         this.icon = icon;
         this.name = name;
     }

@@ -63,7 +63,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ReceipeActivity.class);
-                    intent.putExtra("receipe_position", position);
+                    intent.putExtra("receipe_info", receipeList.get(position));
                     context.startActivity(intent);
                 }
             }
@@ -77,7 +77,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ReceipeActivity.class);
-                    intent.putExtra("receipe_position", position);
+                    intent.putExtra("receipe_info", receipeList.get(position));
                     context.startActivity(intent);
                 }
             }

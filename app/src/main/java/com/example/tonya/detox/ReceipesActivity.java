@@ -65,7 +65,7 @@ public class ReceipesActivity extends AppCompatActivity {
 
         receipes = createReceipeList();
 
-        //setup default fragment witl program cards
+        //setup default fragment with program cards
         Fragment fragment = new ProgramsInfoFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("receipes", (Serializable) receipes);
@@ -107,7 +107,6 @@ public class ReceipesActivity extends AppCompatActivity {
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         Fragment fragment;
-        System.out.println("POSITION = " + position);
         switch (position) {
             case 1: {
                 //Receipes item
@@ -206,7 +205,22 @@ public class ReceipesActivity extends AppCompatActivity {
             JSONArray allPrograms = jsonData.getJSONArray("data");
             for (int i = 0; i < allPrograms.length(); i++) {
                 JSONObject program = allPrograms.getJSONObject(i);
-                receipes.add(new ReceipeInfo(program.getString("name"), program.getString("description"), images[i], false));
+                JSONArray schedule = program.getJSONArray("schedule");
+                List<DayInfo> days = new ArrayList<>();
+                for (int j = 0; j < schedule.length(); j++) {
+                    JSONObject day = schedule.getJSONObject(j);
+                    days.add(new DayInfo(day.getString("name"), day.getString("description")));
+                }
+
+                ReceipeInfo receipe = new ReceipeInfo();
+                receipe.setDays(days);
+                receipe.setDescription(program.getString("description"));
+                receipe.setDuration(program.getInt("duration"));
+                receipe.setLiked(false);
+                receipe.setName(program.getString("name"));
+                receipe.setPhotoId(images[i]);
+                receipe.setShortDescription(program.getString("shortDescription"));
+                receipes.add(receipe);
 
             }
 
