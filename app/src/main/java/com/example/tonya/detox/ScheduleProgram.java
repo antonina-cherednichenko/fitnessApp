@@ -19,7 +19,6 @@ public class ScheduleProgram extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Schedule");
 
-        DatePicker picker = (DatePicker) findViewById(R.id.date_picker);
 
 
     }

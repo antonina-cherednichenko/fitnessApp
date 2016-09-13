@@ -3,6 +3,8 @@
     {
       "name": "Green program",
       "description": "Description for green program",
+      "duration": 7,
+      "shortDescription": "This is short description",
       "schedule": [
         {
           "name": "Day 1",
@@ -29,6 +31,8 @@
     {
       "name": "Citrus program",
       "description": "Description for citrus program",
+      "duration": 7,
+      "shortDescription": "This is short description",
       "schedule": [
         {
           "name": "Day 1",
@@ -55,6 +59,8 @@
     {
       "name": "apple program",
       "description": "Description for apple program",
+      "duration": 7,
+      "shortDescription": "This is short description",
       "schedule": [
         {
           "name": "Day 1",
@@ -81,6 +87,8 @@
     {
       "name": "juice program",
       "description": "Description for juice program",
+      "duration": 7,
+      "shortDescription": "This is short description",
       "schedule": [
         {
           "name": "Day 1",
@@ -107,6 +115,8 @@
     {
       "name": "rice program",
       "description": "Description for rice program",
+      "duration": 7,
+      "shortDescription": "This is short description",
       "schedule": [
         {
           "name": "Day 1",
@@ -129,6 +139,6 @@
           "description": "Description for Day 5"
         }
       ]
-    },
+    }
   ]
 }

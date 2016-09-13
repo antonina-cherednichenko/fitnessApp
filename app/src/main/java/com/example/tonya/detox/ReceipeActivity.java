@@ -2,6 +2,7 @@ package com.example.tonya.detox;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ReceipeActivity extends AppCompatActivity {
@@ -27,6 +29,8 @@ public class ReceipeActivity extends AppCompatActivity {
     private int position;
     private String programName;
     private String programDescription;
+    private String shortDescription;
+    private int programDuration;
 
     private int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
             R.drawable.juice_detox_program, R.drawable.rice_detox_program};
@@ -63,12 +67,24 @@ public class ReceipeActivity extends AppCompatActivity {
         schedule.setOnClickListener(new FloatingActionButton.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ReceipeActivity.this, ScheduleProgram.class);
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setType("vnd.android.cursor.item/event");
+
+                Calendar cal = Calendar.getInstance();
+                long startTime = cal.getTimeInMillis();
+                long endTime = cal.getTimeInMillis() + programDuration * 24 * 60 * 60 * 1000;
+
+                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
+                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
+                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
+
+                intent.putExtra(CalendarContract.Events.TITLE, programName);
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, shortDescription);
+
+
                 startActivity(intent);
             }
         });
-
-
     }
 
     private List<DayInfo> createDayList(int position) {
@@ -81,6 +97,8 @@ public class ReceipeActivity extends AppCompatActivity {
             JSONArray schedule = program.getJSONArray("schedule");
             this.programName = program.getString("name");
             this.programDescription = program.getString("description");
+            this.shortDescription = program.getString("shortDescription");
+            this.programDuration = program.getInt("duration");
             for (int i = 0; i < schedule.length(); i++) {
                 JSONObject day = schedule.getJSONObject(i);
                 days.add(new DayInfo(day.getString("name"), day.getString("description")));

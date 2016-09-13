@@ -55,6 +55,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 from(viewGroup.getContext()).
                 inflate(R.layout.receipe_layout, viewGroup, false);
         final ReceipeViewHolder holder = new ReceipeViewHolder(view);
+        //TODO replace this on some cool animation
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
