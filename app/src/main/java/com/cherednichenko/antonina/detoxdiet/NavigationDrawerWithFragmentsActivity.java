@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DayInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietProgramsListFragment;
@@ -41,9 +42,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     private String[] navigationItems;
     private List<ProgramInfo> receipes;
 
-    private int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
-            R.drawable.juice_detox_program, R.drawable.rice_detox_program};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +67,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
 
-        receipes = createReceipeList();
+        receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
 
         //setup default fragment with program cards
         Fragment fragment = new DetoxDietProgramsListFragment();
@@ -201,61 +199,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         mDrawerToggle = new android.support.v7.app.ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
-    }
-
-    private List<ProgramInfo> createReceipeList() {
-        List<ProgramInfo> receipes = new ArrayList<>();
-        try {
-            String chatFileData = loadProgramsData();
-            JSONObject jsonData = new JSONObject(chatFileData);
-            JSONArray allPrograms = jsonData.getJSONArray("data");
-            for (int i = 0; i < allPrograms.length(); i++) {
-                JSONObject program = allPrograms.getJSONObject(i);
-                JSONArray schedule = program.getJSONArray("schedule");
-                List<DayInfo> days = new ArrayList<>();
-                for (int j = 0; j < schedule.length(); j++) {
-                    JSONObject day = schedule.getJSONObject(j);
-                    days.add(new DayInfo(day.getString("name"), day.getString("description")));
-                }
-
-                ProgramInfo receipe = new ProgramInfo();
-                receipe.setDays(days);
-                receipe.setDescription(program.getString("description"));
-                receipe.setDuration(program.getInt("duration"));
-                receipe.setLiked(false);
-                receipe.setName(program.getString("name"));
-                receipe.setPhotoId(images[i]);
-                receipe.setShortDescription(program.getString("shortDescription"));
-                receipes.add(receipe);
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return receipes;
-    }
-
-    private String loadProgramsData() throws IOException {
-        InputStream inputStream = getResources().openRawResource(R.raw.programs_data);
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-        String receiveString;
-        StringBuilder stringBuilder = new StringBuilder();
-
-        while ((receiveString = bufferedReader.readLine()) != null) {
-            stringBuilder.append(receiveString);
-            stringBuilder.append("\n");
-        }
-
-        bufferedReader.close();
-        inputStreamReader.close();
-        inputStream.close();
-
-
-        return stringBuilder.toString();
     }
 
 

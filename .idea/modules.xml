@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DetoxDiet.iml" filepath="$PROJECT_DIR$/DetoxDiet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/detoxApp.iml" filepath="$PROJECT_DIR$/detoxApp.iml" />
     </modules>
   </component>
 </project>
