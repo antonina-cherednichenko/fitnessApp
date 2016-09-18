@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.navigation_drawer;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.cherednichenko.antonina.detoxdiet.R;
 
 /**
  * Created by tonya on 9/11/16.

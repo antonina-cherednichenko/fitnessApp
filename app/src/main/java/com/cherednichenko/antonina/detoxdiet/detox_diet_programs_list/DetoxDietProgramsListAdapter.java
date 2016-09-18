@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -20,14 +24,14 @@ import java.util.List;
 /**
  * Created by tonya on 8/29/16.
  */
-public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeViewHolder> {
+public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDietProgramsListAdapter.ReceipeViewHolder> {
 
-    private List<ReceipeInfo> receipeList;
+    private List<ProgramInfo> receipeList;
     private Context context;
     private boolean likedMode;
-    private List<ReceipeInfo> likedList;
+    private List<ProgramInfo> likedList;
 
-    public ReceipeAdapter(Context context, List<ReceipeInfo> receipeList, boolean likedMode) {
+    public DetoxDietProgramsListAdapter(Context context, List<ProgramInfo> receipeList, boolean likedMode) {
         this.context = context;
         this.receipeList = receipeList;
         this.likedMode = likedMode;
@@ -44,7 +48,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
 
     @Override
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
-        ReceipeInfo ri = likedMode ? likedList.get(i) : receipeList.get(i);
+        ProgramInfo ri = likedMode ? likedList.get(i) : receipeList.get(i);
         receipeViewHolder.name.setText(ri.name);
         receipeViewHolder.description.setText(ri.description);
         receipeViewHolder.image.setImageResource(ri.photoId);
@@ -65,7 +69,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 final int position = holder.getAdapterPosition();
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
-                    Intent intent = new Intent(context, ReceipeActivity.class);
+                    Intent intent = new Intent(context, ProgramInfoActivity.class);
                     intent.putExtra("receipe_info", likedMode ? likedList.get(position) : receipeList.get(position));
                     context.startActivity(intent);
                 }
@@ -77,7 +81,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
             @Override
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
-                ReceipeInfo receipe = likedMode ? likedList.get(position) : receipeList.get(position);
+                ProgramInfo receipe = likedMode ? likedList.get(position) : receipeList.get(position);
                 Intent intent = new Intent(Intent.ACTION_INSERT);
                 intent.setType("vnd.android.cursor.item/event");
 
@@ -103,7 +107,7 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 final int position = holder.getAdapterPosition();
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
-                    Intent intent = new Intent(context, ReceipeActivity.class);
+                    Intent intent = new Intent(context, ProgramInfoActivity.class);
                     intent.putExtra("receipe_info", likedMode ? likedList.get(position) : receipeList.get(position));
                     context.startActivity(intent);
                 }
@@ -118,13 +122,13 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     if (likedMode) {
-                        ReceipeInfo likedElement = likedList.get(position);
-                        ReceipeInfo origElement = receipeList.get(receipeList.indexOf(likedElement));
+                        ProgramInfo likedElement = likedList.get(position);
+                        ProgramInfo origElement = receipeList.get(receipeList.indexOf(likedElement));
                         likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
                         origElement.liked = false;
                         showLikedSnackbar(v, likedElement.name + " unliked!");
                     } else {
-                        ReceipeInfo element = receipeList.get(position);
+                        ProgramInfo element = receipeList.get(position);
                         if (element.liked) {
                             likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
                             element.liked = false;
@@ -145,9 +149,9 @@ public class ReceipeAdapter extends RecyclerView.Adapter<ReceipeAdapter.ReceipeV
         return holder;
     }
 
-    private List<ReceipeInfo> filterLikedReceipes() {
-        List<ReceipeInfo> liked = new ArrayList<>();
-        for (ReceipeInfo receipe : receipeList) {
+    private List<ProgramInfo> filterLikedReceipes() {
+        List<ProgramInfo> liked = new ArrayList<>();
+        for (ProgramInfo receipe : receipeList) {
             if (receipe.liked) {
                 liked.add(receipe);
             }

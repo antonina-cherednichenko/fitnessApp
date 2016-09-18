@@ -1,9 +1,9 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet;
 
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLoginClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, ReceipesActivity.class);
+        Intent intent = new Intent(MainActivity.this, NavigationDrawerWithFragmentsActivity.class);
         startActivity(intent);
     }
 }

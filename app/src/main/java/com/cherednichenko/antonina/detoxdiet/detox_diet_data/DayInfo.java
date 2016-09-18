@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.detox_diet_data;
 
 import java.io.Serializable;
 

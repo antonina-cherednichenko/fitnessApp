@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet;
 
 import org.junit.Test;
 

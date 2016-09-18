@@ -3,7 +3,7 @@
     android:id="@+id/navigation_header"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/drawer_header">
+    android:background="@drawable/navdrawer_header">
 
     <TextView
         android:id="@+id/textView1"

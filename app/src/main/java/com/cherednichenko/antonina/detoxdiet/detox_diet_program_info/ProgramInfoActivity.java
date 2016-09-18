@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.detox_diet_program_info;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+
 import java.util.Calendar;
 
-public class ReceipeActivity extends AppCompatActivity {
+public class ProgramInfoActivity extends AppCompatActivity {
 
-    private ReceipeInfo receipe;
+    private ProgramInfo receipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class ReceipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipe);
 
         Intent intent = getIntent();
-        receipe = (ReceipeInfo) intent.getSerializableExtra("receipe_info");
+        receipe = (ProgramInfo) intent.getSerializableExtra("receipe_info");
 
         RecyclerView dayList = (RecyclerView) findViewById(R.id.dayCardList);
         dayList.setHasFixedSize(true);

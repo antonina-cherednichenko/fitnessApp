@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
@@ -17,13 +19,13 @@ import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 /**
  * Created by tonya on 9/8/16.
  */
-public class ProgramsInfoFragment extends Fragment {
+public class DetoxDietProgramsListFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_receipes, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_detox_diet_programs_list, container, false);
         RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.cardList);
         //recList.setHasFixedSize(true);
         recList.setItemAnimator(new SlideInUpAnimator());
@@ -33,10 +35,10 @@ public class ProgramsInfoFragment extends Fragment {
         recList.setLayoutManager(llm);
 
         Bundle args = getArguments();
-        List<ReceipeInfo> receipes = (List<ReceipeInfo>) args.getSerializable("receipes");
+        List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
         boolean likedOnlyMode = (boolean) args.getSerializable("mode");
 
-        ReceipeAdapter adapter = new ReceipeAdapter(getActivity(), receipes, likedOnlyMode);
+        DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes, likedOnlyMode);
         recList.setAdapter(adapter);
 
         return rootView;

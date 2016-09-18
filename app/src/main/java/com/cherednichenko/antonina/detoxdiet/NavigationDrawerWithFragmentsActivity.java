@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -13,6 +13,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DayInfo;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietProgramsListFragment;
+import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
+import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +30,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceipesActivity extends AppCompatActivity {
+public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -33,7 +39,7 @@ public class ReceipesActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
     private String[] navigationItems;
-    private List<ReceipeInfo> receipes;
+    private List<ProgramInfo> receipes;
 
     private int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
             R.drawable.juice_detox_program, R.drawable.rice_detox_program};
@@ -41,7 +47,7 @@ public class ReceipesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receipes);
+        setContentView(R.layout.activity_navigation_drawer_with_fragments);
 
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -49,10 +55,10 @@ public class ReceipesActivity extends AppCompatActivity {
 
         NavigationDataModel[] drawerItems = new NavigationDataModel[4];
 
-        drawerItems[0] = new NavigationDataModel(R.drawable.drawable_receipes, "Receipes");
-        drawerItems[1] = new NavigationDataModel(R.drawable.drawable_favourite, "Favorites");
-        drawerItems[2] = new NavigationDataModel(R.drawable.drawable_time, "Schedule");
-        drawerItems[3] = new NavigationDataModel(R.drawable.drawable_about, "About");
+        drawerItems[0] = new NavigationDataModel(R.drawable.navdrawer_receipes, "Receipes");
+        drawerItems[1] = new NavigationDataModel(R.drawable.navdrawer_favourite, "Favorites");
+        drawerItems[2] = new NavigationDataModel(R.drawable.navdrawer_time, "Schedule");
+        drawerItems[3] = new NavigationDataModel(R.drawable.navdrawer_about, "About");
 
         navigationItems = getResources().getStringArray(R.array.navigation_drawer_items_array);
 
@@ -66,7 +72,7 @@ public class ReceipesActivity extends AppCompatActivity {
         receipes = createReceipeList();
 
         //setup default fragment with program cards
-        Fragment fragment = new ProgramsInfoFragment();
+        Fragment fragment = new DetoxDietProgramsListFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("receipes", (Serializable) receipes);
         bundle.putBoolean("mode", false);
@@ -110,7 +116,7 @@ public class ReceipesActivity extends AppCompatActivity {
         switch (position) {
             case 1: {
                 //Receipes item
-                fragment = new ProgramsInfoFragment();
+                fragment = new DetoxDietProgramsListFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("receipes", (Serializable) receipes);
                 bundle.putBoolean("mode", false);
@@ -120,7 +126,7 @@ public class ReceipesActivity extends AppCompatActivity {
             }
             case 2: {
                 //Favourites item
-                fragment = new ProgramsInfoFragment();
+                fragment = new DetoxDietProgramsListFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("receipes", (Serializable) receipes);
                 bundle.putBoolean("mode", true);
@@ -197,8 +203,8 @@ public class ReceipesActivity extends AppCompatActivity {
         mDrawerToggle.syncState();
     }
 
-    private List<ReceipeInfo> createReceipeList() {
-        List<ReceipeInfo> receipes = new ArrayList<>();
+    private List<ProgramInfo> createReceipeList() {
+        List<ProgramInfo> receipes = new ArrayList<>();
         try {
             String chatFileData = loadProgramsData();
             JSONObject jsonData = new JSONObject(chatFileData);
@@ -212,7 +218,7 @@ public class ReceipesActivity extends AppCompatActivity {
                     days.add(new DayInfo(day.getString("name"), day.getString("description")));
                 }
 
-                ReceipeInfo receipe = new ReceipeInfo();
+                ProgramInfo receipe = new ProgramInfo();
                 receipe.setDays(days);
                 receipe.setDescription(program.getString("description"));
                 receipe.setDuration(program.getInt("duration"));

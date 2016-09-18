@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.navigation_drawer;
 
 /**
  * Created by tonya on 9/11/16.

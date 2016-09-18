@@ -1,4 +1,4 @@
-package com.example.tonya.detox;
+package com.cherednichenko.antonina.detoxdiet.detox_diet_data;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by tonya on 8/29/16.
  */
-public class ReceipeInfo implements Serializable {
+public class ProgramInfo implements Serializable {
     public String description;
     public int photoId;
     public boolean liked;
@@ -49,7 +49,7 @@ public class ReceipeInfo implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ReceipeInfo that = (ReceipeInfo) o;
+        ProgramInfo that = (ProgramInfo) o;
 
         if (photoId != that.photoId) return false;
         if (!name.equals(that.name)) return false;
