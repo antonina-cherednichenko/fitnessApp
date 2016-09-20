@@ -58,7 +58,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
 
-//        receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
+        receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
 
         //setup default fragment with program cards
         Fragment fragment = new AllDetoxDietTabFragment();
@@ -86,7 +86,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setupDrawerToggle();
-
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
