@@ -50,23 +50,28 @@ public class AllDetoxDietTabFragment extends Fragment {
 
         List<ProgramInfo> receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
 
+        Bundle args = getArguments();
+        boolean mode = args.getBoolean("mode");
+
+
         //setup default fragment with program cards
         Fragment allFragment = new DetoxDietProgramsListFragment();
         Bundle allBundle = new Bundle();
         allBundle.putSerializable("receipes", (Serializable) receipes);
-        allBundle.putBoolean("mode", false);
+
+        allBundle.putBoolean("mode", mode);
         allFragment.setArguments(allBundle);
 
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
         detoxBundle.putSerializable("receipes", (Serializable) receipes);
-        detoxBundle.putBoolean("mode", false);
+        detoxBundle.putBoolean("mode", mode);
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
         dietBundle.putSerializable("receipes", (Serializable) receipes);
-        dietBundle.putBoolean("mode", false);
+        dietBundle.putBoolean("mode", mode);
         dietFragment.setArguments(dietBundle);
 
 

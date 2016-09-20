@@ -44,7 +44,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
         NavigationDataModel[] drawerItems = new NavigationDataModel[4];
 
-        drawerItems[0] = new NavigationDataModel(R.drawable.navdrawer_receipes, "Receipes");
+        drawerItems[0] = new NavigationDataModel(R.drawable.navdrawer_receipes, "Programs");
         drawerItems[1] = new NavigationDataModel(R.drawable.navdrawer_favourite, "Favorites");
         drawerItems[2] = new NavigationDataModel(R.drawable.navdrawer_time, "Schedule");
         drawerItems[3] = new NavigationDataModel(R.drawable.navdrawer_about, "About");
@@ -55,6 +55,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.drawer_list_item, drawerItems);
         mDrawerList.setAdapter(adapter);
 
+
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
 
@@ -62,10 +63,9 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
         //setup default fragment with program cards
         Fragment fragment = new AllDetoxDietTabFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("receipes", (Serializable) receipes);
-//        bundle.putBoolean("mode", false);
-//        fragment.setArguments(bundle);
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("mode", false);
+        fragment.setArguments(bundle);
 
         if (fragment != null) {
             // Insert the fragment by replacing any existing fragment
@@ -76,6 +76,8 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         }
 
         setupToolbar();
+
+        setTitle("Programs");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -104,9 +106,8 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         switch (position) {
             case 1: {
                 //Receipes item
-                fragment = new DetoxDietProgramsListFragment();
+                fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("receipes", (Serializable) receipes);
                 bundle.putBoolean("mode", false);
                 fragment.setArguments(bundle);
                 break;
@@ -114,9 +115,8 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
             }
             case 2: {
                 //Favourites item
-                fragment = new DetoxDietProgramsListFragment();
+                fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("receipes", (Serializable) receipes);
                 bundle.putBoolean("mode", true);
                 fragment.setArguments(bundle);
                 break;
