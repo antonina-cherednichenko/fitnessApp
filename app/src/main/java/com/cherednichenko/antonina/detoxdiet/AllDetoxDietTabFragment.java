@@ -53,12 +53,9 @@ public class AllDetoxDietTabFragment extends Fragment {
         Bundle args = getArguments();
         boolean mode = args.getBoolean("mode");
 
-
-        //setup default fragment with program cards
         Fragment allFragment = new DetoxDietProgramsListFragment();
         Bundle allBundle = new Bundle();
         allBundle.putSerializable("receipes", (Serializable) receipes);
-
         allBundle.putBoolean("mode", mode);
         allFragment.setArguments(allBundle);
 

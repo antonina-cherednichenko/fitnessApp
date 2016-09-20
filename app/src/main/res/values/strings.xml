@@ -11,7 +11,7 @@
     <string name="explore">EXPLORE</string>
 
     <string-array name="navigation_drawer_items_array">
-        <item>Receipes</item>
+        <item>Programs</item>
         <item>Favorites</item>
         <item>Schedule</item>
         <item>About</item>

@@ -38,7 +38,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
-            boolean likedOnlyMode = (boolean) args.getSerializable("mode");
+            boolean likedOnlyMode = args.getBoolean("mode");
 
             DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes, likedOnlyMode);
             recList.setAdapter(adapter);

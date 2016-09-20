@@ -15,11 +15,9 @@ import android.widget.ListView;
 
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
-import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietProgramsListFragment;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
@@ -76,7 +74,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         }
 
         setupToolbar();
-
         setTitle("Programs");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -158,7 +155,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
