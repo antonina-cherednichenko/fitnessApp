@@ -3,7 +3,6 @@ package com.cherednichenko.antonina.detoxdiet;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +20,6 @@ import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomA
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
@@ -60,14 +58,14 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
 
-        receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
+//        receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
 
         //setup default fragment with program cards
-        Fragment fragment = new DetoxDietProgramsListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("receipes", (Serializable) receipes);
-        bundle.putBoolean("mode", false);
-        fragment.setArguments(bundle);
+        Fragment fragment = new AllDetoxDietTabFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("receipes", (Serializable) receipes);
+//        bundle.putBoolean("mode", false);
+//        fragment.setArguments(bundle);
 
         if (fragment != null) {
             // Insert the fragment by replacing any existing fragment
@@ -89,35 +87,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setupDrawerToggle();
 
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {

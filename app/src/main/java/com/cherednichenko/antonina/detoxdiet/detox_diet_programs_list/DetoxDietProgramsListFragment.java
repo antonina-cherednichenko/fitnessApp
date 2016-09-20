@@ -36,11 +36,14 @@ public class DetoxDietProgramsListFragment extends Fragment {
         recList.setLayoutManager(llm);
 
         Bundle args = getArguments();
-        List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
-        boolean likedOnlyMode = (boolean) args.getSerializable("mode");
+        System.out.println("args = " + args);
+        if (args != null) {
+            List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
+            boolean likedOnlyMode = (boolean) args.getSerializable("mode");
 
-        DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes, likedOnlyMode);
-        recList.setAdapter(adapter);
+            DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes, likedOnlyMode);
+            recList.setAdapter(adapter);
+        }
 
         return rootView;
     }
