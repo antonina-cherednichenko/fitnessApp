@@ -166,14 +166,14 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
                     String PROGRAMS_DAYS_SELECT_QUERY =
                             String.format("SELECT * FROM %s WHERE %s = ?",
-                                    TABLE_DAYS, KEY_PROGRAM_ID);
+                                    TABLE_DAYS, KEY_DAY_PROGRAM_ID_FK);
 
                     Cursor dayCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(programId)});
-                    if (dayCursor.moveToFirst()) {
+                   if (dayCursor.moveToFirst()) {
                         do {
                             DayInfo newDay = new DayInfo();
-                            newDay.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
-                            newDay.setName(cursor.getString(cursor.getColumnIndex(KEY_DAY_NAME)));
+                            newDay.setDescription(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
+                            newDay.setName(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_NAME)));
                             days.add(newDay);
 
                         } while (dayCursor.moveToNext());
@@ -189,6 +189,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
+        System.out.println("programs = "+ programs);
         return programs;
     }
 

@@ -25,17 +25,15 @@ public class DataProcessor {
     private static boolean dbIsInitilized = false;
 
     public static List<ProgramInfo> getAllPrograms(Context context) {
-        if (dbIsInitilized) {
-            ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
-            return databaseHelper.getAllPrograms();
-        } else {
-            //read data from resource and put it into db
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+        if (!dbIsInitilized) {
             dbIsInitilized = true;
-            return readJsonAndInitDb(context);
+            readJsonAndInitDb(context);
         }
+        return databaseHelper.getAllPrograms();
     }
 
-    private static List<ProgramInfo> readJsonAndInitDb(Context context) {
+    private static void readJsonAndInitDb(Context context) {
         InputStream stream = context.getResources().openRawResource(R.raw.programs_data);
         List<ProgramInfo> receipes = new ArrayList<>();
         try {
@@ -71,7 +69,7 @@ public class DataProcessor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return receipes;
+
 
     }
 
