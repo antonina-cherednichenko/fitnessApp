@@ -169,7 +169,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                                     TABLE_DAYS, KEY_DAY_PROGRAM_ID_FK);
 
                     Cursor dayCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(programId)});
-                   if (dayCursor.moveToFirst()) {
+                    if (dayCursor.moveToFirst()) {
                         do {
                             DayInfo newDay = new DayInfo();
                             newDay.setDescription(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
@@ -189,8 +189,20 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
-        System.out.println("programs = "+ programs);
+        System.out.println("programs = " + programs);
         return programs;
+    }
+
+    // Update liked status of program
+    public int updateLikedStatusOfProgram(ProgramInfo program, int liked) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_PROGRAM_LIKED, liked);
+
+        // Updating profile picture url for user with that userName
+        return db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + " = ?",
+                new String[]{String.valueOf(program.getName())});
     }
 
 

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity;
 
@@ -28,27 +29,21 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     private List<ProgramInfo> receipeList;
     private Context context;
-    private boolean likedMode;
-    private List<ProgramInfo> likedList;
 
-    public DetoxDietProgramsListAdapter(Context context, List<ProgramInfo> receipeList, boolean likedMode) {
+
+    public DetoxDietProgramsListAdapter(Context context, List<ProgramInfo> receipeList) {
         this.context = context;
         this.receipeList = receipeList;
-        this.likedMode = likedMode;
-        if (likedMode) {
-            likedList = filterLikedReceipes();
-        }
     }
 
     @Override
     public int getItemCount() {
-
-        return likedMode ? likedList.size() : receipeList.size();
+        return receipeList.size();
     }
 
     @Override
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
-        ProgramInfo ri = likedMode ? likedList.get(i) : receipeList.get(i);
+        ProgramInfo ri = receipeList.get(i);
         receipeViewHolder.name.setText(ri.getName());
         receipeViewHolder.description.setText(ri.getDescription());
         receipeViewHolder.image.setImageResource(ri.getPhotoId());
@@ -70,7 +65,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ProgramInfoActivity.class);
-                    intent.putExtra("receipe_info", likedMode ? likedList.get(position) : receipeList.get(position));
+                    intent.putExtra("receipe_info", receipeList.get(position));
                     context.startActivity(intent);
                 }
             }
@@ -81,7 +76,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
             @Override
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
-                ProgramInfo receipe = likedMode ? likedList.get(position) : receipeList.get(position);
+                ProgramInfo receipe = receipeList.get(position);
                 Intent intent = new Intent(Intent.ACTION_INSERT);
                 intent.setType("vnd.android.cursor.item/event");
 
@@ -108,7 +103,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(context, ProgramInfoActivity.class);
-                    intent.putExtra("receipe_info", likedMode ? likedList.get(position) : receipeList.get(position));
+                    intent.putExtra("receipe_info", receipeList.get(position));
                     context.startActivity(intent);
                 }
             }
@@ -121,42 +116,26 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                 final int position = holder.getAdapterPosition();
                 //check if position exists
                 if (position != RecyclerView.NO_POSITION) {
-                    if (likedMode) {
-                        ProgramInfo likedElement = likedList.get(position);
-                        ProgramInfo origElement = receipeList.get(receipeList.indexOf(likedElement));
+                    ProgramInfo element = receipeList.get(position);
+                    ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+                    if (element.getLiked() == 1) {
                         likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
-                        origElement.setLiked(0);
-                        showLikedSnackbar(v, likedElement.getName() + " unliked!");
+                        //update Db here
+                        element.setLiked(0);
+                        databaseHelper.updateLikedStatusOfProgram(element, 0);
+                        showLikedSnackbar(v, element.getName() + " unliked!");
+
                     } else {
-                        ProgramInfo element = receipeList.get(position);
-                        if (element.getLiked() == 1) {
-                            likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
-                            element.setLiked(0);
-                            showLikedSnackbar(v, element.getName() + " unliked!");
-
-                        } else {
-                            likeButton.setImageResource(R.drawable.ic_heart_red);
-                            element.setLiked(1);
-                            showLikedSnackbar(v, element.getName() + " liked!");
-                        }
-
+                        likeButton.setImageResource(R.drawable.ic_heart_red);
+                        element.setLiked(1);
+                        databaseHelper.updateLikedStatusOfProgram(element, 1);
+                        showLikedSnackbar(v, element.getName() + " liked!");
                     }
                 }
-
             }
         });
 
         return holder;
-    }
-
-    private List<ProgramInfo> filterLikedReceipes() {
-        List<ProgramInfo> liked = new ArrayList<>();
-        for (ProgramInfo receipe : receipeList) {
-            if (receipe.getLiked() == 1) {
-                liked.add(receipe);
-            }
-        }
-        return liked;
     }
 
     public class ReceipeViewHolder extends RecyclerView.ViewHolder {
