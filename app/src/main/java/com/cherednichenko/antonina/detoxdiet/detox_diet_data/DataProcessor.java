@@ -50,6 +50,29 @@ public class DataProcessor {
         return likedPrograms;
     }
 
+
+    public static List<ProgramInfo> getDietPrograms(List<ProgramInfo> allPrograms) {
+        List<ProgramInfo> dietPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getCategory().equals("diet")) {
+                dietPrograms.add(program);
+            }
+        }
+        return dietPrograms;
+
+    }
+
+    public static List<ProgramInfo> getDetoxPrograms(List<ProgramInfo> allPrograms) {
+        List<ProgramInfo> detoxPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getCategory().equals("detox")) {
+                detoxPrograms.add(program);
+            }
+        }
+        return detoxPrograms;
+
+    }
+
     private static void readJsonAndInitDb(Context context) {
         InputStream stream = context.getResources().openRawResource(R.raw.programs_data);
         List<ProgramInfo> receipes = new ArrayList<>();
@@ -70,6 +93,7 @@ public class DataProcessor {
                 receipe.setDays(days);
                 receipe.setDescription(program.getString("description"));
                 receipe.setDuration(program.getInt("duration"));
+                receipe.setCategory(program.getString("category"));
                 receipe.setLiked(0);
                 receipe.setName(program.getString("name"));
                 receipe.setPhotoId(images[i]);

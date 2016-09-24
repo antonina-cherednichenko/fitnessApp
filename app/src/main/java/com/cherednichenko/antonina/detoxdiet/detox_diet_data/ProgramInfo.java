@@ -14,6 +14,15 @@ public class ProgramInfo implements Serializable {
     private String name;
     private int duration;
     private String shortDescription;
+    private String category;
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCategory() {
+        return category;
+    }
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;

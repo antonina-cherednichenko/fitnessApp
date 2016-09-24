@@ -35,6 +35,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_PROGRAM_LIKED = "liked";
     private static final String KEY_PROGRAM_PHOTO_URL = "photo";
     private static final String KEY_PROGRAM_DURATION = "duration";
+    private static final String KEY_PROGRAM_CATEGORY = "category";
 
     // Days Table Columns
     private static final String KEY_DAY_ID = "id";
@@ -69,7 +70,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_SHORT_DESC + " TEXT," +
                 KEY_PROGRAM_LIKED + " INTEGER," +
                 KEY_PROGRAM_PHOTO_URL + " INTEGER," +
-                KEY_PROGRAM_DURATION + " INTEGER" +
+                KEY_PROGRAM_DURATION + " INTEGER," +
+                KEY_PROGRAM_CATEGORY + " TEXT" +
                 ")";
 
         String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS +
@@ -123,6 +125,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_NAME, program.getName());
             values.put(KEY_PROGRAM_PHOTO_URL, program.getPhotoId());
             values.put(KEY_PROGRAM_SHORT_DESC, program.getShortDescription());
+            values.put(KEY_PROGRAM_CATEGORY, program.getCategory());
 
             programId = (int) db.insertOrThrow(TABLE_PROGRAMS, null, values);
 
@@ -161,6 +164,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setLiked(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_LIKED)));
                     newProgram.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_DURATION)));
                     newProgram.setPhotoId(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
+                    newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
                     List<DayInfo> days = new ArrayList<>();
                     int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));
 
@@ -196,13 +200,13 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     // Update liked status of program
     public int updateLikedStatusOfProgram(ProgramInfo program, int liked) {
 
-            SQLiteDatabase db = this.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put(KEY_PROGRAM_LIKED, liked);
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_PROGRAM_LIKED, liked);
 
-            // Updating profile picture url for user with that userName
-            return db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + " = ?",
-                    new String[]{String.valueOf(program.getName())});
+        // Updating profile picture url for user with that userName
+        return db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + " = ?",
+                new String[]{String.valueOf(program.getName())});
 
     }
 

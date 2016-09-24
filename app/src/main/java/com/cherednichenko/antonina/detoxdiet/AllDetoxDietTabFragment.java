@@ -45,11 +45,9 @@ public class AllDetoxDietTabFragment extends Fragment {
         return rootView;
     }
 
+
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-
-        //TODO depending on mode (liked, non-liked and category get different items here)
-
 
         Bundle args = getArguments();
         boolean likedMode = args.getBoolean("mode");
@@ -67,12 +65,12 @@ public class AllDetoxDietTabFragment extends Fragment {
 
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
-        detoxBundle.putSerializable("receipes", (Serializable) programs);
+        detoxBundle.putSerializable("receipes", (Serializable) DataProcessor.getDetoxPrograms(programs));
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
-        dietBundle.putSerializable("receipes", (Serializable) programs);
+        dietBundle.putSerializable("receipes", (Serializable) DataProcessor.getDietPrograms(programs));
         dietFragment.setArguments(dietBundle);
 
 
