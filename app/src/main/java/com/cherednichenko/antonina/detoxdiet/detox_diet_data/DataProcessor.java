@@ -33,6 +33,23 @@ public class DataProcessor {
         return databaseHelper.getAllPrograms();
     }
 
+    public static List<ProgramInfo> getLikedPrograms(Context context) {
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+        if (!dbIsInitilized) {
+            dbIsInitilized = true;
+            readJsonAndInitDb(context);
+        }
+
+        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms();
+        List<ProgramInfo> likedPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getLiked() == 1) {
+                likedPrograms.add(program);
+            }
+        }
+        return likedPrograms;
+    }
+
     private static void readJsonAndInitDb(Context context) {
         InputStream stream = context.getResources().openRawResource(R.raw.programs_data);
         List<ProgramInfo> receipes = new ArrayList<>();

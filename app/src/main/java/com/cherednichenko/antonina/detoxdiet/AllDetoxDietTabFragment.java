@@ -49,24 +49,30 @@ public class AllDetoxDietTabFragment extends Fragment {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
         //TODO depending on mode (liked, non-liked and category get different items here)
-        List<ProgramInfo> receipes = DataProcessor.getAllPrograms(getContext());
+
 
         Bundle args = getArguments();
-        boolean mode = args.getBoolean("mode");
+        boolean likedMode = args.getBoolean("mode");
+        List<ProgramInfo> programs;
+        if (likedMode) {
+            programs = DataProcessor.getLikedPrograms(getContext());
+        } else {
+            programs = DataProcessor.getAllPrograms(getContext());
+        }
 
         Fragment allFragment = new DetoxDietProgramsListFragment();
         Bundle allBundle = new Bundle();
-        allBundle.putSerializable("receipes", (Serializable) receipes);
+        allBundle.putSerializable("receipes", (Serializable) programs);
         allFragment.setArguments(allBundle);
 
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
-        detoxBundle.putSerializable("receipes", (Serializable) receipes);
+        detoxBundle.putSerializable("receipes", (Serializable) programs);
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
-        dietBundle.putSerializable("receipes", (Serializable) receipes);
+        dietBundle.putSerializable("receipes", (Serializable) programs);
         dietFragment.setArguments(dietBundle);
 
 

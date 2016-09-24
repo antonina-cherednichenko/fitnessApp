@@ -45,4 +45,5 @@ public class DetoxDietProgramsListFragment extends Fragment {
         return rootView;
     }
 
+
 }

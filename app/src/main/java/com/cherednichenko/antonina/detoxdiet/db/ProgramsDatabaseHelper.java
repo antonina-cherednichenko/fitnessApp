@@ -195,14 +195,15 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Update liked status of program
     public int updateLikedStatusOfProgram(ProgramInfo program, int liked) {
-        SQLiteDatabase db = this.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(KEY_PROGRAM_LIKED, liked);
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(KEY_PROGRAM_LIKED, liked);
 
-        // Updating profile picture url for user with that userName
-        return db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + " = ?",
-                new String[]{String.valueOf(program.getName())});
+            // Updating profile picture url for user with that userName
+            return db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + " = ?",
+                    new String[]{String.valueOf(program.getName())});
+
     }
 
 
