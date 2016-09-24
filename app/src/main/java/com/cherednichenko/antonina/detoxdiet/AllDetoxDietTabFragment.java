@@ -48,7 +48,7 @@ public class AllDetoxDietTabFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
-        List<ProgramInfo> receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
+        List<ProgramInfo> receipes = DataProcessor.getAllPrograms(getContext());
 
         Bundle args = getArguments();
         boolean mode = args.getBoolean("mode");

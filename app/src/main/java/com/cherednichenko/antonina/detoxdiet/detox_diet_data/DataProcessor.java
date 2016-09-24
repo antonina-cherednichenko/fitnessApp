@@ -1,6 +1,9 @@
 package com.cherednichenko.antonina.detoxdiet.detox_diet_data;
 
+import android.content.Context;
+
 import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,8 +22,21 @@ public class DataProcessor {
     private static int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
             R.drawable.juice_detox_program, R.drawable.rice_detox_program};
 
+    private static boolean dbIsInitilized = false;
 
-    public static List<ProgramInfo> createReceipeList(InputStream stream) {
+    public static List<ProgramInfo> getAllPrograms(Context context) {
+        if (dbIsInitilized) {
+            ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+            return databaseHelper.getAllPrograms();
+        } else {
+            //read data from resource and put it into db
+            dbIsInitilized = true;
+            return readJsonAndInitDb(context);
+        }
+    }
+
+    private static List<ProgramInfo> readJsonAndInitDb(Context context) {
+        InputStream stream = context.getResources().openRawResource(R.raw.programs_data);
         List<ProgramInfo> receipes = new ArrayList<>();
         try {
             String chatFileData = loadProgramsData(stream);
@@ -39,7 +55,7 @@ public class DataProcessor {
                 receipe.setDays(days);
                 receipe.setDescription(program.getString("description"));
                 receipe.setDuration(program.getInt("duration"));
-                receipe.setLiked(false);
+                receipe.setLiked(0);
                 receipe.setName(program.getString("name"));
                 receipe.setPhotoId(images[i]);
                 receipe.setShortDescription(program.getString("shortDescription"));
@@ -47,12 +63,18 @@ public class DataProcessor {
 
             }
 
+            ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+            for (ProgramInfo program : receipes) {
+                databaseHelper.addProgram(program);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return receipes;
+
     }
+
 
     private static String loadProgramsData(InputStream stream) throws IOException {
         InputStreamReader inputStreamReader = new InputStreamReader(stream);

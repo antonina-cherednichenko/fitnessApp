@@ -49,10 +49,10 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
     @Override
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
         ProgramInfo ri = likedMode ? likedList.get(i) : receipeList.get(i);
-        receipeViewHolder.name.setText(ri.name);
-        receipeViewHolder.description.setText(ri.description);
-        receipeViewHolder.image.setImageResource(ri.photoId);
-        receipeViewHolder.liked.setImageResource(ri.liked ? R.drawable.ic_heart_red : R.drawable.ic_heart_outline_grey);
+        receipeViewHolder.name.setText(ri.getName());
+        receipeViewHolder.description.setText(ri.getDescription());
+        receipeViewHolder.image.setImageResource(ri.getPhotoId());
+        receipeViewHolder.liked.setImageResource(ri.getLiked() == 1 ? R.drawable.ic_heart_red : R.drawable.ic_heart_outline_grey);
 
     }
 
@@ -87,14 +87,14 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
                 Calendar cal = Calendar.getInstance();
                 long startTime = cal.getTimeInMillis();
-                long endTime = cal.getTimeInMillis() + receipe.duration * 24 * 60 * 60 * 1000;
+                long endTime = cal.getTimeInMillis() + receipe.getDuration() * 24 * 60 * 60 * 1000;
 
                 intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
                 intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
                 intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
 
-                intent.putExtra(CalendarContract.Events.TITLE, receipe.name);
-                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.shortDescription);
+                intent.putExtra(CalendarContract.Events.TITLE, receipe.getName());
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.getShortDescription());
 
                 context.startActivity(intent);
             }
@@ -125,19 +125,19 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                         ProgramInfo likedElement = likedList.get(position);
                         ProgramInfo origElement = receipeList.get(receipeList.indexOf(likedElement));
                         likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
-                        origElement.liked = false;
-                        showLikedSnackbar(v, likedElement.name + " unliked!");
+                        origElement.setLiked(0);
+                        showLikedSnackbar(v, likedElement.getName() + " unliked!");
                     } else {
                         ProgramInfo element = receipeList.get(position);
-                        if (element.liked) {
+                        if (element.getLiked() == 1) {
                             likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
-                            element.liked = false;
-                            showLikedSnackbar(v, element.name + " unliked!");
+                            element.setLiked(0);
+                            showLikedSnackbar(v, element.getName() + " unliked!");
 
                         } else {
                             likeButton.setImageResource(R.drawable.ic_heart_red);
-                            element.liked = true;
-                            showLikedSnackbar(v, element.name + " liked!");
+                            element.setLiked(1);
+                            showLikedSnackbar(v, element.getName() + " liked!");
                         }
 
                     }
@@ -152,7 +152,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
     private List<ProgramInfo> filterLikedReceipes() {
         List<ProgramInfo> liked = new ArrayList<>();
         for (ProgramInfo receipe : receipeList) {
-            if (receipe.liked) {
+            if (receipe.getLiked() == 1) {
                 liked.add(receipe);
             }
         }

@@ -7,13 +7,13 @@ import java.util.List;
  * Created by tonya on 8/29/16.
  */
 public class ProgramInfo implements Serializable {
-    public String description;
-    public int photoId;
-    public boolean liked;
-    public List<DayInfo> days;
-    public String name;
-    public int duration;
-    public String shortDescription;
+    private String description;
+    private int photoId;
+    private int liked;
+    private List<DayInfo> days;
+    private String name;
+    private int duration;
+    private String shortDescription;
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
@@ -31,7 +31,7 @@ public class ProgramInfo implements Serializable {
         this.description = description;
     }
 
-    public void setLiked(boolean liked) {
+    public void setLiked(int liked) {
         this.liked = liked;
     }
 
@@ -43,6 +43,33 @@ public class ProgramInfo implements Serializable {
         this.photoId = photoId;
     }
 
+    public List<DayInfo> getDays() {
+        return days;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public int getLiked() {
+        return liked;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPhotoId() {
+        return photoId;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -61,7 +88,6 @@ public class ProgramInfo implements Serializable {
     public int hashCode() {
         int result = name.hashCode();
         result = 31 * result + description.hashCode();
-        result = 31 * result + photoId;
         return result;
     }
 }

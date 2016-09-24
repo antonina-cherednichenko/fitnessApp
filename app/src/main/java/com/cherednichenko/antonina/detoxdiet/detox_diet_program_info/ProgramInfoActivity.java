@@ -43,12 +43,12 @@ public class ProgramInfoActivity extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         dayList.setLayoutManager(llm);
 
-        DayAdapter adapter = new DayAdapter(this, receipe.days);
+        DayAdapter adapter = new DayAdapter(this, receipe.getDays());
         dayList.setAdapter(adapter);
 
-        collapsingToolbar.setTitle(receipe.name);
+        collapsingToolbar.setTitle(receipe.getName());
         ImageView programImage = (ImageView) findViewById(R.id.toolbar_header_image);
-        programImage.setImageResource(receipe.photoId);
+        programImage.setImageResource(receipe.getPhotoId());
 
         FloatingActionButton schedule = (FloatingActionButton) findViewById(R.id.schedule_floating_button);
         schedule.setOnClickListener(new FloatingActionButton.OnClickListener() {
@@ -59,14 +59,14 @@ public class ProgramInfoActivity extends AppCompatActivity {
 
                 Calendar cal = Calendar.getInstance();
                 long startTime = cal.getTimeInMillis();
-                long endTime = cal.getTimeInMillis() + receipe.duration * 24 * 60 * 60 * 1000;
+                long endTime = cal.getTimeInMillis() + receipe.getDuration() * 24 * 60 * 60 * 1000;
 
                 intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
                 intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
                 intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
 
-                intent.putExtra(CalendarContract.Events.TITLE, receipe.name);
-                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.shortDescription);
+                intent.putExtra(CalendarContract.Events.TITLE, receipe.getName());
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.getShortDescription());
 
 
                 startActivity(intent);

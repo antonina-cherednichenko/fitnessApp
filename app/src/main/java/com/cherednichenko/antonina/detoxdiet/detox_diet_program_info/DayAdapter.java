@@ -33,8 +33,8 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
     @Override
     public void onBindViewHolder(dayViewHolder dayViewHolder, int i) {
         DayInfo ri = dayList.get(i);
-        dayViewHolder.name.setText(ri.name);
-        dayViewHolder.description.setText(ri.description);
+        dayViewHolder.name.setText(ri.getName());
+        dayViewHolder.description.setText(ri.getDescription());
     }
 
     @Override

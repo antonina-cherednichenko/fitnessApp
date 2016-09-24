@@ -29,7 +29,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
     private String[] navigationItems;
-    private List<ProgramInfo> receipes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +55,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
-
-        receipes = DataProcessor.createReceipeList(getResources().openRawResource(R.raw.programs_data));
 
         //setup default fragment with program cards
         Fragment fragment = new AllDetoxDietTabFragment();
