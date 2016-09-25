@@ -20,8 +20,8 @@ import java.util.List;
 public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "postsDatabase";
-    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "DetoxDietDatabase";
+    private static final int DATABASE_VERSION = 1;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -127,12 +127,30 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_SHORT_DESC, program.getShortDescription());
             values.put(KEY_PROGRAM_CATEGORY, program.getCategory());
 
-            programId = (int) db.insertOrThrow(TABLE_PROGRAMS, null, values);
+            int rows = db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + "= ?", new String[]{program.getName()});
+            if (rows == 1) {
+                String usersSelectQuery = String.format("SELECT %s FROM %s WHERE %s = ?",
+                        KEY_PROGRAM_ID, TABLE_PROGRAMS, KEY_PROGRAM_NAME);
+                Cursor cursor = db.rawQuery(usersSelectQuery, new String[]{String.valueOf(program.getName())});
+                try {
+                    if (cursor.moveToFirst()) {
+                        programId = cursor.getInt(0);
+                        db.setTransactionSuccessful();
+                    }
+                } finally {
+                    if (cursor != null && !cursor.isClosed()) {
+                        cursor.close();
+                    }
+                }
 
-            for (DayInfo day : program.getDays()) {
-                addDay(day, programId);
+            } else {
+                programId = (int) db.insertOrThrow(TABLE_PROGRAMS, null, values);
+
+                for (DayInfo day : program.getDays()) {
+                    addDay(day, programId);
+                }
+                db.setTransactionSuccessful();
             }
-            db.setTransactionSuccessful();
 
         } catch (Exception e) {
             Log.d(TAG, "Error while trying to add or update user");

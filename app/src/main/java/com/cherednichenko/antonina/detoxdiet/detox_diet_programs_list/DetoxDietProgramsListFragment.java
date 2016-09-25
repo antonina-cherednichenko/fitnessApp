@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.RecommendedListAdapter;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 
 import java.util.List;
@@ -41,6 +43,18 @@ public class DetoxDietProgramsListFragment extends Fragment {
             DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes);
             recList.setAdapter(adapter);
         }
+
+        //Fill recommended app
+        RecyclerView recomList = (RecyclerView) rootView.findViewById(R.id.recommended_list);
+        //recList.setHasFixedSize(true);
+        //recomList.setItemAnimator(new SlideInUpAnimator());
+
+        LinearLayoutManager rllm = new LinearLayoutManager(getActivity());
+        rllm.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recomList.setLayoutManager(rllm);
+        List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
+        recomList.setAdapter(new RecommendedListAdapter(getActivity(), receipes));
+
 
         return rootView;
     }
