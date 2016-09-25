@@ -42,7 +42,6 @@
 
         </RelativeLayout>
 
-
         <TextView
             android:id="@+id/receipe_description"
             android:layout_width="wrap_content"
