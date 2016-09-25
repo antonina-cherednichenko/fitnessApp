@@ -21,7 +21,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "postsDatabase";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -199,7 +199,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Update liked status of program
     public int updateLikedStatusOfProgram(ProgramInfo program, int liked) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_PROGRAM_LIKED, liked);
@@ -215,8 +214,9 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROGRAMS);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROGRAMS);
+
             onCreate(db);
         }
 
