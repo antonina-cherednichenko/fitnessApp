@@ -43,30 +43,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
             List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
             DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes);
             recList.setAdapter(adapter);
-
-            //Fill recommended app
-            RecyclerView recomList = (RecyclerView) rootView.findViewById(R.id.recommended_list);
-            //recList.setHasFixedSize(true);
-            //recomList.setItemAnimator(new SlideInUpAnimator());
-
-            LinearLayoutManager rllm = new LinearLayoutManager(getActivity());
-            rllm.setOrientation(LinearLayoutManager.HORIZONTAL);
-            recomList.setLayoutManager(rllm);
-            //List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
-            recomList.setAdapter(new RecommendedListAdapter(getActivity(), receipes));
-
-            //Fill recommended app
-            RecyclerView newList = (RecyclerView) rootView.findViewById(R.id.new_list);
-            //recList.setHasFixedSize(true);
-            //recomList.setItemAnimator(new SlideInUpAnimator());
-
-            LinearLayoutManager nllm = new LinearLayoutManager(getActivity());
-            nllm.setOrientation(LinearLayoutManager.HORIZONTAL);
-            newList.setLayoutManager(nllm);
-            //List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
-            newList.setAdapter(new RecommendedListAdapter(getActivity(), receipes));
         }
-
 
         return rootView;
     }
