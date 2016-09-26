@@ -43,7 +43,7 @@ public class RecommendedListAdapter extends RecyclerView.Adapter<RecommendedList
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
         ProgramInfo ri = receipeList.get(i);
         receipeViewHolder.name.setText(ri.getName());
-        receipeViewHolder.image.setImageResource(R.drawable.ic_heart_red);
+        receipeViewHolder.image.setImageResource(ri.getPhotoId());
     }
 
     @Override
