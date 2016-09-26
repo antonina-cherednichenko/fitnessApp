@@ -2,6 +2,7 @@ package com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list;
 
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +16,8 @@ import android.widget.ArrayAdapter;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.RecommendedListAdapter;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.List;
 
@@ -37,6 +40,17 @@ public class DetoxDietProgramsListFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
+
+        BottomBar bottomBar = (BottomBar) rootView.findViewById(R.id.bottomBar);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                if (tabId == R.id.tab_favorites) {
+                    // The tab with id R.id.tab_favorites was selected,
+                    // change your content accordingly.
+                }
+            }
+        });
 
         Bundle args = getArguments();
         if (args != null) {

@@ -1,5 +1,6 @@
 package com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.CalendarContract;
@@ -155,7 +156,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
     }
 
     public void showLikedSnackbar(View view, String info) {
-        Snackbar.make(view, info, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(((Activity)context).findViewById(R.id.cardList), info, Snackbar.LENGTH_SHORT).show();
     }
 }
 
