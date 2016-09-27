@@ -156,7 +156,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
     }
 
     public void showLikedSnackbar(View view, String info) {
-        Snackbar.make(((Activity)context).findViewById(R.id.cardList), info, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(((Activity)context).findViewById(R.id.receipes_fragment), info, Snackbar.LENGTH_SHORT).show();
     }
 }
 
