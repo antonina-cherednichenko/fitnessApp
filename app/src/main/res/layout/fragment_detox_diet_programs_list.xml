@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/receipes_fragment"
     android:layout_width="match_parent"
@@ -14,12 +14,14 @@
         android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:bb_behavior="shy"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
