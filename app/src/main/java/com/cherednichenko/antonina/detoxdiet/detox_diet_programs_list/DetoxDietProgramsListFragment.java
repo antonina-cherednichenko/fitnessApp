@@ -38,9 +38,13 @@ public class DetoxDietProgramsListFragment extends Fragment {
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
-                if (tabId == R.id.tab_favorites) {
+                if (tabId == R.id.bottombar_favorite) {
                     // The tab with id R.id.tab_favorites was selected,
                     // change your content accordingly.
+                } else if (tabId == R.id.bottombar_new) {
+
+                } else if (tabId == R.id.bottombar_recommended) {
+
                 }
             }
         });

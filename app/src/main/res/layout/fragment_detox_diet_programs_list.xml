@@ -14,7 +14,7 @@
         android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    
+
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
