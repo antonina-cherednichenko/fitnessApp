@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
@@ -30,36 +32,41 @@ public class DetoxDietProgramsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_detox_diet_programs_list, container, false);
-        RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.cardList);
+        final RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.cardList);
         //recList.setHasFixedSize(true);
         recList.setItemAnimator(new SlideInUpAnimator());
+
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
+
+        final List<ProgramInfo> receipes;
+        Bundle args = getArguments();
+        if (args != null) {
+            receipes = (List<ProgramInfo>) args.getSerializable("receipes");
+        } else {
+            receipes = new ArrayList<>();
+        }
+
+        final DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes);
+        recList.setAdapter(adapter);
 
         BottomBar bottomBar = (BottomBar) rootView.findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 if (tabId == R.id.bottombar_favorite) {
-                    // The tab with id R.id.tab_favorites was selected,
-                    // change your content accordingly.
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getLikedPrograms(getActivity())));
+                    //adapter.notifyDataSetChanged();
                 } else if (tabId == R.id.bottombar_new) {
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(receipes)));
 
                 } else if (tabId == R.id.bottombar_recommended) {
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(receipes)));
 
                 }
             }
         });
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recList.setLayoutManager(llm);
-
-        Bundle args = getArguments();
-        if (args != null) {
-            List<ProgramInfo> receipes = (List<ProgramInfo>) args.getSerializable("receipes");
-            DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes);
-            recList.setAdapter(adapter);
-
-        }
 
 
         return rootView;

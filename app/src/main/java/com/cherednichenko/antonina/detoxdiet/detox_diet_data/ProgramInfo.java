@@ -10,11 +10,29 @@ public class ProgramInfo implements Serializable {
     private String description;
     private int photoId;
     private int liked;
+    private int isNew;
+    private int recommended;
     private List<DayInfo> days;
     private String name;
     private int duration;
     private String shortDescription;
     private String category;
+
+    public int getIsNew() {
+        return isNew;
+    }
+
+    public void setIsNew(int isNew) {
+        this.isNew = isNew;
+    }
+
+    public int getRecommended() {
+        return recommended;
+    }
+
+    public void setRecommended(int recommended) {
+        this.recommended = recommended;
+    }
 
     public void setCategory(String category) {
         this.category = category;

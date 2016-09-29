@@ -4,6 +4,8 @@
       "name": "Green program",
       "description": "Description for green program",
       "duration": 7,
+      "new": 0,
+      "recommended": 0,
       "shortDescription": "This is short description",
       "category": "detox",
       "schedule": [
@@ -33,6 +35,8 @@
       "name": "Citrus program",
       "description": "Description for citrus program",
       "duration": 7,
+      "new": 0,
+      "recommended": 1,
       "shortDescription": "This is short description",
       "category": "detox",
       "schedule": [
@@ -62,6 +66,8 @@
       "name": "apple program",
       "description": "Description for apple program",
       "duration": 7,
+      "new": 1,
+      "recommended": 0,
       "shortDescription": "This is short description",
       "category": "detox",
       "schedule": [
@@ -91,6 +97,8 @@
       "name": "juice program",
       "description": "Description for juice program",
       "duration": 7,
+      "new": 1,
+      "recommended": 1,
       "shortDescription": "This is short description",
       "category": "detox",
       "schedule": [
@@ -120,6 +128,8 @@
       "name": "rice program",
       "description": "Description for rice program",
       "duration": 7,
+      "new": 1,
+      "recommended": 1,
       "shortDescription": "This is short description",
       "category": "diet",
       "schedule": [

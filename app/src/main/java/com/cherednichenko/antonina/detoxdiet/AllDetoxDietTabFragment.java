@@ -61,6 +61,7 @@ public class AllDetoxDietTabFragment extends Fragment {
         Fragment allFragment = new DetoxDietProgramsListFragment();
         Bundle allBundle = new Bundle();
         allBundle.putSerializable("receipes", (Serializable) programs);
+        allBundle.putString("mode", "all");
         allFragment.setArguments(allBundle);
 
         Fragment detoxFragment = new DetoxDietProgramsListFragment();

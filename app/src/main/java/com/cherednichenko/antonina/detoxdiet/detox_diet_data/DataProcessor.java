@@ -73,6 +73,27 @@ public class DataProcessor {
 
     }
 
+    public static List<ProgramInfo> getNewPrograms(List<ProgramInfo> allPrograms) {
+        List<ProgramInfo> newPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getIsNew() == 1) {
+                newPrograms.add(program);
+            }
+        }
+        return newPrograms;
+    }
+
+    public static List<ProgramInfo> getRecommendedPrograms(List<ProgramInfo> allPrograms) {
+        List<ProgramInfo> recommendedPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getIsNew() == 1) {
+                recommendedPrograms.add(program);
+            }
+        }
+        return recommendedPrograms;
+    }
+
+
     private static void readJsonAndInitDb(Context context) {
         InputStream stream = context.getResources().openRawResource(R.raw.programs_data);
         List<ProgramInfo> receipes = new ArrayList<>();
@@ -95,6 +116,8 @@ public class DataProcessor {
                 receipe.setDuration(program.getInt("duration"));
                 receipe.setCategory(program.getString("category"));
                 receipe.setLiked(0);
+                receipe.setRecommended(program.getInt("recommended"));
+                receipe.setIsNew(program.getInt("new"));
                 receipe.setName(program.getString("name"));
                 receipe.setPhotoId(images[i]);
                 receipe.setShortDescription(program.getString("shortDescription"));

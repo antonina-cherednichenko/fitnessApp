@@ -21,11 +21,12 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "DetoxDietDatabase";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
     private static final String TABLE_DAYS = "days";
+
 
     // Programs Table Columns
     private static final String KEY_PROGRAM_ID = "id";
@@ -33,6 +34,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_PROGRAM_DESC = "programDescription";
     private static final String KEY_PROGRAM_SHORT_DESC = "short_description";
     private static final String KEY_PROGRAM_LIKED = "liked";
+    private static final String KEY_PROGRAM_RECOMMENDED = "recommended";
+    private static final String KEY_PROGRAM_NEW = "new";
     private static final String KEY_PROGRAM_PHOTO_URL = "photo";
     private static final String KEY_PROGRAM_DURATION = "duration";
     private static final String KEY_PROGRAM_CATEGORY = "category";
@@ -42,6 +45,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_DAY_PROGRAM_ID_FK = "programId";
     private static final String KEY_DAY_NAME = "dayName";
     private static final String KEY_DAY_DESCRIPTION = "dayDescription";
+
 
     private static ProgramsDatabaseHelper sInstance;
 
@@ -69,6 +73,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_DESC + " TEXT," +
                 KEY_PROGRAM_SHORT_DESC + " TEXT," +
                 KEY_PROGRAM_LIKED + " INTEGER," +
+                KEY_PROGRAM_NEW + " INTEGER," +
+                KEY_PROGRAM_RECOMMENDED + " INTEGER," +
                 KEY_PROGRAM_PHOTO_URL + " INTEGER," +
                 KEY_PROGRAM_DURATION + " INTEGER," +
                 KEY_PROGRAM_CATEGORY + " TEXT" +
@@ -122,6 +128,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_DESC, program.getDescription());
             values.put(KEY_PROGRAM_DURATION, program.getDuration());
             values.put(KEY_PROGRAM_LIKED, program.getLiked());
+            values.put(KEY_PROGRAM_NEW, program.getIsNew());
+            values.put(KEY_PROGRAM_NEW, program.getRecommended());
             values.put(KEY_PROGRAM_NAME, program.getName());
             values.put(KEY_PROGRAM_PHOTO_URL, program.getPhotoId());
             values.put(KEY_PROGRAM_SHORT_DESC, program.getShortDescription());
@@ -180,6 +188,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setDescription(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_DESC)));
                     newProgram.setShortDescription(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_SHORT_DESC)));
                     newProgram.setLiked(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_LIKED)));
+                    newProgram.setIsNew(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_NEW)));
+                    newProgram.setRecommended(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_RECOMMENDED)));
                     newProgram.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_DURATION)));
                     newProgram.setPhotoId(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
                     newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
