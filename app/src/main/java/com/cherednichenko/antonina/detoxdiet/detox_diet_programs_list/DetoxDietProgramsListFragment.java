@@ -62,7 +62,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
                     recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(receipes)));
 
                 } else if (tabId == R.id.bottombar_recommended) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(receipes)));
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getRecommendedPrograms(receipes)));
 
                 }
             }
