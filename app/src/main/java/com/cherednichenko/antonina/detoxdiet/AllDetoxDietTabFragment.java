@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietLaunchMode;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietProgramsListFragment;
 
 import java.io.Serializable;
@@ -50,30 +51,31 @@ public class AllDetoxDietTabFragment extends Fragment {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
         Bundle args = getArguments();
-        boolean likedMode = args.getBoolean("mode");
-        List<ProgramInfo> programs;
-        if (likedMode) {
+        int mode = args.getInt("mode");
+        List<ProgramInfo> programs = new ArrayList<>();
+        if (mode == DetoxDietLaunchMode.LIKED.getMode()) {
             programs = DataProcessor.getLikedPrograms(getContext());
-        } else {
+        } else if (mode == DetoxDietLaunchMode.STANDARD.getMode()) {
             programs = DataProcessor.getAllPrograms(getContext());
+        } else if (mode == DetoxDietLaunchMode.SEARCH.getMode()) {
+            //ADD functionality for search here
+            String query = args.getString("searchQuery");
+            programs = DataProcessor.getSearchPrograms(getContext(), query);
         }
 
         Fragment allFragment = new DetoxDietProgramsListFragment();
         Bundle allBundle = new Bundle();
         allBundle.putSerializable("receipes", (Serializable) programs);
-        allBundle.putString("mode", "all");
         allFragment.setArguments(allBundle);
 
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
         detoxBundle.putSerializable("receipes", (Serializable) DataProcessor.getDetoxPrograms(programs));
-//        detoxBundle.putSerializable("receipes", (Serializable)programs);
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
         dietBundle.putSerializable("receipes", (Serializable) DataProcessor.getDietPrograms(programs));
-//        dietBundle.putSerializable("receipes", (Serializable)programs);
         dietFragment.setArguments(dietBundle);
 
 

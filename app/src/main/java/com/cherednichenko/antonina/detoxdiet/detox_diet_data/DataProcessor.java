@@ -50,7 +50,6 @@ public class DataProcessor {
         return likedPrograms;
     }
 
-
     public static List<ProgramInfo> getDietPrograms(List<ProgramInfo> allPrograms) {
         List<ProgramInfo> dietPrograms = new ArrayList<>();
         for (ProgramInfo program : allPrograms) {
@@ -91,6 +90,17 @@ public class DataProcessor {
             }
         }
         return recommendedPrograms;
+    }
+
+    public static List<ProgramInfo> getSearchPrograms(Context context, String query) {
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+        if (!dbIsInitilized) {
+            dbIsInitilized = true;
+            readJsonAndInitDb(context);
+        }
+
+        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms().subList(0, 1);
+        return allPrograms;
     }
 
 

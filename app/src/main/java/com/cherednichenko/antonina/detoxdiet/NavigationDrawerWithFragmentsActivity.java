@@ -2,6 +2,7 @@ package com.cherednichenko.antonina.detoxdiet;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietLaunchMode;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
 
@@ -60,7 +62,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         //setup default fragment with program cards
         Fragment fragment = new AllDetoxDietTabFragment();
         Bundle bundle = new Bundle();
-        bundle.putBoolean("mode", false);
+        bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
         fragment.setArguments(bundle);
 
         if (fragment != null) {
@@ -77,12 +79,35 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setupDrawerToggle();
+
+        //handle search results
+        handleIntent(getIntent());
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //use the query to search your data somehow
+
+            Fragment fragment = new AllDetoxDietTabFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("mode", DetoxDietLaunchMode.SEARCH.getMode());
+            bundle.putString("searchQuery", query);
+            fragment.setArguments(bundle);
+
+            if (fragment != null) {
+                // Insert the fragment by replacing any existing fragment
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
+            }
+        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -95,6 +120,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     /**
      * Swaps fragments in the main content view
      */
+
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         Fragment fragment;
@@ -103,7 +129,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 //Receipes item
                 fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("mode", false);
+                bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
                 fragment.setArguments(bundle);
                 break;
 
@@ -112,7 +138,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 //Favourites item
                 fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
-                bundle.putBoolean("mode", true);
+                bundle.putInt("mode", DetoxDietLaunchMode.LIKED.getMode());
                 fragment.setArguments(bundle);
                 break;
 
@@ -132,7 +158,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 break;
             }
         }
-
 
         if (fragment != null) {
             // Insert the fragment by replacing any existing fragment
