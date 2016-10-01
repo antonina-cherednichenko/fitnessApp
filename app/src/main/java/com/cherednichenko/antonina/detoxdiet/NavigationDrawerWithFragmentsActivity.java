@@ -1,5 +1,7 @@
 package com.cherednichenko.antonina.detoxdiet;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,17 +10,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
-import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
-import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
-
-import java.util.List;
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
@@ -182,6 +183,22 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         mDrawerToggle = new android.support.v7.app.ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
+
+        // Associate searchable configuration with the SearchView
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
     }
 
 
