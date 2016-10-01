@@ -16,7 +16,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".IntroductionActivity" />
-        <activity android:name=".NavigationDrawerWithFragmentsActivity" />
+        <activity android:name=".NavigationDrawerWithFragmentsActivity">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+        </activity>
+        
         <activity android:name="com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity" />
     </application>
 

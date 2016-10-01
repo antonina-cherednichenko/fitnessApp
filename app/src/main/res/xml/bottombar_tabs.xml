@@ -1,0 +1,16 @@
+<tabs>
+    <tab
+        icon="@drawable/ic_heart_red"
+        id="@+id/bottombar_new"
+        title="@string/bottombar_new" />
+
+    <tab
+        icon="@drawable/ic_heart_red"
+        id="@+id/bottombar_favorite"
+        title="@string/bottombar_favorite" />
+
+    <tab
+        icon="@drawable/ic_heart_red"
+        id="@+id/bottombar_recommended"
+        title="@string/bottombar_recommended" />
+</tabs>
