@@ -99,9 +99,17 @@ public class DataProcessor {
             readJsonAndInitDb(context);
         }
 
-//        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms().subList(0, 1);
-//        return allPrograms;
-        return databaseHelper.getAllPrograms();
+//        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms();
+//        List<ProgramInfo> searchedPrograms = new ArrayList<>();
+//
+//        for (ProgramInfo program : allPrograms) {
+//            if (program.getName().indexOf(query) > -1) {
+//                searchedPrograms.add(program);
+//            }
+//        }
+
+        List<ProgramInfo> searchedPrograms = databaseHelper.getSearchResults(query);
+        return searchedPrograms;
     }
 
 

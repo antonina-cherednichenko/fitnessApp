@@ -21,7 +21,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "DetoxDietDatabase";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 6;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -66,6 +66,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+//        CREATE VIRTUAL TABLE enrondata1 USING fts3(content TEXT);
         String CREATE_PROGRAMS_TABLE = "CREATE TABLE " + TABLE_PROGRAMS +
                 "(" +
                 KEY_PROGRAM_ID + " INTEGER PRIMARY KEY," + // Define a primary key
@@ -87,11 +88,13 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_DAY_DESCRIPTION + " TEXT," +
                 KEY_DAY_PROGRAM_ID_FK + " INTEGER REFERENCES " + TABLE_PROGRAMS + // Define a foreign key
                 ")";
-
-        db.execSQL(CREATE_PROGRAMS_TABLE);
-        db.execSQL(CREATE_DAYS_TABLE);
+        try {
+            db.execSQL(CREATE_PROGRAMS_TABLE);
+            db.execSQL(CREATE_DAYS_TABLE);
+        } catch (Exception e) {
+            Log.d(TAG, "Error creating database");
+        }
     }
-
 
     // Insert a post into the database
     public void addDay(DayInfo day, long programId) {
@@ -168,16 +171,13 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
         return programId;
     }
 
-    // Get all posts in the database
-    public List<ProgramInfo> getAllPrograms() {
+    public List<ProgramInfo> getSearchResults(String query) {
         List<ProgramInfo> programs = new ArrayList<>();
 
         String PROGRAMS_SELECT_QUERY =
-                String.format("SELECT * FROM %s ",
-                        TABLE_PROGRAMS);
-
-        // "getReadableDatabase()" and "getWriteableDatabase()" return the same object (except under low
-        // disk space scenarios)
+                String.format("SELECT * FROM %s WHERE %s LIKE ",
+                        TABLE_PROGRAMS, KEY_PROGRAM_NAME);
+        PROGRAMS_SELECT_QUERY = PROGRAMS_SELECT_QUERY + "'%" + query + "%'";
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(PROGRAMS_SELECT_QUERY, null);
         try {
@@ -221,7 +221,60 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
-        System.out.println("programs = " + programs);
+        return programs;
+    }
+
+    // Get all posts in the database
+    public List<ProgramInfo> getAllPrograms() {
+        List<ProgramInfo> programs = new ArrayList<>();
+
+        String PROGRAMS_SELECT_QUERY =
+                String.format("SELECT * FROM %s ",
+                        TABLE_PROGRAMS);
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(PROGRAMS_SELECT_QUERY, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    ProgramInfo newProgram = new ProgramInfo();
+                    newProgram.setName(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_NAME)));
+                    newProgram.setDescription(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_DESC)));
+                    newProgram.setShortDescription(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_SHORT_DESC)));
+                    newProgram.setLiked(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_LIKED)));
+                    newProgram.setIsNew(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_NEW)));
+                    newProgram.setRecommended(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_RECOMMENDED)));
+                    newProgram.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_DURATION)));
+                    newProgram.setPhotoId(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
+                    newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
+                    List<DayInfo> days = new ArrayList<>();
+                    int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));
+
+                    String PROGRAMS_DAYS_SELECT_QUERY =
+                            String.format("SELECT * FROM %s WHERE %s = ?",
+                                    TABLE_DAYS, KEY_DAY_PROGRAM_ID_FK);
+
+                    Cursor dayCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(programId)});
+                    if (dayCursor.moveToFirst()) {
+                        do {
+                            DayInfo newDay = new DayInfo();
+                            newDay.setDescription(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
+                            newDay.setName(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_NAME)));
+                            days.add(newDay);
+
+                        } while (dayCursor.moveToNext());
+                    }
+                    newProgram.setDays(days);
+                    programs.add(newProgram);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
         return programs;
     }
 
