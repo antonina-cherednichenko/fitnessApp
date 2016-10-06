@@ -21,7 +21,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "DetoxDietDatabase";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";

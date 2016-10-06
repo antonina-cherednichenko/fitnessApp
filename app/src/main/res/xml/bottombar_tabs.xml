@@ -1,8 +1,8 @@
 <tabs>
     <tab
         icon="@drawable/ic_heart_red"
-        id="@+id/bottombar_new"
-        title="@string/bottombar_new" />
+        id="@+id/bottombar_all"
+        title="@string/bottombar_all" />
 
     <tab
         icon="@drawable/ic_heart_red"
@@ -11,6 +11,6 @@
 
     <tab
         icon="@drawable/ic_heart_red"
-        id="@+id/bottombar_recommended"
-        title="@string/bottombar_recommended" />
+        id="@+id/bottombar_new"
+        title="@string/bottombar_new" />
 </tabs>

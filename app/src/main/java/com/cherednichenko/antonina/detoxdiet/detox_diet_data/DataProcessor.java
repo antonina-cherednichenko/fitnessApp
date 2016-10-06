@@ -50,6 +50,18 @@ public class DataProcessor {
         return likedPrograms;
     }
 
+    public static List<ProgramInfo> getLikedPrograms(List<ProgramInfo> allPrograms) {
+        List<ProgramInfo> likedPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getLiked() == 1) {
+                likedPrograms.add(program);
+            }
+        }
+        return likedPrograms;
+    }
+
+
+
     public static List<ProgramInfo> getDietPrograms(List<ProgramInfo> allPrograms) {
         List<ProgramInfo> dietPrograms = new ArrayList<>();
         for (ProgramInfo program : allPrograms) {
@@ -72,7 +84,14 @@ public class DataProcessor {
 
     }
 
-    public static List<ProgramInfo> getNewPrograms(List<ProgramInfo> allPrograms) {
+    public static List<ProgramInfo> getNewPrograms(Context context) {
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+        if (!dbIsInitilized) {
+            dbIsInitilized = true;
+            readJsonAndInitDb(context);
+        }
+
+        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms();
         List<ProgramInfo> newPrograms = new ArrayList<>();
         for (ProgramInfo program : allPrograms) {
             if (program.getIsNew() == 1) {
@@ -82,15 +101,6 @@ public class DataProcessor {
         return newPrograms;
     }
 
-    public static List<ProgramInfo> getRecommendedPrograms(List<ProgramInfo> allPrograms) {
-        List<ProgramInfo> recommendedPrograms = new ArrayList<>();
-        for (ProgramInfo program : allPrograms) {
-            if (program.getIsNew() == 1) {
-                recommendedPrograms.add(program);
-            }
-        }
-        return recommendedPrograms;
-    }
 
     public static List<ProgramInfo> getSearchPrograms(Context context, String query) {
         ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);

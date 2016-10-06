@@ -56,13 +56,13 @@ public class DetoxDietProgramsListFragment extends Fragment {
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 if (tabId == R.id.bottombar_favorite) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getLikedPrograms(getActivity())));
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getLikedPrograms(receipes)));
                     //adapter.notifyDataSetChanged();
                 } else if (tabId == R.id.bottombar_new) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(receipes)));
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(getActivity())));
 
-                } else if (tabId == R.id.bottombar_recommended) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getRecommendedPrograms(receipes)));
+                } else if (tabId == R.id.bottombar_all) {
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), receipes));
 
                 }
             }
