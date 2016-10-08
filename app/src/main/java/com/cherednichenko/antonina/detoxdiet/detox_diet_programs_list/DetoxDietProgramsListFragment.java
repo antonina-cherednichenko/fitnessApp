@@ -46,13 +46,14 @@ public class DetoxDietProgramsListFragment extends Fragment {
 
 
         final List<ProgramInfo> receipes;
-        String tag = "";
+        final String tag;
         Bundle args = getArguments();
         if (args != null) {
             receipes = (List<ProgramInfo>) args.getSerializable("receipes");
-            tag = (String)args.getString("tag");
+            tag = args.getString("tag");
         } else {
             receipes = new ArrayList<>();
+            tag = "all";
         }
 
         final DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes);
@@ -62,6 +63,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
         } else {
             recList.setVisibility(View.GONE);
             emptyState.setVisibility(View.VISIBLE);
+            ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No %s were found", tag));
         }
         recList.setAdapter(adapter);
 
@@ -78,6 +80,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
                     } else {
                         emptyState.setVisibility(View.VISIBLE);
                         recList.setVisibility(View.GONE);
+                        ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No Favourite %s were found", tag));
                     }
                     //adapter.notifyDataSetChanged();
                 } else if (tabId == R.id.bottombar_new) {
@@ -87,7 +90,9 @@ public class DetoxDietProgramsListFragment extends Fragment {
                         recList.setVisibility(View.VISIBLE);
                         emptyState.setVisibility(View.GONE);
                     } else {
-
+                        emptyState.setVisibility(View.VISIBLE);
+                        recList.setVisibility(View.GONE);
+                        ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No New %s were found", tag));
                     }
                 } else if (tabId == R.id.bottombar_all) {
                     if (receipes.size() > 0) {
@@ -97,6 +102,9 @@ public class DetoxDietProgramsListFragment extends Fragment {
                     } else {
                         emptyState.setVisibility(View.VISIBLE);
                         recList.setVisibility(View.GONE);
+                        emptyState.setVisibility(View.VISIBLE);
+                        recList.setVisibility(View.GONE);
+                        ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No %s were found", tag));
                     }
                 }
             }

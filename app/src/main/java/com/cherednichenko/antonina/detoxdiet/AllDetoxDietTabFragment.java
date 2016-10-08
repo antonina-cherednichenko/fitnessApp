@@ -71,13 +71,13 @@ public class AllDetoxDietTabFragment extends Fragment {
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
         detoxBundle.putSerializable("receipes", (Serializable) DataProcessor.getDetoxPrograms(programs));
-        detoxBundle.putString("tag", "detox");
+        detoxBundle.putString("tag", "Detox Programs");
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
         dietBundle.putSerializable("receipes", (Serializable) DataProcessor.getDietPrograms(programs));
-        detoxBundle.putString("tag", "diet");
+        dietBundle.putString("tag", "Diets");
         dietFragment.setArguments(dietBundle);
 
 
