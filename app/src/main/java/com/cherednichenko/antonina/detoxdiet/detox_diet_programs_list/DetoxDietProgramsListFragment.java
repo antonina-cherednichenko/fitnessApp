@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cherednichenko.antonina.detoxdiet.R;
@@ -34,7 +36,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_detox_diet_programs_list, container, false);
         final RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.card_list);
-        final TextView emptyState = (TextView) rootView.findViewById(R.id.empty_state);
+        final RelativeLayout emptyState = (RelativeLayout) rootView.findViewById(R.id.empty_state);
         //recList.setHasFixedSize(true);
         recList.setItemAnimator(new SlideInUpAnimator());
 
@@ -44,9 +46,11 @@ public class DetoxDietProgramsListFragment extends Fragment {
 
 
         final List<ProgramInfo> receipes;
+        String tag = "";
         Bundle args = getArguments();
         if (args != null) {
             receipes = (List<ProgramInfo>) args.getSerializable("receipes");
+            tag = (String)args.getString("tag");
         } else {
             receipes = new ArrayList<>();
         }

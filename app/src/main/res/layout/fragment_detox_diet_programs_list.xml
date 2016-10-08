@@ -15,14 +15,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/empty_state"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="No data available" />
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/empty_state_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="No data available" />
 
+        <ImageView
+            android:id="@+id/empty_state_image"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/empty_state_text"
+            android:gravity="center"
+            android:src="@drawable/glass"/>
+
+    </RelativeLayout>
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
