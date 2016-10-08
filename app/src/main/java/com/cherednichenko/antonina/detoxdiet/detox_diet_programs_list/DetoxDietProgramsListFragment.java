@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
@@ -32,13 +33,15 @@ public class DetoxDietProgramsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_detox_diet_programs_list, container, false);
-        final RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.cardList);
+        final RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.card_list);
+        final TextView emptyState = (TextView) rootView.findViewById(R.id.empty_state);
         //recList.setHasFixedSize(true);
         recList.setItemAnimator(new SlideInUpAnimator());
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
+
 
         final List<ProgramInfo> receipes;
         Bundle args = getArguments();
@@ -49,6 +52,13 @@ public class DetoxDietProgramsListFragment extends Fragment {
         }
 
         final DetoxDietProgramsListAdapter adapter = new DetoxDietProgramsListAdapter(getActivity(), receipes);
+        if (receipes.size() > 0) {
+            recList.setVisibility(View.VISIBLE);
+            emptyState.setVisibility(View.GONE);
+        } else {
+            recList.setVisibility(View.GONE);
+            emptyState.setVisibility(View.VISIBLE);
+        }
         recList.setAdapter(adapter);
 
         BottomBar bottomBar = (BottomBar) rootView.findViewById(R.id.bottomBar);
@@ -56,18 +66,37 @@ public class DetoxDietProgramsListFragment extends Fragment {
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 if (tabId == R.id.bottombar_favorite) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getLikedPrograms(receipes)));
+                    List<ProgramInfo> likedPrograms = DataProcessor.getLikedPrograms(receipes);
+                    if (likedPrograms.size() > 0) {
+                        recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), likedPrograms));
+                        recList.setVisibility(View.VISIBLE);
+                        emptyState.setVisibility(View.GONE);
+                    } else {
+                        emptyState.setVisibility(View.VISIBLE);
+                        recList.setVisibility(View.GONE);
+                    }
                     //adapter.notifyDataSetChanged();
                 } else if (tabId == R.id.bottombar_new) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), DataProcessor.getNewPrograms(getActivity())));
+                    List<ProgramInfo> newPrograms = DataProcessor.getNewPrograms(receipes);
+                    if (newPrograms.size() > 0) {
+                        recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), newPrograms));
+                        recList.setVisibility(View.VISIBLE);
+                        emptyState.setVisibility(View.GONE);
+                    } else {
 
+                    }
                 } else if (tabId == R.id.bottombar_all) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), receipes));
-
+                    if (receipes.size() > 0) {
+                        recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), receipes));
+                        recList.setVisibility(View.VISIBLE);
+                        emptyState.setVisibility(View.GONE);
+                    } else {
+                        emptyState.setVisibility(View.VISIBLE);
+                        recList.setVisibility(View.GONE);
+                    }
                 }
             }
         });
-
 
         return rootView;
     }

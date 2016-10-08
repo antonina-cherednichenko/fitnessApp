@@ -54,6 +54,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     @Override
     public ReceipeViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+
         View view = LayoutInflater.
                 from(viewGroup.getContext()).
                 inflate(R.layout.receipe_layout, viewGroup, false);
@@ -70,6 +71,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                     context.startActivity(intent);
                 }
             }
+
         });
 
         final Button scheduleButton = (Button) view.findViewById(R.id.schedule);
@@ -156,7 +158,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
     }
 
     public void showLikedSnackbar(View view, String info) {
-        Snackbar.make(((Activity)context).findViewById(R.id.receipes_fragment), info, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(((Activity) context).findViewById(R.id.receipes_fragment), info, Snackbar.LENGTH_SHORT).show();
     }
 }
 

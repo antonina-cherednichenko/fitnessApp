@@ -63,10 +63,10 @@ public class AllDetoxDietTabFragment extends Fragment {
             programs = DataProcessor.getSearchPrograms(getContext(), query);
         }
 
-        Fragment allFragment = new DetoxDietProgramsListFragment();
-        Bundle allBundle = new Bundle();
-        allBundle.putSerializable("receipes", (Serializable) programs);
-        allFragment.setArguments(allBundle);
+//        Fragment allFragment = new DetoxDietProgramsListFragment();
+//        Bundle allBundle = new Bundle();
+//        allBundle.putSerializable("receipes", (Serializable) programs);
+//        allFragment.setArguments(allBundle);
 
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
@@ -79,7 +79,7 @@ public class AllDetoxDietTabFragment extends Fragment {
         dietFragment.setArguments(dietBundle);
 
 
-        adapter.addFragment(allFragment, "ALL");
+        //adapter.addFragment(allFragment, "ALL");
         adapter.addFragment(detoxFragment, "DETOX");
         adapter.addFragment(dietFragment, "DIET");
         viewPager.setAdapter(adapter);

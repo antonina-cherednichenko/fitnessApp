@@ -60,8 +60,6 @@ public class DataProcessor {
         return likedPrograms;
     }
 
-
-
     public static List<ProgramInfo> getDietPrograms(List<ProgramInfo> allPrograms) {
         List<ProgramInfo> dietPrograms = new ArrayList<>();
         for (ProgramInfo program : allPrograms) {
@@ -84,14 +82,7 @@ public class DataProcessor {
 
     }
 
-    public static List<ProgramInfo> getNewPrograms(Context context) {
-        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
-        if (!dbIsInitilized) {
-            dbIsInitilized = true;
-            readJsonAndInitDb(context);
-        }
-
-        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms();
+    public static List<ProgramInfo> getNewPrograms(List<ProgramInfo> allPrograms) {
         List<ProgramInfo> newPrograms = new ArrayList<>();
         for (ProgramInfo program : allPrograms) {
             if (program.getIsNew() == 1) {

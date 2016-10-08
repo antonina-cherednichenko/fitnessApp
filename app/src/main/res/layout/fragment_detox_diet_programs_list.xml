@@ -11,9 +11,17 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/cardList"
+        android:id="@+id/card_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="No data available" />
 
 
     <com.roughike.bottombar.BottomBar
