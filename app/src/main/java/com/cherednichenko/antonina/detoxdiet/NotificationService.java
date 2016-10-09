@@ -19,7 +19,6 @@ public class NotificationService extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent alarmIntent) {
-        Toast.makeText(context, "Alarm worked.", Toast.LENGTH_LONG).show();
         ProgramInfo receipe = (ProgramInfo) alarmIntent.getSerializableExtra("receipe_info");
         Intent intent = new Intent(context, ProgramInfoActivity.class);
         intent.putExtra("receipe_info", receipe);
@@ -29,11 +28,11 @@ public class NotificationService extends BroadcastReceiver {
         PendingIntent pIntent = PendingIntent.getActivity(context, requestID, intent, flags);
 
         Notification noti = new NotificationCompat.Builder(context)
-                .setSmallIcon(receipe.getPhotoId())
-                .setContentTitle("My notification")
-                .setContentText("Hello World!")
+                .setSmallIcon(R.drawable.glass)
+                .setContentTitle("Detox and Diet reminds")
+                .setContentText("Now is time for " + receipe.getName())
                 .setContentIntent(pIntent)
-                .setAutoCancel(true) // Hides the notification after its been selected
+                .setAutoCancel(true)
                 .build();
 
         NotificationManager mNotificationManager =

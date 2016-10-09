@@ -27,6 +27,10 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
 
     private ProgramInfo receipe;
 
+    int year;
+    int monthOfYear;
+    int dayOfMonth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,25 +109,30 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,
                 serviceIntent, PendingIntent.FLAG_ONE_SHOT);
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(this.year, this.monthOfYear, this.dayOfMonth, hourOfDay, minute, second);
+
         alarm.set(
                 // This alarm will wake up the device when System.currentTimeMillis()
                 // equals the second argument value
                 alarm.RTC_WAKEUP,
-                System.currentTimeMillis() + (1000 * 2 * 60),
+                calendar.getTimeInMillis(),
                 pendingIntent
         );
-
     }
 
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         Calendar now = Calendar.getInstance();
+        this.year = year;
+        this.monthOfYear = monthOfYear;
+        this.dayOfMonth = dayOfMonth;
 
         TimePickerDialog tpd = TimePickerDialog.newInstance(
                 ProgramInfoActivity.this,
                 now.get(Calendar.HOUR),
                 0,
-                true
+                false
         );
         tpd.show(getFragmentManager(), "Timepickerdialog");
     }
