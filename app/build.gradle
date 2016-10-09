@@ -32,5 +32,5 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
     compile 'com.roughike:bottom-bar:2.0.2'
     compile 'com.github.tibolte:agendacalendarview:1.0.4'
-
+    compile 'com.wdullaer:materialdatetimepicker:2.5.0'
 }

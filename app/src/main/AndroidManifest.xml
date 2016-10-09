@@ -27,6 +27,8 @@
         </activity>
 
         <activity android:name="com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity" />
+
+        <receiver android:name=".NotificationService"></receiver>
     </application>
 
 </manifest>
