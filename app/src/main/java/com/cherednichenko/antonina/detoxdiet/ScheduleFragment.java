@@ -64,6 +64,7 @@ public class ScheduleFragment extends Fragment {
         Calendar startTime1 = Calendar.getInstance();
         Calendar endTime1 = Calendar.getInstance();
         endTime1.add(Calendar.MONTH, 1);
+        endTime1.add(Calendar.DATE, 10);
         BaseCalendarEvent event1 = new BaseCalendarEvent("Thibault travels in Iceland", "A wonderful journey!", "Iceland",
                 ContextCompat.getColor(getContext(), R.color.colorPrimary), startTime1, endTime1, true);
         eventList.add(event1);

@@ -21,11 +21,12 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "DetoxDietDatabase";
-    private static final int DATABASE_VERSION = 7;
+    private static final int DATABASE_VERSION = 8;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
     private static final String TABLE_DAYS = "days";
+    private static final String TABLE_SCHEDULE = "schedule";
 
 
     // Programs Table Columns
@@ -45,6 +46,12 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_DAY_PROGRAM_ID_FK = "programId";
     private static final String KEY_DAY_NAME = "dayName";
     private static final String KEY_DAY_DESCRIPTION = "dayDescription";
+
+    //Schedule events columns
+    // Days Table Columns
+    private static final String KEY_EVENT_ID = "id";
+    private static final String KEY_EVENT_PROGRAM_ID_FK = "programId";
+    private static final String KEY_EVENT_TIME = "time";
 
 
     private static ProgramsDatabaseHelper sInstance;
@@ -88,11 +95,54 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_DAY_DESCRIPTION + " TEXT," +
                 KEY_DAY_PROGRAM_ID_FK + " INTEGER REFERENCES " + TABLE_PROGRAMS + // Define a foreign key
                 ")";
+
+        String CREATE_SCHEDULE_TABLE = "CREATE TABLE " + TABLE_SCHEDULE +
+                "(" +
+                KEY_EVENT_ID + " INTEGER PRIMARY KEY," +
+                KEY_EVENT_TIME + " INTEGER," +
+                KEY_EVENT_PROGRAM_ID_FK + " INTEGER REFERENCES " + TABLE_PROGRAMS + // Define a foreign key
+                ")";
         try {
             db.execSQL(CREATE_PROGRAMS_TABLE);
             db.execSQL(CREATE_DAYS_TABLE);
+            db.execSQL(CREATE_SCHEDULE_TABLE);
         } catch (Exception e) {
             Log.d(TAG, "Error creating database");
+        }
+    }
+
+    public void addEvent(ProgramInfo program, long timeInMillis) {
+        // Create and/or open the database for writing
+        SQLiteDatabase db = getWritableDatabase();
+
+        //Get program id for event
+        String PROGRAMS_DAYS_SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = ?",
+                        TABLE_PROGRAMS, KEY_PROGRAM_NAME);
+
+        Cursor programCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(program.getName())});
+        try {
+            if (programCursor.moveToFirst()) {
+                do {
+                    int programId = programCursor.getInt(programCursor.getColumnIndex(KEY_PROGRAM_ID));
+                    db.beginTransaction();
+                    ContentValues values = new ContentValues();
+                    values.put(KEY_EVENT_PROGRAM_ID_FK, programId);
+                    values.put(KEY_EVENT_TIME, timeInMillis);
+
+                    // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
+                    db.insertOrThrow(TABLE_SCHEDULE, null, values);
+                    db.setTransactionSuccessful();
+
+                } while (programCursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to add event to database");
+        } finally {
+            db.endTransaction();
+            if (programCursor != null && !programCursor.isClosed()) {
+                programCursor.close();
+            }
         }
     }
 
@@ -172,7 +222,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public List<ProgramInfo> getSearchResults(String query) {
-
         String PROGRAMS_SELECT_QUERY =
                 String.format("SELECT * FROM %s WHERE %s LIKE ",
                         TABLE_PROGRAMS, KEY_PROGRAM_NAME);

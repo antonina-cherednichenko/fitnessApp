@@ -1,9 +1,10 @@
 package com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.CalendarContract;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,12 +15,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cherednichenko.antonina.detoxdiet.NotificationService;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -80,21 +85,16 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
             public void onClick(View v) {
                 final int position = holder.getAdapterPosition();
                 ProgramInfo receipe = receipeList.get(position);
-                Intent intent = new Intent(Intent.ACTION_INSERT);
-                intent.setType("vnd.android.cursor.item/event");
+                Calendar now = Calendar.getInstance();
 
-                Calendar cal = Calendar.getInstance();
-                long startTime = cal.getTimeInMillis();
-                long endTime = cal.getTimeInMillis() + receipe.getDuration() * 24 * 60 * 60 * 1000;
 
-                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
-                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
-                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
-
-                intent.putExtra(CalendarContract.Events.TITLE, receipe.getName());
-                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.getShortDescription());
-
-                context.startActivity(intent);
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        holder,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(((Activity) context).getFragmentManager(), "Datepickerdialog");
             }
         });
 
@@ -139,21 +139,70 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
         });
 
         return holder;
+
     }
 
-    public class ReceipeViewHolder extends RecyclerView.ViewHolder {
+    public class ReceipeViewHolder extends RecyclerView.ViewHolder implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
         public TextView name;
         public TextView description;
         public ImageView image;
         public ImageButton liked;
 
+        private int year;
+        private int monthOfYear;
+        private int dayOfMonth;
 
         public ReceipeViewHolder(View v) {
             super(v);
+
             name = (TextView) v.findViewById(R.id.receipe_name);
             description = (TextView) v.findViewById(R.id.receipe_description);
             image = (ImageView) v.findViewById(R.id.receipe_image);
             liked = (ImageButton) v.findViewById(R.id.btnLike);
+
+        }
+
+        @Override
+        public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+            AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            Intent serviceIntent = new Intent(context, NotificationService.class);
+
+            final int position = this.getAdapterPosition();
+            ProgramInfo receipe = receipeList.get(position);
+            serviceIntent.putExtra("receipe_info", receipe);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
+                    serviceIntent, PendingIntent.FLAG_ONE_SHOT);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(this.year, this.monthOfYear, this.dayOfMonth, hourOfDay, minute, second);
+
+            long scheduleTime = calendar.getTimeInMillis();
+            alarm.set(
+                    // This alarm will wake up the device when System.currentTimeMillis()
+                    // equals the second argument value
+                    alarm.RTC_WAKEUP,
+                    scheduleTime,
+                    pendingIntent
+            );
+
+            ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+            databaseHelper.addEvent(receipe, scheduleTime);
+        }
+
+        @Override
+        public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+            Calendar now = Calendar.getInstance();
+            this.year = year;
+            this.monthOfYear = monthOfYear;
+            this.dayOfMonth = dayOfMonth;
+
+            TimePickerDialog tpd = TimePickerDialog.newInstance(
+                    this,
+                    now.get(Calendar.HOUR),
+                    0,
+                    false
+            );
+            tpd.show(((Activity) context).getFragmentManager(), "Timepickerdialog");
         }
     }
 

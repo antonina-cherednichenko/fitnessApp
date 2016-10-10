@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.cherednichenko.antonina.detoxdiet.NotificationService;
 import com.cherednichenko.antonina.detoxdiet.R;
+import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
@@ -27,9 +28,9 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
 
     private ProgramInfo receipe;
 
-    int year;
-    int monthOfYear;
-    int dayOfMonth;
+    private int year;
+    private int monthOfYear;
+    private int dayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,23 +75,6 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
                 );
                 dpd.show(getFragmentManager(), "Datepickerdialog");
 
-
-//                Intent intent = new Intent(Intent.ACTION_INSERT);
-//                intent.setType("vnd.android.cursor.item/event");
-//
-//                Calendar cal = Calendar.getInstance();
-//                long startTime = cal.getTimeInMillis();
-//                long endTime = cal.getTimeInMillis() + receipe.getDuration() * 24 * 60 * 60 * 1000;
-//
-//                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
-//                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime);
-//                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false);
-//
-//                intent.putExtra(CalendarContract.Events.TITLE, receipe.getName());
-//                intent.putExtra(CalendarContract.Events.DESCRIPTION, receipe.getShortDescription());
-//
-//
-//                startActivity(intent);
             }
         });
     }
@@ -112,13 +96,17 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         Calendar calendar = Calendar.getInstance();
         calendar.set(this.year, this.monthOfYear, this.dayOfMonth, hourOfDay, minute, second);
 
+        long scheduleTime = calendar.getTimeInMillis();
         alarm.set(
                 // This alarm will wake up the device when System.currentTimeMillis()
                 // equals the second argument value
                 alarm.RTC_WAKEUP,
-                calendar.getTimeInMillis(),
+                scheduleTime,
                 pendingIntent
         );
+
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(this);
+        databaseHelper.addEvent(receipe, scheduleTime);
     }
 
     @Override
