@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.EventInfo;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.github.tibolte.agendacalendarview.AgendaCalendarView;
 import com.github.tibolte.agendacalendarview.CalendarPickerController;
 import com.github.tibolte.agendacalendarview.models.BaseCalendarEvent;
@@ -33,14 +37,17 @@ public class ScheduleFragment extends Fragment {
         Calendar minDate = Calendar.getInstance();
         Calendar maxDate = Calendar.getInstance();
 
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(getActivity());
+        List<EventInfo> dbEvents = databaseHelper.getAllEvents();
+
         minDate.add(Calendar.MONTH, -1);
         minDate.set(Calendar.DAY_OF_MONTH, 1);
         maxDate.add(Calendar.YEAR, 1);
 
-        List<CalendarEvent> eventList = new ArrayList<>();
-        mockList(eventList);
+        List<CalendarEvent> calendarEvents = mockList(dbEvents);
 
-        ((AgendaCalendarView)rootView.findViewById(R.id.agenda_calendar_view)).init(eventList, minDate, maxDate, Locale.getDefault(), new CalendarPickerController() {
+
+        ((AgendaCalendarView) rootView.findViewById(R.id.agenda_calendar_view)).init(calendarEvents, minDate, maxDate, Locale.getDefault(), new CalendarPickerController() {
             @Override
             public void onDaySelected(DayItem dayItem) {
 
@@ -60,23 +67,20 @@ public class ScheduleFragment extends Fragment {
         return rootView;
     }
 
-    private void mockList(List<CalendarEvent> eventList) {
-        Calendar startTime1 = Calendar.getInstance();
-        Calendar endTime1 = Calendar.getInstance();
-        endTime1.add(Calendar.MONTH, 1);
-        endTime1.add(Calendar.DATE, 10);
-        BaseCalendarEvent event1 = new BaseCalendarEvent("Thibault travels in Iceland", "A wonderful journey!", "Iceland",
-                ContextCompat.getColor(getContext(), R.color.colorPrimary), startTime1, endTime1, true);
-        eventList.add(event1);
+    private List<CalendarEvent> mockList(List<EventInfo> dbEvents) {
+        List<CalendarEvent> calendarEvents = new ArrayList<>();
+        for (EventInfo dbEvent : dbEvents) {
+            Calendar start = Calendar.getInstance();
+            start.setTimeInMillis(dbEvent.getTime());
 
-        Calendar startTime2 = Calendar.getInstance();
-        startTime2.add(Calendar.DAY_OF_YEAR, 1);
-        Calendar endTime2 = Calendar.getInstance();
-        endTime2.add(Calendar.DAY_OF_YEAR, 3);
-        BaseCalendarEvent event2 = new BaseCalendarEvent("Visit to Dalvík", "A beautiful small town", "Dalvík",
-                ContextCompat.getColor(getContext(), R.color.colorBlue), startTime2, endTime2, true);
-        eventList.add(event2);
-
+            Calendar end = Calendar.getInstance();
+            ProgramInfo program = dbEvent.getProgram();
+            end.add(Calendar.DAY_OF_YEAR, program.getDuration());
+            BaseCalendarEvent event = new BaseCalendarEvent(program.getName(), program.getShortDescription(), String.format("%s days", program.getDuration()),
+                    ContextCompat.getColor(getContext(), R.color.colorPrimary), start, end, true);
+            calendarEvents.add(event);
+        }
+        return calendarEvents;
     }
 
 }

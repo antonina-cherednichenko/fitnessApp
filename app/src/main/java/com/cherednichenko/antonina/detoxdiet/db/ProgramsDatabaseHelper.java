@@ -9,6 +9,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DayInfo;
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.EventInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 
 import java.util.ArrayList;
@@ -111,41 +112,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void addEvent(ProgramInfo program, long timeInMillis) {
-        // Create and/or open the database for writing
-        SQLiteDatabase db = getWritableDatabase();
-
-        //Get program id for event
-        String PROGRAMS_DAYS_SELECT_QUERY =
-                String.format("SELECT * FROM %s WHERE %s = ?",
-                        TABLE_PROGRAMS, KEY_PROGRAM_NAME);
-
-        Cursor programCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(program.getName())});
-        try {
-            if (programCursor.moveToFirst()) {
-                do {
-                    int programId = programCursor.getInt(programCursor.getColumnIndex(KEY_PROGRAM_ID));
-                    db.beginTransaction();
-                    ContentValues values = new ContentValues();
-                    values.put(KEY_EVENT_PROGRAM_ID_FK, programId);
-                    values.put(KEY_EVENT_TIME, timeInMillis);
-
-                    // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
-                    db.insertOrThrow(TABLE_SCHEDULE, null, values);
-                    db.setTransactionSuccessful();
-
-                } while (programCursor.moveToNext());
-            }
-        } catch (Exception e) {
-            Log.d(TAG, "Error while trying to add event to database");
-        } finally {
-            db.endTransaction();
-            if (programCursor != null && !programCursor.isClosed()) {
-                programCursor.close();
-            }
-        }
-    }
-
     // Insert a post into the database
     public void addDay(DayInfo day, long programId) {
         // Create and/or open the database for writing
@@ -221,6 +187,41 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
         return programId;
     }
 
+    public void addEvent(ProgramInfo program, long timeInMillis) {
+        // Create and/or open the database for writing
+        SQLiteDatabase db = getWritableDatabase();
+
+        //Get program id for event
+        String PROGRAMS_DAYS_SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = ?",
+                        TABLE_PROGRAMS, KEY_PROGRAM_NAME);
+
+        Cursor programCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(program.getName())});
+        try {
+            if (programCursor.moveToFirst()) {
+                do {
+                    int programId = programCursor.getInt(programCursor.getColumnIndex(KEY_PROGRAM_ID));
+                    db.beginTransaction();
+                    ContentValues values = new ContentValues();
+                    values.put(KEY_EVENT_PROGRAM_ID_FK, programId);
+                    values.put(KEY_EVENT_TIME, timeInMillis);
+
+                    // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
+                    db.insertOrThrow(TABLE_SCHEDULE, null, values);
+                    db.setTransactionSuccessful();
+
+                } while (programCursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to add event to database");
+        } finally {
+            db.endTransaction();
+            if (programCursor != null && !programCursor.isClosed()) {
+                programCursor.close();
+            }
+        }
+    }
+
     public List<ProgramInfo> getSearchResults(String query) {
         String PROGRAMS_SELECT_QUERY =
                 String.format("SELECT * FROM %s WHERE %s LIKE ",
@@ -286,7 +287,40 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return programs;
+    }
 
+    public List<EventInfo> getAllEvents() {
+        List<EventInfo> events = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        String EVENTS_SELECT_QUERY =
+                String.format("SELECT * FROM %s ",
+                        TABLE_SCHEDULE);
+
+        Cursor cursor = db.rawQuery(EVENTS_SELECT_QUERY, null);
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    EventInfo newEvent = new EventInfo();
+                    newEvent.setTime(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_TIME)));
+                    int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));
+
+                    String PROGRAM_SELECT_QUERY =
+                            String.format("SELECT * FROM %s WHERE %s = %s",
+                                    TABLE_PROGRAMS, KEY_PROGRAM_ID, programId);
+
+                    List<ProgramInfo> programs = this.getProgramsForQuery(PROGRAM_SELECT_QUERY);
+                    newEvent.setProgram(programs.get(0));
+                    events.add(newEvent);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "Error while trying to get posts from database");
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return events;
     }
 
     // Update liked status of program
