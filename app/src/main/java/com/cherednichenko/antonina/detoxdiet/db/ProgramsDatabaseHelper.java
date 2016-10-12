@@ -301,7 +301,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     EventInfo newEvent = new EventInfo();
-                    newEvent.setTime(cursor.getInt(cursor.getColumnIndex(KEY_EVENT_TIME)));
+                    newEvent.setTime(cursor.getLong(cursor.getColumnIndex(KEY_EVENT_TIME)));
                     int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));
 
                     String PROGRAM_SELECT_QUERY =
