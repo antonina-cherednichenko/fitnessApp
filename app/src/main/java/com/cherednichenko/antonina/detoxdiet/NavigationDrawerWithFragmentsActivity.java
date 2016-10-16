@@ -148,7 +148,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 //Favourites item
                 fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
-                bundle.putInt("mode", DetoxDietLaunchMode.LIKED.getMode());
+                bundle.putInt("mode", DetoxDietLaunchMode.NEW.getMode());
                 fragment.setArguments(bundle);
                 break;
             }

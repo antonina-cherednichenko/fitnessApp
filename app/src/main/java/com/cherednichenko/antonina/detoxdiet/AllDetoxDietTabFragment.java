@@ -52,15 +52,20 @@ public class AllDetoxDietTabFragment extends Fragment {
 
         Bundle args = getArguments();
         int mode = args.getInt("mode");
+        String tag = "";
         List<ProgramInfo> programs = new ArrayList<>();
         if (mode == DetoxDietLaunchMode.LIKED.getMode()) {
             programs = DataProcessor.getLikedPrograms(getContext());
+            tag += "Favourite ";
         } else if (mode == DetoxDietLaunchMode.STANDARD.getMode()) {
             programs = DataProcessor.getAllPrograms(getContext());
         } else if (mode == DetoxDietLaunchMode.SEARCH.getMode()) {
             //ADD functionality for search here
             String query = args.getString("searchQuery");
             programs = DataProcessor.getSearchPrograms(getContext(), query);
+        } else if (mode == DetoxDietLaunchMode.NEW.getMode()) {
+            programs = DataProcessor.getNewPrograms(getContext());
+            tag += "New ";
         }
 
 //        Fragment allFragment = new DetoxDietProgramsListFragment();
@@ -71,13 +76,13 @@ public class AllDetoxDietTabFragment extends Fragment {
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
         detoxBundle.putSerializable("receipes", (Serializable) DataProcessor.getDetoxPrograms(programs));
-        detoxBundle.putString("tag", "Detox Programs");
+        detoxBundle.putString("tag", tag + "Detox Programs");
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
         dietBundle.putSerializable("receipes", (Serializable) DataProcessor.getDietPrograms(programs));
-        dietBundle.putString("tag", "Diets");
+        dietBundle.putString("tag", tag + "Diets");
         dietFragment.setArguments(dietBundle);
 
         Fragment scheduleFragment = new ScheduleFragment();

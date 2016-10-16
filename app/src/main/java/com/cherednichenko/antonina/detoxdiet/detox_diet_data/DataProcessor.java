@@ -92,6 +92,23 @@ public class DataProcessor {
         return newPrograms;
     }
 
+    public static List<ProgramInfo> getNewPrograms(Context context) {
+        ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
+        if (!dbIsInitilized) {
+            dbIsInitilized = true;
+            readJsonAndInitDb(context);
+        }
+
+        List<ProgramInfo> allPrograms = databaseHelper.getAllPrograms();
+        List<ProgramInfo> newPrograms = new ArrayList<>();
+        for (ProgramInfo program : allPrograms) {
+            if (program.getIsNew() == 1) {
+                newPrograms.add(program);
+            }
+        }
+        return newPrograms;
+    }
+
 
     public static List<ProgramInfo> getSearchPrograms(Context context, String query) {
         ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
