@@ -80,10 +80,12 @@ public class AllDetoxDietTabFragment extends Fragment {
         dietBundle.putString("tag", "Diets");
         dietFragment.setArguments(dietBundle);
 
+        Fragment scheduleFragment = new ScheduleFragment();
 
         //adapter.addFragment(allFragment, "ALL");
-        adapter.addFragment(detoxFragment, "DETOX");
-        adapter.addFragment(dietFragment, "DIET");
+        adapter.addFragment(detoxFragment, getResources().getString(R.string.tab_detox));
+        adapter.addFragment(dietFragment, getResources().getString(R.string.tab_diet));
+        adapter.addFragment(scheduleFragment, getResources().getString(R.string.tab_schedule));
         viewPager.setAdapter(adapter);
     }
 

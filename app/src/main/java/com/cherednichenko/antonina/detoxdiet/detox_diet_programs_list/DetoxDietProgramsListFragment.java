@@ -32,9 +32,10 @@ public class DetoxDietProgramsListFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_detox_diet_programs_list, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_detox_diet_programs_list, container, false);
+
         final RecyclerView recList = (RecyclerView) rootView.findViewById(R.id.card_list);
         final RelativeLayout emptyState = (RelativeLayout) rootView.findViewById(R.id.empty_state);
         //recList.setHasFixedSize(true);

@@ -13,4 +13,5 @@
         icon="@drawable/ic_heart_red"
         id="@+id/bottombar_new"
         title="@string/bottombar_new" />
+
 </tabs>
