@@ -18,8 +18,15 @@
 
     <!-- tabs name -->
     <string name="tab_detox">DETOX</string>
-    <string name="tab_diet">"DIET"</string>
-    <string name="tab_schedule">"SCHEDULE"</string>
+    <string name="tab_diet">DIET</string>
+    <string name="tab_schedule">SCHEDULE</string>
+
+    <!-- navigation bar -->
+    <string name="navbar_programs">Programs</string>
+    <string name="navbar_favorites">Favorites</string>
+    <string name="navbar_new">New</string>
+    <string name="navbar_schedule">Schedule</string>
+    <string name="navbar_about">About</string>
 
 
     <string-array name="navigation_drawer_items_array">

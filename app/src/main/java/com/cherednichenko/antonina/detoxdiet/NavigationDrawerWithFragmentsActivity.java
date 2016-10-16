@@ -43,12 +43,13 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        NavigationDataModel[] drawerItems = new NavigationDataModel[4];
+        NavigationDataModel[] drawerItems = new NavigationDataModel[5];
 
-        drawerItems[0] = new NavigationDataModel(R.drawable.navdrawer_receipes, "Programs");
-        drawerItems[1] = new NavigationDataModel(R.drawable.navdrawer_favourite, "Favorites");
-        drawerItems[2] = new NavigationDataModel(R.drawable.navdrawer_time, "Schedule");
-        drawerItems[3] = new NavigationDataModel(R.drawable.navdrawer_about, "About");
+        drawerItems[0] = new NavigationDataModel(R.drawable.navdrawer_receipes, getResources().getString(R.string.navbar_programs));
+        drawerItems[1] = new NavigationDataModel(R.drawable.navdrawer_favourite, getResources().getString(R.string.navbar_favorites));
+        drawerItems[2] = new NavigationDataModel(R.drawable.navdrawer_favourite, getResources().getString(R.string.navbar_new));
+        drawerItems[3] = new NavigationDataModel(R.drawable.navdrawer_time, getResources().getString(R.string.navbar_schedule));
+        drawerItems[4] = new NavigationDataModel(R.drawable.navdrawer_about, getResources().getString(R.string.navbar_about));
 
         navigationItems = getResources().getStringArray(R.array.navigation_drawer_items_array);
 
@@ -142,14 +143,21 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 bundle.putInt("mode", DetoxDietLaunchMode.LIKED.getMode());
                 fragment.setArguments(bundle);
                 break;
-
             }
             case 3: {
+                //Favourites item
+                fragment = new AllDetoxDietTabFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("mode", DetoxDietLaunchMode.LIKED.getMode());
+                fragment.setArguments(bundle);
+                break;
+            }
+            case 4: {
                 //Schedule item
                 fragment = new ScheduleFragment();
                 break;
             }
-            case 4: {
+            case 5: {
                 //About item
                 fragment = new AboutFragment();
                 break;
