@@ -27,6 +27,7 @@
     <string name="navbar_new">New</string>
     <string name="navbar_schedule">Schedule</string>
     <string name="navbar_about">About</string>
+    <string name="navheader_text">Detox and Diets</string>
 
 
     <string-array name="navigation_drawer_items_array">
