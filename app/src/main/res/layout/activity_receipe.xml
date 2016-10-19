@@ -52,7 +52,7 @@
         android:layout_margin="10dp"
         app:layout_anchor="@+id/appbar"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/navdrawer_time"/>
+        android:src="@drawable/ic_fb_schedule"/>
 
 </android.support.design.widget.CoordinatorLayout>
 

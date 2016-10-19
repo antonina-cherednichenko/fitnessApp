@@ -1,6 +1,6 @@
 <tabs>
     <tab
-        icon="@drawable/ic_heart_red"
+        icon="@drawable/ic_bottombar_all"
         id="@+id/bottombar_all"
         title="@string/bottombar_all" />
 
@@ -10,7 +10,7 @@
         title="@string/bottombar_favorite" />
 
     <tab
-        icon="@drawable/ic_heart_red"
+        icon="@drawable/ic_bottombar_new"
         id="@+id/bottombar_new"
         title="@string/bottombar_new" />
 

@@ -28,7 +28,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
-    private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private ActionBarDrawerToggle mDrawerToggle;
     private Toolbar toolbar;
@@ -39,17 +38,18 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_with_fragments);
 
-        mTitle = mDrawerTitle = getTitle();
+        mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        //mDrawerLayout.setScrimColor(getResources().getColor(R.color.colorPrimary));
 
         NavigationDataModel[] drawerItems = new NavigationDataModel[5];
 
-        drawerItems[0] = new NavigationDataModel(R.drawable.navdrawer_receipes, getResources().getString(R.string.navbar_programs));
-        drawerItems[1] = new NavigationDataModel(R.drawable.navdrawer_favourite, getResources().getString(R.string.navbar_favorites));
-        drawerItems[2] = new NavigationDataModel(R.drawable.navdrawer_favourite, getResources().getString(R.string.navbar_new));
-        drawerItems[3] = new NavigationDataModel(R.drawable.navdrawer_time, getResources().getString(R.string.navbar_schedule));
-        drawerItems[4] = new NavigationDataModel(R.drawable.navdrawer_about, getResources().getString(R.string.navbar_about));
+        drawerItems[0] = new NavigationDataModel(R.drawable.ic_navdrawer_all, getResources().getString(R.string.navbar_programs));
+        drawerItems[1] = new NavigationDataModel(R.drawable.ic_navdrawer_favourite, getResources().getString(R.string.navbar_favorites));
+        drawerItems[2] = new NavigationDataModel(R.drawable.ic_navdrawer_new, getResources().getString(R.string.navbar_new));
+        drawerItems[3] = new NavigationDataModel(R.drawable.ic_navdrawer_schedule, getResources().getString(R.string.navbar_schedule));
+        drawerItems[4] = new NavigationDataModel(R.drawable.ic_navdrawer_about, getResources().getString(R.string.navbar_about));
 
         navigationItems = getResources().getStringArray(R.array.navigation_drawer_items_array);
 

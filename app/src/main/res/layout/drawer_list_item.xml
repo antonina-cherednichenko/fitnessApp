@@ -8,6 +8,7 @@
     <ImageView
         android:id="@+id/imageViewIcon"
         android:layout_width="wrap_content"
+        android:tint="@color/colorPrimary"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -21,7 +22,7 @@
         android:layout_toRightOf="@+id/imageViewIcon"
         android:paddingRight="10dp"
         android:text="Item Name"
-        android:textColor="@android:color/black"
+        android:textColor="#404040"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         />
 
