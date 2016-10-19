@@ -126,6 +126,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         Fragment fragment;
+        System.out.println("position = " + position);
         switch (position) {
             case 1: {
                 //Receipes item

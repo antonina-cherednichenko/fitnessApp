@@ -9,8 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
+        android:id="@+id/about_contact_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thanks for attention" />
+        android:layout_centerInParent="true"
+        android:paddingTop="20dp"
+        android:text="@string/about_contact_text" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/about_contact_text"
+        android:layout_centerHorizontal="true"
+        android:text="@string/about_message_text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
 </RelativeLayout>
