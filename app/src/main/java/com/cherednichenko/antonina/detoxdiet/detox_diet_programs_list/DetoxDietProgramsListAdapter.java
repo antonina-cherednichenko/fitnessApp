@@ -44,9 +44,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     private static final AccelerateInterpolator ACCELERATE_INTERPOLATOR = new AccelerateInterpolator();
     private static final OvershootInterpolator OVERSHOOT_INTERPOLATOR = new OvershootInterpolator(4);
-    private final Map<RecyclerView.ViewHolder, AnimatorSet> likeAnimations = new HashMap<>();
-    private final ArrayList<Integer> likedPositions = new ArrayList<>();
-
 
     private List<ProgramInfo> receipeList;
     private Context context;
@@ -80,8 +77,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                 from(viewGroup.getContext()).
                 inflate(R.layout.receipe_layout, viewGroup, false);
         final ReceipeViewHolder holder = new ReceipeViewHolder(view);
-
-        updateHeartButton(holder, false);
 
         //TODO replace this on some cool animation
         view.setOnClickListener(new View.OnClickListener() {
@@ -140,11 +135,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                 if (position != RecyclerView.NO_POSITION) {
                     ProgramInfo element = receipeList.get(position);
                     ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
-                    if (!likedPositions.contains(holder.getPosition())) {
-                        likedPositions.add(holder.getPosition());
-                                       
-                        updateHeartButton(holder, true);
-                    }
                     if (element.getLiked() == 1) {
                         likeButton.setImageResource(R.drawable.ic_heart_outline_grey);
                         //update Db here
@@ -153,6 +143,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                         showLikedSnackbar(v, element.getName() + " unliked!");
 
                     } else {
+                        updateHeartButton(holder, true);
                         likeButton.setImageResource(R.drawable.ic_heart_red);
                         element.setLiked(1);
                         databaseHelper.updateLikedStatusOfProgram(element, 1);
@@ -236,53 +227,41 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     private void updateHeartButton(final ReceipeViewHolder holder, boolean animated) {
         if (animated) {
-            if (!likeAnimations.containsKey(holder)) {
-                AnimatorSet animatorSet = new AnimatorSet();
-                likeAnimations.put(holder, animatorSet);
 
-                ObjectAnimator rotationAnim = ObjectAnimator.ofFloat(holder.liked, "rotation", 0f, 360f);
-                rotationAnim.setDuration(300);
-                rotationAnim.setInterpolator(ACCELERATE_INTERPOLATOR);
+            AnimatorSet animatorSet = new AnimatorSet();
 
-                ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.liked, "scaleX", 0.2f, 1f);
-                bounceAnimX.setDuration(300);
-                bounceAnimX.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
-                ObjectAnimator bounceAnimY = ObjectAnimator.ofFloat(holder.liked, "scaleY", 0.2f, 1f);
-                bounceAnimY.setDuration(300);
-                bounceAnimY.setInterpolator(OVERSHOOT_INTERPOLATOR);
-                bounceAnimY.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-                        holder.liked.setImageResource(R.drawable.ic_heart_red);
-                    }
-                });
+            ObjectAnimator rotationAnim = ObjectAnimator.ofFloat(holder.liked, "rotation", 0f, 360f);
+            rotationAnim.setDuration(300);
+            rotationAnim.setInterpolator(ACCELERATE_INTERPOLATOR);
 
-                animatorSet.play(rotationAnim);
-                animatorSet.play(bounceAnimX).with(bounceAnimY).after(rotationAnim);
+            ObjectAnimator bounceAnimX = ObjectAnimator.ofFloat(holder.liked, "scaleX", 0.2f, 1f);
+            bounceAnimX.setDuration(300);
+            bounceAnimX.setInterpolator(OVERSHOOT_INTERPOLATOR);
 
-                animatorSet.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        resetLikeAnimationState(holder);
-                    }
-                });
+            ObjectAnimator bounceAnimY = ObjectAnimator.ofFloat(holder.liked, "scaleY", 0.2f, 1f);
+            bounceAnimY.setDuration(300);
+            bounceAnimY.setInterpolator(OVERSHOOT_INTERPOLATOR);
+            bounceAnimY.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    holder.liked.setImageResource(R.drawable.ic_heart_red);
+                }
+            });
 
-                animatorSet.start();
-            }
-        } else {
-            if (likedPositions.contains(holder.getPosition())) {
-                holder.liked.setImageResource(R.drawable.ic_heart_red);
-            } else {
-                holder.liked.setImageResource(R.drawable.ic_heart_outline_grey);
-            }
+            animatorSet.play(rotationAnim);
+            animatorSet.play(bounceAnimX).with(bounceAnimY).after(rotationAnim);
+
+            animatorSet.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    //resetLikeAnimationState(holder);
+                }
+            });
+
+            animatorSet.start();
+
         }
-    }
-
-    private void resetLikeAnimationState(ReceipeViewHolder holder) {
-        likeAnimations.remove(holder);
-        //holder.vBgLike.setVisibility(View.GONE);
-        //holder.ivLike.setVisibility(View.GONE);
     }
 
 
