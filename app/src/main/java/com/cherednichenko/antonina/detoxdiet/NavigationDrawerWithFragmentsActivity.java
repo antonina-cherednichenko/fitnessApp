@@ -19,10 +19,18 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietLaunchMode;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
+
+import java.io.FileOutputStream;
+
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
@@ -37,6 +45,8 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_with_fragments);
+
+        getContentFromBackendService();
 
         mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -90,6 +100,40 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         //handle search results
         handleIntent(getIntent());
     }
+
+    private void getContentFromBackendService() {
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://mighty-bayou-30907.herokuapp.com/data";
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        String FILENAME = "programs_data";
+
+                        try {
+                            FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                            fos.write(response.getBytes());
+                            fos.close();
+
+                        } catch (Exception exc) {
+                            System.out.println("Exception = " + exc);
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("Error retrieing content from backend");
+            }
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+    }
+
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
