@@ -5,10 +5,12 @@ import android.content.Context;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 
+import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -123,11 +125,23 @@ public class DataProcessor {
 
 
     private static void readJsonAndInitDb(Context context) {
-        InputStream stream = context.getResources().openRawResource(R.raw.programs_data);
-        List<ProgramInfo> receipes = new ArrayList<>();
+        String FILENAME = "programs_data";
+        String res = "";
         try {
-            String chatFileData = loadProgramsData(stream);
-            JSONObject jsonData = new JSONObject(chatFileData);
+            FileInputStream fis = context.openFileInput(FILENAME);
+            res = IOUtils.toString(fis);
+            fis.close();
+        } catch (Exception exc) {
+            System.out.println("Exception while reading retrieved content data");
+        }
+
+        try {
+            if (res.isEmpty()) {
+                res = IOUtils.toString(context.getResources().openRawResource(R.raw.programs_data));
+            }
+
+            List<ProgramInfo> receipes = new ArrayList<>();
+            JSONObject jsonData = new JSONObject(res);
             JSONArray allPrograms = jsonData.getJSONArray("data");
             for (int i = 0; i < allPrograms.length(); i++) {
                 JSONObject program = allPrograms.getJSONObject(i);
@@ -150,7 +164,6 @@ public class DataProcessor {
                 receipe.setPhotoId(images[i]);
                 receipe.setShortDescription(program.getString("shortDescription"));
                 receipes.add(receipe);
-
             }
 
             ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
@@ -161,24 +174,5 @@ public class DataProcessor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static String loadProgramsData(InputStream stream) throws IOException {
-        InputStreamReader inputStreamReader = new InputStreamReader(stream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-        String receiveString;
-        StringBuilder stringBuilder = new StringBuilder();
-
-        while ((receiveString = bufferedReader.readLine()) != null) {
-            stringBuilder.append(receiveString);
-            stringBuilder.append("\n");
-        }
-
-        bufferedReader.close();
-        inputStreamReader.close();
-        stream.close();
-
-        return stringBuilder.toString();
     }
 }

@@ -123,37 +123,7 @@
           "description": "Description for Day 5"
         }
       ]
-    },
-    {
-      "name": "rice program",
-      "description": "Description for rice program",
-      "duration": 7,
-      "new": 1,
-      "recommended": 1,
-      "shortDescription": "This is short description",
-      "category": "diet",
-      "schedule": [
-        {
-          "name": "Day 1",
-          "description": "Description for Day 1"
-        },
-        {
-          "name": "Day 2",
-          "description": "Description for Day 2"
-        },
-        {
-          "name": "Day 3",
-          "description": "Description for Day 3"
-        },
-        {
-          "name": "Day 4",
-          "description": "Description for Day 4"
-        },
-        {
-          "name": "Day 5",
-          "description": "Description for Day 5"
-        }
-      ]
     }
+
   ]
 }

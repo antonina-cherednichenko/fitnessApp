@@ -121,7 +121,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                         } catch (Exception exc) {
                             System.out.println("Exception = " + exc);
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -133,7 +132,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         queue.add(stringRequest);
 
     }
-
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
