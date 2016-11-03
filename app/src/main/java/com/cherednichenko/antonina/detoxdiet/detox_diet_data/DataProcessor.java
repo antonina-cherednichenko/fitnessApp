@@ -125,7 +125,7 @@ public class DataProcessor {
 
 
     private static void readJsonAndInitDb(Context context) {
-        String FILENAME = "programs_data";
+        String FILENAME = "programs_content2";
         String res = "";
         try {
             FileInputStream fis = context.openFileInput(FILENAME);

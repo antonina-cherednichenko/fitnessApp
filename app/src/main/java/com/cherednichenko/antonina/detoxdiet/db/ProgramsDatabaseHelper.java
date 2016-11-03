@@ -21,8 +21,8 @@ import java.util.List;
 public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "DetoxDietDatabase";
-    private static final int DATABASE_VERSION = 8;
+    private static final String DATABASE_NAME = "DetoxDietsDatabase";
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -46,6 +46,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_DAY_ID = "id";
     private static final String KEY_DAY_PROGRAM_ID_FK = "programId";
     private static final String KEY_DAY_NAME = "dayName";
+    private static final String KEY_DAY_PHOTO = "dayPhoto";
+    private static final String KEY_DAY_PHOTO_ONLY = "dayPhotoOnly";
     private static final String KEY_DAY_DESCRIPTION = "dayDescription";
 
     //Schedule events columns
@@ -94,6 +96,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_DAY_ID + " INTEGER PRIMARY KEY," +
                 KEY_DAY_NAME + " TEXT," +
                 KEY_DAY_DESCRIPTION + " TEXT," +
+                KEY_DAY_PHOTO + " TEXT," +
+                KEY_DAY_PHOTO_ONLY + " INTEGER," +
                 KEY_DAY_PROGRAM_ID_FK + " INTEGER REFERENCES " + TABLE_PROGRAMS + // Define a foreign key
                 ")";
 
@@ -125,6 +129,10 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_DAY_PROGRAM_ID_FK, programId);
             values.put(KEY_DAY_NAME, day.getName());
             values.put(KEY_DAY_DESCRIPTION, day.getDescription());
+
+            //TODO replace with real values
+            values.put(KEY_DAY_PHOTO, "");
+            values.put(KEY_DAY_PHOTO_ONLY, 1);
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
             db.insertOrThrow(TABLE_DAYS, null, values);
@@ -271,6 +279,9 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                             DayInfo newDay = new DayInfo();
                             newDay.setDescription(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
                             newDay.setName(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_NAME)));
+
+                            //TODO add setting new attributes for day
+
                             days.add(newDay);
 
                         } while (dayCursor.moveToNext());

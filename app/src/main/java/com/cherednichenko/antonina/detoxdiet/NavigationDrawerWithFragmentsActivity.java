@@ -3,6 +3,7 @@ package com.cherednichenko.antonina.detoxdiet;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,19 +18,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietLaunchMode;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
 
+import org.apache.commons.io.IOUtils;
+
+import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
@@ -41,17 +44,23 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private String[] navigationItems;
 
+
+    private ProgressBar progressBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_with_fragments);
 
-        getContentFromBackendService();
-
         mTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         //mDrawerLayout.setScrimColor(getResources().getColor(R.color.colorPrimary));
+
+        //download content from backend service
+        new DownloadContentTask().execute();
 
         NavigationDataModel[] drawerItems = new NavigationDataModel[5];
 
@@ -99,38 +108,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
         //handle search results
         handleIntent(getIntent());
-    }
-
-    private void getContentFromBackendService() {
-        // Instantiate the RequestQueue.
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://mighty-bayou-30907.herokuapp.com/data";
-
-        // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        String FILENAME = "programs_data";
-
-                        try {
-                            FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-                            fos.write(response.getBytes());
-                            fos.close();
-
-                        } catch (Exception exc) {
-                            System.out.println("Exception = " + exc);
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("Error retrieing content from backend");
-            }
-        });
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
-
     }
 
     private void handleIntent(Intent intent) {
@@ -278,6 +255,50 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         return true;
     }
 
+    private class DownloadContentTask extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            progressBar.setVisibility(ProgressBar.VISIBLE);
+            mDrawerLayout.setVisibility(FrameLayout.INVISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            // Instantiate the RequestQueue.
+            HttpURLConnection urlConnection;
+
+            try {
+                URL url = new URL("https://mighty-bayou-30907.herokuapp.com/data");
+                urlConnection = (HttpURLConnection) url.openConnection();
+                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                return IOUtils.toString(in);
+
+            } catch (Exception e) {
+                System.out.println("Exception = " + e);
+
+            } finally {
+                //urlConnection.disconnect();
+            }
+            return "";
+        }
+
+        protected void onPostExecute(String result) {
+            String FILENAME = "programs_content2";
+            try {
+                FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                fos.write(result.getBytes());
+                fos.close();
+            } catch (Exception exc) {
+                System.out.println("Exception = " + exc);
+            }
+
+
+            progressBar.setVisibility(ProgressBar.INVISIBLE);
+            mDrawerLayout.setVisibility(DrawerLayout.VISIBLE);
+        }
+
+    }
 
 }
 
