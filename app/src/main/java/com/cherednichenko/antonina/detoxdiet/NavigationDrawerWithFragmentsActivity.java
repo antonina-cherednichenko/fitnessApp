@@ -22,6 +22,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
+import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_programs_list.DetoxDietLaunchMode;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.DrawerItemCustomAdapter;
 import com.cherednichenko.antonina.detoxdiet.navigation_drawer.NavigationDataModel;
@@ -266,7 +267,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Void... params) {
             // Instantiate the RequestQueue.
-            HttpURLConnection urlConnection;
+            HttpURLConnection urlConnection = null;
 
             try {
                 URL url = new URL("https://mighty-bayou-30907.herokuapp.com/data");
@@ -278,22 +279,23 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 System.out.println("Exception = " + e);
 
             } finally {
-                //urlConnection.disconnect();
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
             }
-            return "";
+            return "{}";
         }
 
         protected void onPostExecute(String result) {
-            String FILENAME = "programs_content2";
+
             try {
-                FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+                FileOutputStream fos = openFileOutput(DataProcessor.DATA_FILENAME, Context.MODE_PRIVATE);
                 fos.write(result.getBytes());
                 fos.close();
             } catch (Exception exc) {
                 System.out.println("Exception = " + exc);
             }
-
-
+            
             progressBar.setVisibility(ProgressBar.INVISIBLE);
             mDrawerLayout.setVisibility(DrawerLayout.VISIBLE);
         }

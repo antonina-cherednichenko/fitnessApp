@@ -26,6 +26,8 @@ public class DataProcessor {
 
     private static boolean dbIsInitilized = false;
 
+    public static String  DATA_FILENAME = "programs_data_content";
+
     public static List<ProgramInfo> getAllPrograms(Context context) {
         ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
         if (!dbIsInitilized) {
@@ -125,10 +127,9 @@ public class DataProcessor {
 
 
     private static void readJsonAndInitDb(Context context) {
-        String FILENAME = "programs_content2";
         String res = "";
         try {
-            FileInputStream fis = context.openFileInput(FILENAME);
+            FileInputStream fis = context.openFileInput(DATA_FILENAME);
             res = IOUtils.toString(fis);
             fis.close();
         } catch (Exception exc) {
