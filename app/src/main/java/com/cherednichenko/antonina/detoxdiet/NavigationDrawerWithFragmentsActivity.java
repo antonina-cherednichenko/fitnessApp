@@ -34,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
@@ -61,6 +62,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         //mDrawerLayout.setScrimColor(getResources().getColor(R.color.colorPrimary));
 
         //download content from backend service
+
         new DownloadContentTask().execute();
 
         NavigationDataModel[] drawerItems = new NavigationDataModel[5];
@@ -81,19 +83,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
 
-        //setup default fragment with program cards
-        Fragment fragment = new AllDetoxDietTabFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
-        fragment.setArguments(bundle);
-
-        if (fragment != null) {
-            // Insert the fragment by replacing any existing fragment
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, fragment)
-                    .commit();
-        }
 
         setupToolbar();
         setTitle("Programs");
@@ -293,6 +282,20 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 fos.close();
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+
+            //setup default fragment with program cards
+            Fragment fragment = new AllDetoxDietTabFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
+            fragment.setArguments(bundle);
+
+            if (fragment != null) {
+                // Insert the fragment by replacing any existing fragment
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
             }
 
             progressBar.setVisibility(ProgressBar.INVISIBLE);
