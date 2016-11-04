@@ -26,7 +26,7 @@ public class DataProcessor {
 
     private static boolean dbIsInitilized = false;
 
-    public static String  DATA_FILENAME = "programs_data_content";
+    public static String DATA_FILENAME = "programs_data_content";
 
     public static List<ProgramInfo> getAllPrograms(Context context) {
         ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
@@ -150,9 +150,9 @@ public class DataProcessor {
                 List<DayInfo> days = new ArrayList<>();
                 for (int j = 0; j < schedule.length(); j++) {
                     JSONObject day = schedule.getJSONObject(j);
-                    days.add(new DayInfo(day.getString("name"), day.getString("description")));
+                    days.add(new DayInfo(day.getString("name"), day.getString("description"),
+                            day.getString("photo"), day.getInt("photoOnly")));
                 }
-
                 ProgramInfo receipe = new ProgramInfo();
                 receipe.setDays(days);
                 receipe.setDescription(program.getString("description"));

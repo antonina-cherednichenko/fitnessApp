@@ -8,14 +8,18 @@ import java.io.Serializable;
 public class DayInfo implements Serializable{
     private String name;
     private String description;
+    private String photo;
+    private int onlyPhoto;
 
     public DayInfo() {
         super();
     }
 
-    public DayInfo(String name, String description) {
+    public DayInfo(String name, String description, String photo, int onlyPhoto) {
         this.name = name;
         this.description = description;
+        this.photo = photo;
+        this.onlyPhoto = onlyPhoto;
     }
 
     public void setDescription(String description) {
@@ -32,5 +36,21 @@ public class DayInfo implements Serializable{
 
     public String getName() {
         return name;
+    }
+
+    public int getOnlyPhoto() {
+        return onlyPhoto;
+    }
+
+    public void setOnlyPhoto(int onlyPhoto) {
+        this.onlyPhoto = onlyPhoto;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

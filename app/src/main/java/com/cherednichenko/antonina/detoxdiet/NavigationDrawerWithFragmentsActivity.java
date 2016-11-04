@@ -276,7 +276,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 return IOUtils.toString(in);
 
             } catch (Exception e) {
-                System.out.println("Exception = " + e);
+                e.printStackTrace();
 
             } finally {
                 if (urlConnection != null) {
@@ -287,15 +287,14 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-
             try {
                 FileOutputStream fos = openFileOutput(DataProcessor.DATA_FILENAME, Context.MODE_PRIVATE);
                 fos.write(result.getBytes());
                 fos.close();
-            } catch (Exception exc) {
-                System.out.println("Exception = " + exc);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            
+
             progressBar.setVisibility(ProgressBar.INVISIBLE);
             mDrawerLayout.setVisibility(DrawerLayout.VISIBLE);
         }

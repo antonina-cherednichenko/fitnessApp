@@ -129,10 +129,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_DAY_PROGRAM_ID_FK, programId);
             values.put(KEY_DAY_NAME, day.getName());
             values.put(KEY_DAY_DESCRIPTION, day.getDescription());
-
-            //TODO replace with real values
-            values.put(KEY_DAY_PHOTO, "");
-            values.put(KEY_DAY_PHOTO_ONLY, 1);
+            values.put(KEY_DAY_PHOTO, day.getPhoto());
+            values.put(KEY_DAY_PHOTO_ONLY, day.getOnlyPhoto());
 
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
             db.insertOrThrow(TABLE_DAYS, null, values);
@@ -279,8 +277,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                             DayInfo newDay = new DayInfo();
                             newDay.setDescription(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
                             newDay.setName(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_NAME)));
-
-                            //TODO add setting new attributes for day
+                            newDay.setPhoto(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_PHOTO)));
+                            newDay.setOnlyPhoto(dayCursor.getInt(dayCursor.getColumnIndex(KEY_DAY_PHOTO_ONLY)));
 
                             days.add(newDay);
 
@@ -343,9 +341,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
         // Updating profile picture url for user with that userName
         return db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + " = ?",
                 new String[]{String.valueOf(program.getName())});
-
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -356,7 +352,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
             onCreate(db);
         }
-
     }
 
     @Override
