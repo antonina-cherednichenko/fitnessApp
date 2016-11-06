@@ -24,18 +24,15 @@ import android.widget.TextView;
 import com.cherednichenko.antonina.detoxdiet.NotificationService;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
-import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity;
+import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by tonya on 8/29/16.
@@ -62,11 +59,22 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     @Override
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
-        ProgramInfo ri = receipeList.get(i);
-        receipeViewHolder.name.setText(ri.getName());
-        receipeViewHolder.description.setText(ri.getDescription());
-        receipeViewHolder.image.setImageResource(ri.getPhotoId());
-        receipeViewHolder.liked.setImageResource(ri.getLiked() == 1 ? R.drawable.ic_heart_red : R.drawable.ic_heart_outline_grey);
+        ProgramInfo pi = receipeList.get(i);
+        receipeViewHolder.name.setText(pi.getName());
+        receipeViewHolder.description.setText(pi.getDescription());
+
+        try {
+            Picasso
+                    .with(context)
+                    .load(pi.getPhotoURL())
+                    .centerCrop()
+                    .resize(receipeViewHolder.image.getWidth(), receipeViewHolder.image.getHeight())
+                    //.fit()
+                    .into(receipeViewHolder.image);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        receipeViewHolder.liked.setImageResource(pi.getLiked() == 1 ? R.drawable.ic_heart_red : R.drawable.ic_heart_outline_grey);
 
     }
 

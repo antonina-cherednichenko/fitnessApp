@@ -18,6 +18,7 @@ import com.cherednichenko.antonina.detoxdiet.NotificationService;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -58,7 +59,11 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
 
         collapsingToolbar.setTitle(receipe.getName());
         ImageView programImage = (ImageView) findViewById(R.id.toolbar_header_image);
-        programImage.setImageResource(receipe.getPhotoId());
+        Picasso
+                .with(this)
+                .load(receipe.getPhotoURL())
+                .fit()
+                .into(programImage);
 
         FloatingActionButton schedule = (FloatingActionButton) findViewById(R.id.schedule_floating_button);
         schedule.setOnClickListener(new FloatingActionButton.OnClickListener() {

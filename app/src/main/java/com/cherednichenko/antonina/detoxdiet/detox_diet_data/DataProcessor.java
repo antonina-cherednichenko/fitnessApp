@@ -9,11 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +17,8 @@ import java.util.List;
  * Created by tonya on 9/18/16.
  */
 public class DataProcessor {
-    private static int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
-            R.drawable.juice_detox_program, R.drawable.rice_detox_program};
+//    private static int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
+//            R.drawable.juice_detox1_program, R.drawable.rice_detox_program};
 
     private static boolean dbIsInitilized = false;
 
@@ -162,7 +158,7 @@ public class DataProcessor {
                 receipe.setRecommended(program.getInt("recommended"));
                 receipe.setIsNew(program.getInt("new"));
                 receipe.setName(program.getString("name"));
-                receipe.setPhotoId(images[i]);
+                receipe.setPhotoURL(program.getString("photoURL"));
                 receipe.setShortDescription(program.getString("shortDescription"));
                 receipes.add(receipe);
             }

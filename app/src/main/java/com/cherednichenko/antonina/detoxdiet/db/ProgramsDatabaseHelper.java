@@ -22,7 +22,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "DDDatabase";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -86,7 +86,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_LIKED + " INTEGER," +
                 KEY_PROGRAM_NEW + " INTEGER," +
                 KEY_PROGRAM_RECOMMENDED + " INTEGER," +
-                KEY_PROGRAM_PHOTO_URL + " INTEGER," +
+                KEY_PROGRAM_PHOTO_URL + " TEXT," +
                 KEY_PROGRAM_DURATION + " INTEGER," +
                 KEY_PROGRAM_CATEGORY + " TEXT" +
                 ")";
@@ -156,7 +156,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_NEW, program.getIsNew());
             values.put(KEY_PROGRAM_NEW, program.getRecommended());
             values.put(KEY_PROGRAM_NAME, program.getName());
-            values.put(KEY_PROGRAM_PHOTO_URL, program.getPhotoId());
+            values.put(KEY_PROGRAM_PHOTO_URL, program.getPhotoURL());
             values.put(KEY_PROGRAM_SHORT_DESC, program.getShortDescription());
             values.put(KEY_PROGRAM_CATEGORY, program.getCategory());
 
@@ -262,7 +262,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setIsNew(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_NEW)));
                     newProgram.setRecommended(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_RECOMMENDED)));
                     newProgram.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_DURATION)));
-                    newProgram.setPhotoId(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
+                    newProgram.setPhotoURL(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
                     newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
                     List<DayInfo> days = new ArrayList<>();
                     int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));

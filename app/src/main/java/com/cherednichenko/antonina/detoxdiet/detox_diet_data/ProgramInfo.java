@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class ProgramInfo implements Serializable {
     private String description;
-    private int photoId;
+    private String photoURL;
     private int liked;
     private int isNew;
     private int recommended;
@@ -66,8 +66,8 @@ public class ProgramInfo implements Serializable {
         this.name = name;
     }
 
-    public void setPhotoId(int photoId) {
-        this.photoId = photoId;
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
     }
 
     public List<DayInfo> getDays() {
@@ -90,8 +90,8 @@ public class ProgramInfo implements Serializable {
         return name;
     }
 
-    public int getPhotoId() {
-        return photoId;
+    public String getPhotoURL() {
+        return photoURL;
     }
 
     public String getShortDescription() {
@@ -105,7 +105,7 @@ public class ProgramInfo implements Serializable {
 
         ProgramInfo that = (ProgramInfo) o;
 
-        if (photoId != that.photoId) return false;
+        if (!photoURL.equals(photoURL)) return false;
         if (!name.equals(that.name)) return false;
         return description.equals(that.description);
 
