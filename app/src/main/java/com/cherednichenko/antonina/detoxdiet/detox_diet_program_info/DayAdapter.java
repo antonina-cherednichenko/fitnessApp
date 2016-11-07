@@ -1,6 +1,7 @@
 package com.cherednichenko.antonina.detoxdiet.detox_diet_program_info;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DayInfo;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -44,7 +46,8 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
                 Picasso
                         .with(context)
                         .load(di.getPhoto())
-                        .fit()
+                        .transform(new FitToTargetViewTransformation(dayViewHolder.oneBigImage))
+                        //.fit()
                         .into(dayViewHolder.oneBigImage);
 
             } catch (Exception e) {
@@ -76,6 +79,36 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
             name = (TextView) v.findViewById(R.id.day_name);
             description = (TextView) v.findViewById(R.id.day_description);
             oneBigImage = (ImageView) v.findViewById(R.id.one_big_day_photo);
+        }
+    }
+
+    public class FitToTargetViewTransformation implements Transformation {
+        private View view;
+
+        public FitToTargetViewTransformation(View view) {
+            this.view = view;
+        }
+
+        @Override
+        public Bitmap transform(Bitmap source) {
+            int targetWidth = view.getWidth();
+
+            double aspectRatio = (double) source.getHeight() / (double) source.getWidth();
+            int targetHeight = (int) (targetWidth * aspectRatio);
+            if (source.getHeight() >= source.getWidth()) {
+                return source;
+            }
+            Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
+            if (result != source) {
+                // Same bitmap is returned if sizes are the same
+                source.recycle();
+            }
+            return result;
+        }
+
+        @Override
+        public String key() {
+            return "transformation" + " desiredWidth";
         }
     }
 }
