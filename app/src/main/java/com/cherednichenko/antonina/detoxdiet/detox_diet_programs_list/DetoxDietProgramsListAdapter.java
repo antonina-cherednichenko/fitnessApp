@@ -62,14 +62,13 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
         ProgramInfo pi = receipeList.get(i);
         receipeViewHolder.name.setText(pi.getName());
         receipeViewHolder.description.setText(pi.getDescription());
-
+        System.out.println("width = " + receipeViewHolder.image.getWidth());
+        System.out.println("height = " + receipeViewHolder.image.getHeight());
         try {
             Picasso
                     .with(context)
                     .load(pi.getPhotoURL())
-                    .centerCrop()
-                    .resize(receipeViewHolder.image.getWidth(), receipeViewHolder.image.getHeight())
-                    //.fit()
+                    .fit()
                     .into(receipeViewHolder.image);
         } catch (Exception e) {
             e.printStackTrace();
@@ -84,6 +83,10 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
         View view = LayoutInflater.
                 from(viewGroup.getContext()).
                 inflate(R.layout.receipe_layout, viewGroup, false);
+
+        System.out.println("VIEW HEIGHT =" + view.getHeight());
+        System.out.println("VIEW WEIGHT = " + view.getWidth());
+
         final ReceipeViewHolder holder = new ReceipeViewHolder(view);
 
         //TODO replace this on some cool animation
