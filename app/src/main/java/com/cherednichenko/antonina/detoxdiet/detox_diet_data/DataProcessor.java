@@ -24,7 +24,10 @@ public class DataProcessor {
 
     public static String DATA_FILENAME = "programs_data_content";
 
-    public static void resetDataBase() {
+    public static int version = 0;
+
+    public static void updateDataBase(int v) {
+        version = v;
         dbIsInitilized = false;
     }
 

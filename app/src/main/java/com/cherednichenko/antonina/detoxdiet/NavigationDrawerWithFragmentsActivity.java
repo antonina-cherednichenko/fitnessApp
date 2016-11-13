@@ -34,7 +34,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.ExecutionException;
 
 
 public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
@@ -82,7 +81,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
         View header = getLayoutInflater().inflate(R.layout.navigation_header, null);
         mDrawerList.addHeaderView(header);
-
 
         setupToolbar();
         setTitle("Programs");
@@ -245,7 +243,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         return true;
     }
 
-    private class DownloadContentTask extends AsyncTask<Void, Void, String> {
+    private class DownloadContentTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -254,15 +252,24 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(Void... params) {
-            // Instantiate the RequestQueue.
+        protected Void doInBackground(Void... params) {
             HttpURLConnection urlConnection = null;
-
             try {
-                URL url = new URL("https://mighty-bayou-30907.herokuapp.com/data");
-                urlConnection = (HttpURLConnection) url.openConnection();
-                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                return IOUtils.toString(in);
+                URL urlVersion = new URL("https://mighty-bayou-30907.herokuapp.com/version");
+                urlConnection = (HttpURLConnection) urlVersion.openConnection();
+                InputStream inVersion = new BufferedInputStream(urlConnection.getInputStream());
+                int version = Integer.parseInt(IOUtils.toString(inVersion));
+                if (DataProcessor.version < version) {
+                    URL urlData = new URL("https://mighty-bayou-30907.herokuapp.com/data");
+                    urlConnection = (HttpURLConnection) urlData.openConnection();
+                    InputStream inData = new BufferedInputStream(urlConnection.getInputStream());
+                    String result = IOUtils.toString(inData);
+
+                    FileOutputStream fos = openFileOutput(DataProcessor.DATA_FILENAME, Context.MODE_PRIVATE);
+                    fos.write(result.getBytes());
+                    fos.close();
+                    DataProcessor.updateDataBase(version);
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -272,19 +279,10 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                     urlConnection.disconnect();
                 }
             }
-            return "{}";
+            return null;
         }
 
-        protected void onPostExecute(String result) {
-            try {
-                FileOutputStream fos = openFileOutput(DataProcessor.DATA_FILENAME, Context.MODE_PRIVATE);
-                fos.write(result.getBytes());
-                fos.close();
-                DataProcessor.resetDataBase();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
+        protected void onPostExecute(Void res) {
             //setup default fragment with program cards
             Fragment fragment = new AllDetoxDietTabFragment();
             Bundle bundle = new Bundle();
