@@ -280,6 +280,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 FileOutputStream fos = openFileOutput(DataProcessor.DATA_FILENAME, Context.MODE_PRIVATE);
                 fos.write(result.getBytes());
                 fos.close();
+                DataProcessor.resetDataBase();
             } catch (Exception e) {
                 e.printStackTrace();
             }

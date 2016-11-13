@@ -21,8 +21,8 @@ import java.util.List;
 public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "DDDatabase";
-    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "DDDatabase1";
+    private static final int DATABASE_VERSION = 1;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -41,6 +41,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_PROGRAM_PHOTO_URL = "photo";
     private static final String KEY_PROGRAM_DURATION = "duration";
     private static final String KEY_PROGRAM_CATEGORY = "category";
+    private static final String KEY_PROGRAM_FROM_SOURCE_NAME = "source_name";
+    private static final String KEY_PROGRAM_FROM_SOURCE_URL = "source_url";
 
     // Days Table Columns
     private static final String KEY_DAY_ID = "id";
@@ -84,11 +86,13 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_DESC + " TEXT," +
                 KEY_PROGRAM_SHORT_DESC + " TEXT," +
                 KEY_PROGRAM_LIKED + " INTEGER," +
-                KEY_PROGRAM_NEW + " INTEGER," +
+                KEY_PROGRAM_NEW + " INThEGER," +
                 KEY_PROGRAM_RECOMMENDED + " INTEGER," +
                 KEY_PROGRAM_PHOTO_URL + " TEXT," +
                 KEY_PROGRAM_DURATION + " INTEGER," +
-                KEY_PROGRAM_CATEGORY + " TEXT" +
+                KEY_PROGRAM_CATEGORY + " TEXT," +
+                KEY_PROGRAM_FROM_SOURCE_NAME + " TEXT," +
+                KEY_PROGRAM_FROM_SOURCE_URL + " TEXT" +
                 ")";
 
         String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS +
@@ -132,6 +136,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_DAY_PHOTO, day.getPhoto());
             values.put(KEY_DAY_PHOTO_ONLY, day.getOnlyPhoto());
 
+
             // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
             db.insertOrThrow(TABLE_DAYS, null, values);
             db.setTransactionSuccessful();
@@ -159,6 +164,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_PHOTO_URL, program.getPhotoURL());
             values.put(KEY_PROGRAM_SHORT_DESC, program.getShortDescription());
             values.put(KEY_PROGRAM_CATEGORY, program.getCategory());
+            values.put(KEY_PROGRAM_FROM_SOURCE_NAME, program.getFromSourceName());
+            values.put(KEY_PROGRAM_FROM_SOURCE_URL, program.getFromSourceUrl());
 
             int rows = db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + "= ?", new String[]{program.getName()});
             if (rows == 1) {
@@ -264,6 +271,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_DURATION)));
                     newProgram.setPhotoURL(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
                     newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
+                    newProgram.setFromSourceName(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_NAME)));
+                    newProgram.setFromSourceUrl(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_URL)));
                     List<DayInfo> days = new ArrayList<>();
                     int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));
 
@@ -348,6 +357,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCHEDULE);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROGRAMS);
 
             onCreate(db);

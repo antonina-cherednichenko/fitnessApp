@@ -84,10 +84,6 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         });
     }
 
-    private void startIntoAnimation() {
-
-    }
-
     public boolean onOptionsItemSelected(MenuItem item) {
         finish();
         return true;

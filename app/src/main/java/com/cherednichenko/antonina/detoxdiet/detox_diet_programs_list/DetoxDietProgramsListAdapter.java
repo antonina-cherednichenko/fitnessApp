@@ -9,8 +9,11 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +52,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
     public DetoxDietProgramsListAdapter(Context context, List<ProgramInfo> receipeList) {
         this.context = context;
         this.receipeList = receipeList;
-
     }
 
     @Override
@@ -59,9 +61,26 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     @Override
     public void onBindViewHolder(ReceipeViewHolder receipeViewHolder, int i) {
-        ProgramInfo pi = receipeList.get(i);
+        final ProgramInfo pi = receipeList.get(i);
         receipeViewHolder.name.setText(pi.getName());
         receipeViewHolder.description.setText(pi.getDescription());
+        String sourceLink = String.format("Source: <font color=#00BFFF><u> %s</u></font>", pi.getFromSourceName());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            receipeViewHolder.source.setText(Html.fromHtml(sourceLink, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            receipeViewHolder.source.setText(Html.fromHtml(sourceLink));
+        }
+
+        receipeViewHolder.source.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(pi.getFromSourceUrl()));
+                context.startActivity(intent);
+            }
+        });
+
         try {
             Picasso
                     .with(context)
@@ -167,6 +186,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
         public TextView description;
         public ImageView image;
         public ImageButton liked;
+        public TextView source;
 
         private int year;
         private int monthOfYear;
@@ -179,7 +199,7 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
             description = (TextView) v.findViewById(R.id.receipe_description);
             image = (ImageView) v.findViewById(R.id.receipe_image);
             liked = (ImageButton) v.findViewById(R.id.btnLike);
-
+            source = (TextView) v.findViewById(R.id.from_source_text);
         }
 
         @Override
@@ -234,7 +254,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
         if (animated) {
 
             AnimatorSet animatorSet = new AnimatorSet();
-
 
             ObjectAnimator rotationAnim = ObjectAnimator.ofFloat(holder.liked, "rotation", 0f, 360f);
             rotationAnim.setDuration(300);

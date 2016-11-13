@@ -17,6 +17,8 @@ public class ProgramInfo implements Serializable {
     private int duration;
     private String shortDescription;
     private String category;
+    private String fromSourceName;
+    private String fromSourceUrl;
 
     public int getIsNew() {
         return isNew;
@@ -96,6 +98,22 @@ public class ProgramInfo implements Serializable {
 
     public String getShortDescription() {
         return shortDescription;
+    }
+
+    public String getFromSourceName() {
+        return fromSourceName;
+    }
+
+    public void setFromSourceName(String fromSourceName) {
+        this.fromSourceName = fromSourceName;
+    }
+
+    public String getFromSourceUrl() {
+        return fromSourceUrl;
+    }
+
+    public void setFromSourceUrl(String fromSourceUrl) {
+        this.fromSourceUrl = fromSourceUrl;
     }
 
     @Override

@@ -72,6 +72,14 @@
                 android:text="@string/read_more"
                 android:textColor="@color/colorBlue" />
 
+            <TextView
+                android:id="@+id/from_source_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:padding="20px"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
         </LinearLayout>
 
 

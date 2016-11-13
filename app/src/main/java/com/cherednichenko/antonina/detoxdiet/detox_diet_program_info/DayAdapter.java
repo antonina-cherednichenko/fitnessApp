@@ -43,6 +43,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
 
         if (di.getOnlyPhoto() == 1) {
             try {
+
                 Picasso
                         .with(context)
                         .load(di.getPhoto())
@@ -91,6 +92,12 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
 
         @Override
         public Bitmap transform(Bitmap source) {
+            System.out.println("view height = " + view.getWidth());
+            System.out.println("view width = " + view.getHeight());
+
+            System.out.println("source height = " + source.getWidth());
+            System.out.println("source width = " + source.getHeight());
+
             int targetWidth = view.getWidth();
 
             double aspectRatio = (double) source.getHeight() / (double) source.getWidth();
@@ -98,6 +105,8 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
             if (source.getHeight() >= source.getWidth()) {
                 return source;
             }
+
+
             Bitmap result = Bitmap.createScaledBitmap(source, targetWidth, targetHeight, false);
             if (result != source) {
                 // Same bitmap is returned if sizes are the same

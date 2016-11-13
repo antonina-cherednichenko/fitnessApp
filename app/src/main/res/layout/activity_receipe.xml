@@ -50,9 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:src="@drawable/ic_fb_schedule"
         app:layout_anchor="@+id/appbar"
-        app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_fb_schedule"/>
+        app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>
 

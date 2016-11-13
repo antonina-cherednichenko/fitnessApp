@@ -24,6 +24,10 @@ public class DataProcessor {
 
     public static String DATA_FILENAME = "programs_data_content";
 
+    public static void resetDataBase() {
+        dbIsInitilized = false;
+    }
+
     public static List<ProgramInfo> getAllPrograms(Context context) {
         ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
         if (!dbIsInitilized) {
@@ -160,6 +164,8 @@ public class DataProcessor {
                 receipe.setName(program.getString("name"));
                 receipe.setPhotoURL(program.getString("photoURL"));
                 receipe.setShortDescription(program.getString("shortDescription"));
+                receipe.setFromSourceUrl(program.getString("sourceUrl"));
+                receipe.setFromSourceName(program.getString("sourceName"));
                 receipes.add(receipe);
             }
 
