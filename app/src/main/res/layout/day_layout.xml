@@ -1,7 +1,7 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/day_view"
     android:layout_width="match_parent"
-    android:layout_height="280dp"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
     <RelativeLayout
@@ -13,7 +13,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             android:textSize="22dp"
             android:textStyle="bold" />
 
@@ -23,7 +25,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/day_name"
             android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:paddingTop="8dp"
+            android:paddingBottom="16dp"
             android:textSize="14dp" />
 
         <ImageView
