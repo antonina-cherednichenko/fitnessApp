@@ -9,6 +9,8 @@ public class DayInfo implements Serializable{
     private String name;
     private String description;
     private String photo;
+
+    //now it is used as mode
     private int onlyPhoto;
 
     public DayInfo() {

@@ -14,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.cherednichenko.antonina.detoxdiet.NotificationService;
 import com.cherednichenko.antonina.detoxdiet.R;
@@ -24,8 +23,6 @@ import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
-
-import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -55,6 +52,8 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
+
+//        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         dayList.setLayoutManager(llm);
 

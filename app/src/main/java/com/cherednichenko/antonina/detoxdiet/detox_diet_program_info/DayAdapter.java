@@ -19,10 +19,14 @@ import java.util.List;
 /**
  * Created by tonya on 8/29/16.
  */
-public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
+public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
 
     private List<DayInfo> dayList;
     private Context context;
+
+    private static final int ONLY_IMAGE_TYPE = 1;
+    private static final int IMAGE_AND_DESCRIPTION_TYPE = 2;
+    private static final int ONLY_DESCRIPTION_TYPE = 3;
 
     public DayAdapter(Context context, List<DayInfo> dayList) {
         this.context = context;
@@ -35,51 +39,116 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(dayViewHolder dayViewHolder, int i) {
+    public void onBindViewHolder(ViewHolder viewHolder, int i) {
         DayInfo di = dayList.get(i);
-        dayViewHolder.name.setText(di.getName());
-        dayViewHolder.description.setText(di.getDescription());
-        dayViewHolder.description.setVisibility(TextView.VISIBLE);
 
-        if (di.getOnlyPhoto() == 1) {
+        if (viewHolder.getItemViewType() == ONLY_IMAGE_TYPE) {
+            ViewHolderOnlyImage holder = (ViewHolderOnlyImage) viewHolder;
             try {
-
                 Picasso
                         .with(context)
                         .load(di.getPhoto())
-                        .transform(new FitToTargetViewTransformation(dayViewHolder.oneBigImage))
+                        .transform(new FitToTargetViewTransformation(holder.image))
                         //.fit()
-                        .into(dayViewHolder.oneBigImage);
+                        .into(holder.image);
 
             } catch (Exception e) {
                 System.out.println("Error while loading image " + di.getPhoto());
             }
 
-            //dayViewHolder.oneBigImage.setImageResource(R.drawable.wedding_detox_day1);
-            dayViewHolder.oneBigImage.setVisibility(ImageView.VISIBLE);
-            dayViewHolder.description.setVisibility(TextView.INVISIBLE);
+            holder.name.setText(di.getName());
+        } else if (viewHolder.getItemViewType() == ONLY_DESCRIPTION_TYPE) {
+            ViewHolderOnlyDescription holder = (ViewHolderOnlyDescription) viewHolder;
+            holder.name.setText(di.getName());
+            holder.description.setText(di.getDescription());
+
+        } else if (viewHolder.getItemViewType() == IMAGE_AND_DESCRIPTION_TYPE) {
+            ViewHolderImageAndDescription holder = (ViewHolderImageAndDescription) viewHolder;
+
+            try {
+                Picasso
+                        .with(context)
+                        .load(di.getPhoto())
+                        .transform(new FitToTargetViewTransformation(holder.image))
+                        //.fit()
+                        .into(holder.image);
+
+            } catch (Exception e) {
+                System.out.println("Error while loading image " + di.getPhoto());
+            }
+            holder.name.setText(di.getName());
+            holder.description.setText(di.getDescription());
         }
     }
 
     @Override
-    public dayViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.
-                from(viewGroup.getContext()).
-                inflate(R.layout.day_layout, viewGroup, false);
-        final dayViewHolder holder = new dayViewHolder(view);
-        return holder;
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view;
+        if (viewType == ONLY_IMAGE_TYPE) {
+            view = LayoutInflater.
+                    from(viewGroup.getContext()).
+                    inflate(R.layout.day_layout_only_image, viewGroup, false);
+            return new ViewHolderOnlyImage(view);
+        } else if (viewType == IMAGE_AND_DESCRIPTION_TYPE) {
+            view = LayoutInflater.
+                    from(viewGroup.getContext()).
+                    inflate(R.layout.day_layout_image_and_description, viewGroup, false);
+            return new ViewHolderImageAndDescription(view);
+            //ONLY_DESCRIPTION_TYPE
+        } else {
+            view = LayoutInflater.
+                    from(viewGroup.getContext()).
+                    inflate(R.layout.day_layout_only_description, viewGroup, false);
+            return new ViewHolderOnlyDescription(view);
+        }
     }
 
-    public class dayViewHolder extends RecyclerView.ViewHolder {
-        protected TextView name;
-        protected TextView description;
-        protected ImageView oneBigImage;
+    @Override
+    public int getItemViewType(int position) {
+        DayInfo di = dayList.get(position);
+        return di.getOnlyPhoto();
+    }
 
-        public dayViewHolder(View v) {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public ViewHolder(View v) {
+            super(v);
+        }
+    }
+
+
+    //Define ViewHolders for different types of cards
+    public class ViewHolderOnlyImage extends ViewHolder {
+        TextView name;
+        ImageView image;
+
+        public ViewHolderOnlyImage(View v) {
+            super(v);
+            name = (TextView) v.findViewById(R.id.day_name);
+            image = (ImageView) v.findViewById(R.id.day_image);
+        }
+    }
+
+    public class ViewHolderOnlyDescription extends ViewHolder {
+        TextView name;
+        TextView description;
+
+        public ViewHolderOnlyDescription(View v) {
             super(v);
             name = (TextView) v.findViewById(R.id.day_name);
             description = (TextView) v.findViewById(R.id.day_description);
-            oneBigImage = (ImageView) v.findViewById(R.id.one_big_day_photo);
+        }
+    }
+
+    public class ViewHolderImageAndDescription extends ViewHolder {
+        TextView name;
+        TextView description;
+        ImageView image;
+
+        public ViewHolderImageAndDescription(View v) {
+            super(v);
+            name = (TextView) v.findViewById(R.id.day_name);
+            description = (TextView) v.findViewById(R.id.day_description);
+            image = (ImageView) v.findViewById(R.id.day_image);
         }
     }
 
@@ -92,12 +161,6 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.dayViewHolder> {
 
         @Override
         public Bitmap transform(Bitmap source) {
-            System.out.println("view height = " + view.getWidth());
-            System.out.println("view width = " + view.getHeight());
-
-            System.out.println("source height = " + source.getWidth());
-            System.out.println("source width = " + source.getHeight());
-
             int targetWidth = view.getWidth();
 
             double aspectRatio = (double) source.getHeight() / (double) source.getWidth();

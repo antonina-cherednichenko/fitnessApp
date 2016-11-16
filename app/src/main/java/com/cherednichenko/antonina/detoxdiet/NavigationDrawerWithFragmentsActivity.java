@@ -45,7 +45,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private String[] navigationItems;
 
-
     private ProgressBar progressBar;
 
 
