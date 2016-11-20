@@ -69,8 +69,8 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
                 Picasso
                         .with(context)
                         .load(di.getPhoto())
-                        .transform(new FitToTargetViewTransformation(holder.image))
-                        //.fit()
+                        //.transform(new FitToTargetViewTransformation(holder.image))
+                        .fit()
                         .into(holder.image);
 
             } catch (Exception e) {
