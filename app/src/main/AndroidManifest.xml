@@ -23,6 +23,7 @@
         <activity android:name=".IntroductionActivity" />
         <activity
             android:name=".NavigationDrawerWithFragmentsActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.app.searchable"
@@ -32,12 +33,12 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity"
+            android:name=".detox_diet_program_info.ProgramInfoActivity"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".NotificationService"></receiver>
+        <receiver android:name=".NotificationService" />
+
     </application>
 
 </manifest>

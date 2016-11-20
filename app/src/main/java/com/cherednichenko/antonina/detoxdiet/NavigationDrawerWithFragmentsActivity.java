@@ -82,7 +82,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         mDrawerList.addHeaderView(header);
 
         setupToolbar();
-        setTitle("Programs");
+        setTitle(getResources().getString(R.string.navbar_programs));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -95,6 +95,12 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
         //handle search results
         handleIntent(getIntent());
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
     }
 
     private void handleIntent(Intent intent) {
@@ -132,7 +138,6 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     private void selectItem(int position) {
         // Create a new fragment and specify the planet to show based on position
         Fragment fragment;
-        System.out.println("position = " + position);
         switch (position) {
             case 1: {
                 //Receipes item
