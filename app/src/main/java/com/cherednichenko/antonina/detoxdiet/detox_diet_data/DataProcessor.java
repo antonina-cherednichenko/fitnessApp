@@ -172,6 +172,7 @@ public class DataProcessor {
                 receipes.add(receipe);
             }
 
+
             ProgramsDatabaseHelper databaseHelper = ProgramsDatabaseHelper.getInstance(context);
             for (ProgramInfo program : receipes) {
                 databaseHelper.addProgram(program);

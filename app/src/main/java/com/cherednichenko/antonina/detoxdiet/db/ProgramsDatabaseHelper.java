@@ -22,7 +22,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "DDDatabase1";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
@@ -255,7 +255,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     private List<ProgramInfo> getProgramsForQuery(String query) {
         List<ProgramInfo> programs = new ArrayList<>();
-
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         try {

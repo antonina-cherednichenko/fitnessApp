@@ -19,9 +19,9 @@ public class IntroductionActivity extends AppIntro2 {
 
         // Add your slide's fragments here.ß
         // AppIntro will automatically generate the dots indicator and buttons.
-        AppIntroFragment infoSlide1 = (AppIntroFragment.newInstance("Find", "Find latest detox receipts ", R.drawable.introduction_page1, Color.parseColor("#80CBC4")));
-        AppIntroFragment infoSlide2 = (AppIntroFragment.newInstance("Form", "Form your individual program", R.drawable.introduction_page2, Color.parseColor("#80CBC4")));
-        AppIntroFragment infoSlide3 = (AppIntroFragment.newInstance("Follow", "Follow your detoxication schedule", R.drawable.introduction_page3, Color.parseColor("#80CBC4")));
+        AppIntroFragment infoSlide1 = (AppIntroFragment.newInstance("Find", "Find latest detox and diets", R.drawable.introduction_page1, Color.parseColor("#80CBC4")));
+        AppIntroFragment infoSlide2 = (AppIntroFragment.newInstance("Form", "Form your individual health plan", R.drawable.introduction_page2, Color.parseColor("#80CBC4")));
+        AppIntroFragment infoSlide3 = (AppIntroFragment.newInstance("Follow", "Follow your schedule", R.drawable.introduction_page3, Color.parseColor("#80CBC4")));
 
         addSlide(infoSlide1);
         addSlide(infoSlide2);

@@ -23,25 +23,30 @@ import java.util.List;
 /**
  * Created by tonya on 9/20/16.
  */
-public class AllDetoxDietTabFragment extends Fragment {
+
+public class AllDetoxDietTabFragment extends Fragment implements TabSelected {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    private View view;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_all_detox_diet_tab, container, false);
-        view = rootView;
 
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        //done to save selected tab when search was done
+        Bundle args = getArguments();
+        int tab = args.getInt("tab");
+        tabLayout.setScrollPosition(tab, 0f, true);
+        viewPager.setCurrentItem(tab);
 
         return rootView;
     }
@@ -92,6 +97,11 @@ public class AllDetoxDietTabFragment extends Fragment {
         adapter.addFragment(dietFragment, getResources().getString(R.string.tab_diet));
         adapter.addFragment(scheduleFragment, getResources().getString(R.string.tab_schedule));
         viewPager.setAdapter(adapter);
+    }
+
+    @Override
+    public int search() {
+        return viewPager.getCurrentItem();
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

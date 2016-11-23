@@ -108,15 +108,24 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
             String query = intent.getStringExtra(SearchManager.QUERY);
             //use the query to search your data somehow
 
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            Fragment prevFragment = fragmentManager.findFragmentById(R.id.content_frame);
+
+            int tab = 0;
+            if (prevFragment != null && prevFragment instanceof TabSelected) {
+                tab = ((TabSelected) prevFragment).search();
+            }
+
+
             Fragment fragment = new AllDetoxDietTabFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("mode", DetoxDietLaunchMode.SEARCH.getMode());
             bundle.putString("searchQuery", query);
+            bundle.putInt("tab", tab);
             fragment.setArguments(bundle);
 
             if (fragment != null) {
                 // Insert the fragment by replacing any existing fragment
-                FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, fragment)
                         .commit();
@@ -144,6 +153,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
+                bundle.putInt("tab", 0);
                 fragment.setArguments(bundle);
                 break;
 
@@ -153,6 +163,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("mode", DetoxDietLaunchMode.LIKED.getMode());
+                bundle.putInt("tab", 0);
                 fragment.setArguments(bundle);
                 break;
             }
@@ -161,6 +172,7 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
                 fragment = new AllDetoxDietTabFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("mode", DetoxDietLaunchMode.NEW.getMode());
+                bundle.putInt("tab", 0);
                 fragment.setArguments(bundle);
                 break;
             }
