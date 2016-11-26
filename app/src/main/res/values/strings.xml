@@ -29,7 +29,8 @@
     <string name="navbar_about">About</string>
     <string name="navheader_text">Detox and Diets</string>
     <string name="about_message_text">Thanks for your interest!</string>
-    <string name="about_contact_text">If you have any questions, please contact antonina.cherednichenko @gmail.com</string>
+    <string name="about_contact_text">If you have any questions, please contact antonina.cherednichenko@gmail.com</string>
+    <string name="check_connection">Check your internet connection</string>
 
 
     <string-array name="navigation_drawer_items_array">

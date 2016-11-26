@@ -88,7 +88,19 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
                     .with(context)
                     .load(pi.getPhotoURL())
                     .fit()
-                    .into(receipeViewHolder.image);
+//                    .error(R.drawable.no_connection)
+                    .into(receipeViewHolder.image, new com.squareup.picasso.Callback() {
+                        @Override
+                        public void onSuccess() {
+                            //do smth when picture is loaded successfully
+                        }
+
+                        @Override
+                        public void onError() {
+                            //do smth when there is picture loading error
+                            Snackbar.make(((Activity) context).findViewById(R.id.receipes_fragment), context.getResources().getString(R.string.check_connection), Snackbar.LENGTH_LONG).show();
+                        }
+                    });
         } catch (Exception e) {
             e.printStackTrace();
         }

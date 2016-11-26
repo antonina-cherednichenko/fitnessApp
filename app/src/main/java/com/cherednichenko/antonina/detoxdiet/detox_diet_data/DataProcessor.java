@@ -17,8 +17,6 @@ import java.util.List;
  * Created by tonya on 9/18/16.
  */
 public class DataProcessor {
-//    private static int[] images = {R.drawable.green_detox_program, R.drawable.citrus_detox_program, R.drawable.apple_detox_program,
-//            R.drawable.juice_detox1_program, R.drawable.rice_detox_program};
 
     private static boolean dbIsInitilized = false;
 

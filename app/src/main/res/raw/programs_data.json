@@ -1,5 +1,1632 @@
 {
   "data": [
-
+    {
+      "name": "Wedding Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/program.jpeg",
+      "description": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding.",
+      "duration": 5,
+      "new": 0,
+      "recommended": 0,
+      "shortDescription": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding.",
+      "category": "detox",
+      "sourceName": "modwedding",
+      "sourceUrl": "http://www.modwedding.com/2015/09/find-best-diet-plan-wedding/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding. Replace at least one of your daily meals with the following receipe.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Morning Tea Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/tea_detox/program.jpeg",
+      "description": "Detoxification - the best way to cleanse the system completely. Check the list of some health detox morning tea receipes which you have to drink with an empty stomach.",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Detoxification - the best way to cleanse the system completely. Check the list of some health detox morning tea receipes which you have to drink with an empty stomach.",
+      "category": "detox",
+      "sourceName": "theindianspot",
+      "sourceUrl": "http://theindianspot.com/detox-tea-recipes-for-healthy-body-and-glowing-skin/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Detoxification - the best way to cleanse the system completely. Check the list of some health detox morning tea receipes which you have to drink with an empty stomach.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/tea_detox/tea_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/tea_detox/tea_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/tea_detox/tea_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Green Smoothies Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/green_receipes_detox/program.jpg",
+      "description": "The best green smoothie for weight loss is one that is at least 70% green vegetables and 30% fruit at the max. This will insure that your drink is nutrient dense and not sugar heavy.",
+      "duration": 3,
+      "new": 1,
+      "recommended": 0,
+      "shortDescription": "Green smoothies will revolutionize your health",
+      "category": "detox",
+      "sourceName": "upcominghealth",
+      "sourceUrl": "http://upcominghealth.com/green-smoothies-will-revolutionize-your-health/?pp=1",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "The best green smoothie for weight loss is one that is at least 70% green vegetables and 30% fruit at the max. This will insure that your drink is nutrient dense and not sugar heavy. Replace at least one of your daily meals with the following receipe.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/green_receipes_detox/green_receipes_program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/green_receipes_detox/green_receipes_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/green_receipes_detox/green_receipes_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/green_receipes_detox/green_receipes_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Mind & Body Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/liver_detox/program.jpg",
+      "description": "3-day reboot and jumpstart of your way to a healthier body. Programs starts with immune boosting, hydrating juice and end the day with a heart warming soup that's rich in nutrients and green power.",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "3-day reboot and jumpstart of your way to a healthier body. Programs starts with immune boosting, hydrating juice and end the day with a heart warming soup that's rich in nutrients and green power.",
+      "category": "detox",
+      "sourceName": "fitwirr",
+      "sourceUrl": "http://www.fitwirr.com/health/tips/liver-detox",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "In three days, you can reboot and jumpstart your way to a healthier body. While many detox programs require you to fast and allow only tonics for days, this 3-day detox plan does not go extreme. You are not bound to just greens and all day of juices. You will be eating whole foods that nourish your body while they flash toxins out and clean your body inside and out. It's a 3 meal a day plan that starts with immune boosting, hydrating juice and end the day with a heart warming soup that's rich in nutrients and green power. Repeat the following menu for 3 days.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/liver_detox/liver_detox_program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Breakfast",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/liver_detox/liver_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Lunch",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/liver_detox/liver_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Dinner",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/liver_detox/liver_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Fruits & Veggies Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/program.jpg",
+      "description": "You've heard that you need at least 5 servings of fruits and veggies daily, but what exactly does that look like? Take a look at these examples of what those look like to give you a better idea of how to incorporate those into each meal and snack - it's easier than you may think!",
+      "duration": 5,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "You've heard that you need at least 5 servings of fruits and veggies daily, but what exactly does that look like? Take a look at these examples of what those look like to give you a better idea of how to incorporate those into each meal and snack - it's easier than you may think!",
+      "category": "detox",
+      "sourceName": "sparkpeople",
+      "sourceUrl": "http://www.sparkpeople.com/resource/nutrition_articles.asp?id=2044#_a5y_p=5560890",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "You've heard that you need at least 5 servings of fruits and veggies daily, but what exactly does that look like? Take a look at these examples of what those look like to give you a better idea of how to incorporate those into each meal and snack - it's easier than you may think! Select one variant per day.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/veggie_detox_program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Variant 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/veggie_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Variant 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/veggie_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Variant 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/veggie_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Variant 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/veggie_detox_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Variant 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_veggies_detox/veggie_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Simple Cleanse Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/program.jpg",
+      "description": "Want to know how to detox your body? If you can't find the right way to detox, here are some DIY ideas on how you can do a body cleanse. Try…",
+      "duration": 2,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Want to know how to detox your body? If you can't find the right way to detox, here are some DIY ideas on how you can do a body cleanse. Try…",
+      "category": "detox",
+      "sourceName": "diyprojects",
+      "sourceUrl": "https://diyprojects.com/how-to-detox-your-body/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Want to know how to detox your body? If you can't find the right way to detox, here are some DIY ideas on how you can do a body cleanse. Follow the next schedule for 1 or 2 days.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/one_day_meal_detox/one_day_meal_detox_day7.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Juice Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/72_hours_juice_detox/program.jpg",
+      "description": "Are you ready to feel better, have more energy, sleep more deeply, breathe more freely, think more clearly, and feel more vibrant? Giving the body a rest from solid food and nurturing it briefly with easily digested, nutrient-dense juices can improve health.",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Are you ready to feel better, have more energy, sleep more deeply, breathe more freely, think more clearly, and feel more vibrant? Giving the body a rest from solid food and nurturing it briefly with easily digested, nutrient-dense juices can improve health by healing the body and renewing the body, mind, and spirit.",
+      "category": "detox",
+      "sourceName": "bikinifitness",
+      "sourceUrl": "http://bikinifitnesss.com/hmm-gonna-read-and-look-into-this-later/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Are you ready to feel better, have more energy, sleep more deeply, breathe more freely, think more clearly, and feel more vibrant? Giving the body a rest from solid food and nurturing it briefly with easily digested, nutrient-dense juices can improve health by healing the body and renewing the body, mind, and spirit.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/72_hours_juice_detox/72_hours_juice_detox_program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Instructions",
+          "description": "1. Make one recipe each day, beginning with the Green Juice. Each recipe makes about 64 ounces. Store your juice in a sealed pitcher.\n\n2. Refrigerate and consume 1 cup of juice very hour, for a total of 8 hours. Every meal for these 3 days will consist of juice only, except for dinner.\n\n3. Every 30 minutes, drink one cup of water or more, avoiding alcohol or caffeine.\n\n4. Your last meal of the day will be a full meal and should consist only of grilled or baked 'great protein' or vegetables. Avoid starches and processed food.\n\n5. Finish each evening with a glass of warm chamomile tea with freshly squeezed lemon.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/72_hours_juice_detox/72_hours_juice_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/72_hours_juice_detox/72_hours_juice_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/72_hours_juice_detox/72_hours_juice_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Fast & Easy Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/3_day_detox/program.jpeg",
+      "description": "Learn how to detoxify your body just in one day. Afraid of a long program? This fast end easy detox plan should suit you perfectly...",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Learn how to detoxify your body just in one day. Afraid of long program? This fast end easy detox plan can suit you perfectly...",
+      "category": "detox",
+      "sourceName": "mylifewellloved",
+      "sourceUrl": "https://www.pinterest.com/mylifewellloved/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Learn how to detoxify your body just in one day. Afraid of long program? This fast end easy detox plan can suit you perfectly...",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Instructions",
+          "description": "Drink tea upon waking-up. Drink breakfast smoothie within 1 hour of waking. Follow with 1/2 multivitamin & fish oil supplement. Have another 1/2 multivitamin & probiotic supplement after lunch. Repeat favourite drink as snack between lunch & dinner IF hungry.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/3_day_detox/3_day_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/3_day_detox/3_day_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/3_day_detox/3_day_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "1-Week Cleanse Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/program.jpeg",
+      "description": "Determined to fully clean your body from toxins? Try to follow this program for the whole week.",
+      "duration": 7,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Determined to fully clean your body from toxins? Try to follow this program for the whole week.",
+      "category": "detox",
+      "sourceName": "webhealthjournal",
+      "sourceUrl": "http://www.webhealthjournal.com/weight-loss-diet-tips-for-vegans",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Determined to fully clean your body from toxins? Try to follow this program for the whole week.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Monday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Tuesday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Wednesday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Thursday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Friday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Saturday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_day6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Sunday",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/7_days_cleanse_detox/7_day_cleanse_detox_day7.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Simple Home Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/program.jpeg",
+      "description": "Check these 10 amazing dishes and eat them periodically to detoxify your body.",
+      "duration": 10,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Check these 10 amazing dishes and eat them periodically to detoxify your body.",
+      "category": "detox",
+      "sourceName": "fitnessrepublic",
+      "sourceUrl": "https://wwws.fitnessrepublic.com/nutrition/homemade-detox-drinks-for-weight-loss.html",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Check these 10 amazing dishes and eat them periodically to detoxify your body.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 6",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 7",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day7.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 8",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day8.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 9",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day9.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 10",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/homemade_detox/homemade_detox_day10.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Water Drinks Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/water_drinks_detox/program.jpg",
+      "description": "Simple drinks for weight loss and detox. Detox water not only rids your body of toxins but helps to flush fat from your body as well.",
+      "duration": 4,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Simple drinks for weight loss and detox. Detox water not only rids your body of toxins but helps to flush fat from your body as well.",
+      "category": "detox",
+      "sourceName": "infographix",
+      "sourceUrl": "http://infographixdirectory.com/health/best-detox-drinks-for-weight-loss-detox-infographic/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Simple drinks for weight loss and detox. Detox water not only rids your body of toxins but helps to flush fat from your body as well. Replace at least one of your daily meals with the following receipes.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/water_drinks_detox/detox_water_drinks_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/water_drinks_detox/detox_water_drinks_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/water_drinks_detox/detox_water_drinks_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/water_drinks_detox/detox_water_drinks_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Immune-Boosting Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/program.jpeg",
+      "description": "If you hate beeing sick in winter, try this detox program. Your immune system will be happy.",
+      "duration": 6,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "If you hate beeing sick in winter, try this detox program. Your immune system will be happy.",
+      "category": "detox",
+      "sourceName": "helloglow",
+      "sourceUrl": "http://helloglow.co/5-new-health-and-beauty-boosting-infused-water-ideas-for-winter/#_a5y_p=3190321",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "If you hate beeing sick in winter, try this detox program. Your immune system will be happy. Replace at least one of your daily meals with the following receipes.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_program.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 6",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/immune_water_detox/immune_water_detox_day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Simple Juice Cleanse",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/3_days_juice_detox/program.jpg",
+      "description": "Whether cleanses are your thing, or you just prefer to consume an abundance of fruits and veggies by juicing each day, these healthy juicing recipes will aid in nourishing and ridding your body of toxins.",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Whether cleanses are your thing, or you just prefer to consume an abundance of fruits and veggies by juicing each day, these healthy juicing recipes will aid in nourishing and ridding your body of toxins.",
+      "category": "detox",
+      "sourceName": "skinnymom",
+      "sourceUrl": "https://www.skinnymom.com/get-in-the-know-23-secrets-from-the-worlds-best-trainers/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Whether cleanses are your thing, or you just prefer to consume an abundance of fruits and veggies by juicing each day, these healthy juicing recipes will aid in nourishing and ridding your body of toxins. Replace at least one of your daily meals with the following receipes.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/3_days_juice_detox/3_days_juice_detox_day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/3_days_juice_detox/3_days_juice_detox_day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/3_days_juice_detox/3_days_juice_detox_day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Full Water Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/program.jpeg",
+      "description": "Detox water is one of the most popular tools for weight loss to come around in a long time, and for great reason. Not only can you drink detox water to lose weight, it tastes delicious and helps flush your body of toxins. Check this program to get involved.",
+      "duration": 11,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Detox water is one of the most popular tools for weight loss to come around in a long time, and for great reason. Not only can you drink detox water to lose weight, it tastes delicious and helps flush your body of toxins. Check this program to get involved.",
+      "category": "detox",
+      "sourceName": "guthealthproject",
+      "sourceUrl": "http://guthealthproject.com/11-delicious-detox-water-recipes-your-body-will-love/?utm_source=pinterest&utm_medium=post&utm_campaign=social-post&utm_content=11-detox-water-recipes&utm_term=pinterest-followers",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Detox water is one of the most popular tools for weight loss to come around in a long time, and for great reason. Not only can you drink detox water to lose weight, it tastes delicious and helps flush your body of toxins. Check this program to get involved. Replace at least one of your daily meals with the following receipes.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day1.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day2.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day3.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day4.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day5.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 6",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day6.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 7",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day7.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 8",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day8.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 9",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day9.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 10",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day10.jpg",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 11",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/11_waters_detox/11_waters_detox_day11.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Fruits Infusion Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/fruits_infused_water/program.jpeg",
+      "description": "What if you’re addicted to sugary or chemical-filled diet drinks? Fruit Infused Water is filled with delicious fruit infused water recipes to help you break your soda and sugary drink addictions with naturally sweetened drinks.",
+      "duration": 4,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "What if you’re addicted to sugary or chemical-filled diet drinks? Fruit Infused Water is filled with delicious fruit infused water recipes to help you break your soda and sugary drink addictions with naturally sweetened drinks.",
+      "category": "detox",
+      "sourceName": "theyummylife",
+      "sourceUrl": "http://www.theyummylife.com/Flavored_Water",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "What if you’re addicted to sugary or chemical-filled diet drinks? Fruit Infused Water is filled with delicious fruit infused water recipes to help you break your soda and sugary drink addictions with naturally sweetened drinks. Replace at least one of your daily meals with the following receipe.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_infused_water/description.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_infused_water/day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_infused_water/day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_infused_water/day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/fruits_infused_water/day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Refreshing Juice Detox",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/refreshing_juices_detox/program.jpg",
+      "description": "Trying to snack a little healthier and give your stomach a break? Try these super quick and easy juice recipes.  Just combine the ingredients in a juicer and blend. Bon appetit! ",
+      "duration": 2,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Trying to snack a little healthier and give your stomach a break? Try these super quick and easy juice recipes.  Just combine the ingredients in a juicer and blend. Bon appetit! ",
+      "category": "detox",
+      "sourceName": "healthcentral",
+      "sourceUrl": "http://www.healthcentral.com/diet-exercise/c/458275/169969/smoothie-infographic?ap=2012",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Trying to snack a little healthier and give your stomach a break? Try these super quick and easy juice recipes.  Just combine the ingredients in a juicer and blend. Bon appetit! Replace at least one of your daily meals with the following receipes.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Day 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/refreshing_juices_detox/day_1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Day 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/refreshing_juices_detox/day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "1-Day Easy Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet1/program.jpeg",
+      "description": "Below is a sample menu for a full day to give you an idea of what types of foods you should be eating, what portions should look like and how to prepare for them. The outline looks like this: breakfast, snack, lunch, snack, dinner. Timing? That’s up to you!",
+      "duration": 1,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Below is a sample menu for a full day to give you an idea of what types of foods you should be eating, what portions should look like and how to prepare for them. The outline looks like this: breakfast, snack, lunch, snack, dinner. Timing? That’s up to you!",
+      "category": "diet",
+      "sourceName": "skinnymom",
+      "sourceUrl": "http://www.skinnymom.com/a-day-of-food-what-to-eat-to-lose-weight/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Weight loss is achieved when you find something that works for you. Regardless of your body type, genetics or lifestyle, you can lose weight, but you still have to eat. Your body needs fuel! Below is a sample menu for a full day to give you an idea of what types of foods you should be eating, what portions should look like and how to prepare for them. Your daily caloric intake needs might differ from one person to the next, but this is a great place to start. The outline looks like this: breakfast, snack, lunch, snack, dinner. Timing? That’s up to you! You’ll want to eat your breakfast within the first 30 to 60 minutes of waking up and don’t skip dinner!",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet1/program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Step 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet1/meal1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet1/meal2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet1/meal3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet1/meal4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet1/meal5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Cabbage Soup Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet2/program.jpeg",
+      "description": "This diet is a low-fat, high-fiber diet that centers around a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet. Ready to try ?",
+      "duration": 7,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "This GM diet is a low-fat, high-fiber diet that centers around a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet. Ready to try ?",
+      "category": "diet",
+      "sourceName": "fitwirr",
+      "sourceUrl": "http://www.fitwirr.com/health/tips/gm-diet-plan",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "This GM diet is a low-fat, high-fiber diet that centers around a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet2/day7.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "3-Day Military Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet3/program.jpg",
+      "description": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim? or is it really legitimate? Check out now.",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim? or is it really legitimate? Check out now.",
+      "category": "diet",
+      "sourceName": "fitwirr",
+      "sourceUrl": "http://fitwirr.com/health/tips/3-day-diet",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim? or is it really legitimate? Follow this 3-day challenge and discover yourself.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "START",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "ALMOST THE END",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/7.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/8.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "THE END!!!!",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/9.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/10.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/11.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet3/12.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "1-Day Fat Burn Plan",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet4/program.jpg",
+      "description": "Are you looking for some fast, simple and effective solution to burn fat? Try this 1 day program and check the results. ",
+      "duration": 1,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Are you looking for some fast, simple and effective solution to burn fat? Try this 1 day program and check the results.",
+      "category": "diet",
+      "sourceName": "fitwirr",
+      "sourceUrl": "http://fitwirr.com/health/tips/lose-weight",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Are you looking for some fast, simple and effective solution to burn fat? Try this 1 day program and check the results. For better results we recommend to follow this schedule at least twice a month.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "10 Pounds Loss Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet5/program.jpg",
+      "description": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Ready to know, check that out…",
+      "duration": 7,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Ready to know, check that out…",
+      "category": "diet",
+      "sourceName": "healthyhomestead",
+      "sourceUrl": "http://healthyhomestead.com/lose-10-pounds-in-a-week/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Ready to know, check that out…",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "Step 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 5",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 6",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Flexible Meal Plan",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet6/program.jpeg",
+      "description": "This simple meal plan shows you one effective diet day which can help you to burn fat and feel better. You can follow this plan as long as you want, but no more than 21 days. Ready? Check it out..",
+      "duration": 21,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "This simple meal plan shows you one effective diet day which can help you to burn fat and feel better. You can follow this plan as long as you want, but no more than 21 days. Ready? Check it out..",
+      "category": "diet",
+      "sourceName": "helenmorning",
+      "sourceUrl": "http://helenmorning.tumblr.com/?p=548631917680295",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "This simple meal plan shows you one effective diet day which can help you to burn fat and feel better. You can follow this plan as long as you want, but no more than 21 days. Ready? Check it out..",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Step 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet6/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet6/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet6/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet6/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "GM Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet7/program.jpeg",
+      "description": "The GM diet has been around since 1985. It was originally developed by General Motors for its employees. It was designed to increase workforce productivity by making the workers healthier. Results of the diet were impressive – a loss of 10 to 17 pounds of weight in just a week!",
+      "duration": 7,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "The GM diet has been around since 1985. It was originally developed by General Motors for its employees. It was designed to increase workforce productivity by making the workers healthier. Results of the diet were impressive – a loss of 10 to 17 pounds of weight in just a week!",
+      "category": "diet",
+      "sourceName": "buzzle",
+      "sourceUrl": "http://www.buzzle.com/articles/master-cleanse-lemonade-diet-recipe-ingredients-and-directions.html",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "The GM diet has been around since 1985. It was originally developed by General Motors, along with the Food and Drug Administration and the United States Department of Agriculture, for its employees. It was designed to increase workforce productivity by making the workers healthier. Results of the diet were impressive – a loss of 10 to 17 pounds of weight in just a week! ",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet7/7.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "600 Calories a Day Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet8/program.jpg",
+      "description": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects it’s proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
+      "duration": 2,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects it’s proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
+      "category": "diet",
+      "sourceName": "usefulweightlossideas",
+      "sourceUrl": "http://usefulweightlossideas.blogspot.com/2014/06/3-day-weight-loss-diet.html?m=1",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects it’s proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Instructions",
+          "description": "The diet cannot last more than 3 consecutive days, it can always be resumed a 4-day break between  diet periods. Only artificial sweeteners are permitted. Snacks are not. Drink 4 glasses of water per day. Spices permitted: herbs, lemon, vinegar, soy sauce, mustard, salt and pepper.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet8/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet8/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet8/3png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "3-Day Weight Loss",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet9/program.jpeg",
+      "description": "Simple 3-day plan for cleaning your body and burning fat sometimes can be essential part of your weekly routine. Find out this diet plan which can help you...",
+      "duration": 3,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "",
+      "category": "diet",
+      "sourceName": "bestproductreviewsites",
+      "sourceUrl": "http://bestproductreviewsites.com/phenq/3-day-diet-plan-for-weight-loss/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Many people adopt the diet to try and achieve short-term weight loss. However, unfortunately, most people simply gain the weight back again once they resume normal eating patterns. The 3 Day Diet has to be followed accurately. You must eat your food portions as stated in the guidelines. Also we encourage you to follow your exercise plan.",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet9/program.png",
+          "photoOnly": 3
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet9/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet9/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet9/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "10-Day Weight Loss",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet10/program.jpeg",
+      "description": "Would you like to lose some extra weight? This is what this diet plan has been enticing people with. It promises you can lose weight in 10 days. Is it just another bogus claim? or is it really legitimate? Follow this 10-day challenge and discover yourself.",
+      "duration": 10,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Would you like to lose some extra weight? This is what this diet plan has been enticing people with. It promises you can lose weight in 10 days. Is it just another bogus claim? or is it really legitimate? Follow this 10-day challenge and discover yourself.",
+      "category": "diet",
+      "sourceName": "healthbeckon",
+      "sourceUrl": "http://www.healthbeckon.com/simple-daily-calender-lose-weight-10-days/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Please find out description for 5 first days of your diet. The next 5 days you can combine yourself repeating the days you've already had in the order you like!",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet10/program.png",
+          "photoOnly": 2
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet10/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet10/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet10/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet10/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet10/5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "Flat Belly Stomach",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet11/program.jpeg",
+      "description": "Are you dreaming about flat belly stomach? Your answer is yes? Continue reading.",
+      "duration": 1,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Are you dreaming about flat belly stomach? Your answer is yes? Continue reading.",
+      "category": "diet",
+      "sourceName": "southerncurlsandpearls",
+      "sourceUrl": "http://www.southerncurlsandpearls.com/",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Are you dreaming about flat belly stomach? Your answer is yes? Continue reading. Repeat the following menu from 1 to 7 days. Good luck!",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Step 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet11/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet11/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 3",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet11/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Step 4",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet11/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    },
+    {
+      "name": "800 Calories Diet",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet12/program.jpg",
+      "description": "Looking for fun, fast and easy way to clean your body and lose fat? Check this plan. Take the challenge and wait for results.",
+      "duration": 1,
+      "new": 1,
+      "recommended": 1,
+      "shortDescription": "Looking for fun, fast and easy way to clean your body and lose fat? Check this plan. Take the challenge and wait for results.",
+      "category": "diet",
+      "sourceName": "hcgezdrops",
+      "sourceUrl": "https://s-media-cache-ak0.pinimg.com/originals/3e/a5/8e/3ea58e840ccc79e4b4eee80c712327a5.jpg",
+      "schedule": [
+        {
+          "name": "Description",
+          "description": "Looking for fun, fast and easy way to clean your body and lose fat? Check this plan. Take the challenge and wait for results. You will see 2 sample menus, select the one you like.",
+          "photo": "",
+          "photoOnly": 3
+        },
+        {
+          "name": "Variant 1",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet12/1.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet12/2.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet12/3.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet12/4.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Variant 2",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet12/5.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "",
+          "description": "",
+          "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet12/6.png",
+          "photoOnly": 1
+        },
+        {
+          "name": "Attention",
+          "description": "We recommend you to consult your physician before starting any detox or diet programs",
+          "photo": "",
+          "photoOnly": 3
+        }
+      ]
+    }
   ]
 }

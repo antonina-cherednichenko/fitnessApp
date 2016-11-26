@@ -86,6 +86,7 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         Picasso
                 .with(this)
                 .load(receipe.getPhotoURL())
+//                .error(R.drawable.no_connection)
                 .fit()
                 .into(programImage);
 

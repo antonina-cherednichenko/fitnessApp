@@ -49,6 +49,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
                         .with(context)
                         .load(di.getPhoto())
                         .transform(new FitToTargetViewTransformation(holder.image))
+                        .error(R.drawable.no_connection)
                         //.fit()
                         .into(holder.image);
 
@@ -70,6 +71,7 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.ViewHolder> {
                         .with(context)
                         .load(di.getPhoto())
                         //.transform(new FitToTargetViewTransformation(holder.image))
+                        .error(R.drawable.no_connection)
                         .fit()
                         .into(holder.image);
 
