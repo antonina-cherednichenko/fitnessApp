@@ -95,51 +95,17 @@ public class DetoxDietProgramsListFragment extends Fragment {
 
         @Override
         public void onTabReSelected(@IdRes int tabId) {
-            if (tabId == R.id.bottombar_favorite) {
-                List<ProgramInfo> likedPrograms = DataProcessor.getLikedPrograms(allPrograms);
-
-                if (likedPrograms.size() > 0) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), likedPrograms));
-                    recList.setVisibility(View.VISIBLE);
-                    emptyState.setVisibility(View.GONE);
-                } else {
-                    emptyState.setVisibility(View.VISIBLE);
-                    recList.setVisibility(View.GONE);
-                    ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No Favourite %s were found", tag));
-                }
-                //adapter.notifyDataSetChanged();
-            } else if (tabId == R.id.bottombar_new) {
-                List<ProgramInfo> newPrograms = DataProcessor.getNewPrograms(allPrograms);
-                if (newPrograms.size() > 0) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), newPrograms));
-                    recList.setVisibility(View.VISIBLE);
-                    emptyState.setVisibility(View.GONE);
-                } else {
-                    emptyState.setVisibility(View.VISIBLE);
-                    recList.setVisibility(View.GONE);
-                    ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No New %s were found", tag));
-                }
-            } else if (tabId == R.id.bottombar_all) {
-                if (allPrograms.size() > 0) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), allPrograms));
-
-                    recList.setVisibility(View.VISIBLE);
-                    emptyState.setVisibility(View.GONE);
-                } else {
-                    emptyState.setVisibility(View.VISIBLE);
-                    recList.setVisibility(View.GONE);
-                    emptyState.setVisibility(View.VISIBLE);
-                    recList.setVisibility(View.GONE);
-                    ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No %s were found", tag));
-                }
-            }
+            performSelectOp(tabId, allPrograms);
         }
-
 
         @Override
         public void onTabSelected(@IdRes int tabId) {
+            performSelectOp(tabId, receipes);
+        }
+
+        private void performSelectOp(int tabId, List<ProgramInfo> programs) {
             if (tabId == R.id.bottombar_favorite) {
-                List<ProgramInfo> likedPrograms = DataProcessor.getLikedPrograms(receipes);
+                List<ProgramInfo> likedPrograms = DataProcessor.getLikedPrograms(programs);
 
                 if (likedPrograms.size() > 0) {
                     recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), likedPrograms));
@@ -152,7 +118,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
                 }
                 //adapter.notifyDataSetChanged();
             } else if (tabId == R.id.bottombar_new) {
-                List<ProgramInfo> newPrograms = DataProcessor.getNewPrograms(receipes);
+                List<ProgramInfo> newPrograms = DataProcessor.getNewPrograms(programs);
                 if (newPrograms.size() > 0) {
                     recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), newPrograms));
                     recList.setVisibility(View.VISIBLE);
@@ -163,8 +129,8 @@ public class DetoxDietProgramsListFragment extends Fragment {
                     ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No New %s were found", tag));
                 }
             } else if (tabId == R.id.bottombar_all) {
-                if (receipes.size() > 0) {
-                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), receipes));
+                if (programs.size() > 0) {
+                    recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), programs));
 
                     recList.setVisibility(View.VISIBLE);
                     emptyState.setVisibility(View.GONE);
