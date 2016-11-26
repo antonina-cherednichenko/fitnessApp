@@ -18,6 +18,7 @@ import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.DataProcessor;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
@@ -80,18 +81,12 @@ public class DetoxDietProgramsListFragment extends Fragment {
 
         BottomBar bottomBar = (BottomBar) rootView.findViewById(R.id.bottomBar);
 
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            private boolean initialized = false;
-
+        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
             @Override
-            public void onTabSelected(@IdRes int tabId) {
-                List<ProgramInfo> likedPrograms;
+            public void onTabReSelected(@IdRes int tabId) {
                 if (tabId == R.id.bottombar_favorite) {
-                    if (initialized) {
-                        likedPrograms = DataProcessor.getLikedPrograms(allPrograms);
-                    } else {
-                        likedPrograms = DataProcessor.getLikedPrograms(receipes);
-                    }
+                    List<ProgramInfo> likedPrograms = DataProcessor.getLikedPrograms(allPrograms);
+
                     if (likedPrograms.size() > 0) {
                         recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), likedPrograms));
                         recList.setVisibility(View.VISIBLE);
@@ -101,16 +96,9 @@ public class DetoxDietProgramsListFragment extends Fragment {
                         recList.setVisibility(View.GONE);
                         ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No Favourite %s were found", tag));
                     }
-                    initialized = true;
                     //adapter.notifyDataSetChanged();
                 } else if (tabId == R.id.bottombar_new) {
-                    List<ProgramInfo> newPrograms;
-                    if (initialized) {
-                        newPrograms = DataProcessor.getNewPrograms(allPrograms);
-                    } else {
-                        newPrograms = DataProcessor.getNewPrograms(receipes);
-                    }
-
+                    List<ProgramInfo> newPrograms = DataProcessor.getNewPrograms(allPrograms);
                     if (newPrograms.size() > 0) {
                         recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), newPrograms));
                         recList.setVisibility(View.VISIBLE);
@@ -119,32 +107,75 @@ public class DetoxDietProgramsListFragment extends Fragment {
                         emptyState.setVisibility(View.VISIBLE);
                         recList.setVisibility(View.GONE);
                         ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No New %s were found", tag));
-                    }
-                    initialized = true;
-                } else if (tabId == R.id.bottombar_all) {
-                    if (receipes.size() > 0) {
-                        if (initialized) {
+                    }}else
+                    if (tabId == R.id.bottombar_all) {
+                        if (allPrograms.size() > 0) {
                             recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), allPrograms));
-                        } else {
-                            recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), receipes));
-                        }
 
-                        recList.setVisibility(View.VISIBLE);
-                        emptyState.setVisibility(View.GONE);
-                    } else {
-                        emptyState.setVisibility(View.VISIBLE);
-                        recList.setVisibility(View.GONE);
-                        emptyState.setVisibility(View.VISIBLE);
-                        recList.setVisibility(View.GONE);
-                        ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No %s were found", tag));
+                            recList.setVisibility(View.VISIBLE);
+                            emptyState.setVisibility(View.GONE);
+                        } else {
+                            emptyState.setVisibility(View.VISIBLE);
+                            recList.setVisibility(View.GONE);
+                            emptyState.setVisibility(View.VISIBLE);
+                            recList.setVisibility(View.GONE);
+                            ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No %s were found", tag));
+                        }
                     }
-                    initialized = true;
+                }
+            });
+
+            bottomBar.setOnTabSelectListener(new
+
+            OnTabSelectListener() {
+
+                @Override
+                public void onTabSelected ( @IdRes int tabId){
+                    if (tabId == R.id.bottombar_favorite) {
+                        List<ProgramInfo> likedPrograms = DataProcessor.getLikedPrograms(receipes);
+
+                        if (likedPrograms.size() > 0) {
+                            recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), likedPrograms));
+                            recList.setVisibility(View.VISIBLE);
+                            emptyState.setVisibility(View.GONE);
+                        } else {
+                            emptyState.setVisibility(View.VISIBLE);
+                            recList.setVisibility(View.GONE);
+                            ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No Favourite %s were found", tag));
+                        }
+                        //adapter.notifyDataSetChanged();
+                    } else if (tabId == R.id.bottombar_new) {
+                        List<ProgramInfo> newPrograms = DataProcessor.getNewPrograms(receipes);
+                        if (newPrograms.size() > 0) {
+                            recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), newPrograms));
+                            recList.setVisibility(View.VISIBLE);
+                            emptyState.setVisibility(View.GONE);
+                        } else {
+                            emptyState.setVisibility(View.VISIBLE);
+                            recList.setVisibility(View.GONE);
+                            ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No New %s were found", tag));
+                        }
+                    } else if (tabId == R.id.bottombar_all) {
+                        if (receipes.size() > 0) {
+                            recList.setAdapter(new DetoxDietProgramsListAdapter(getActivity(), receipes));
+
+                            recList.setVisibility(View.VISIBLE);
+                            emptyState.setVisibility(View.GONE);
+                        } else {
+                            emptyState.setVisibility(View.VISIBLE);
+                            recList.setVisibility(View.GONE);
+                            emptyState.setVisibility(View.VISIBLE);
+                            recList.setVisibility(View.GONE);
+                            ((TextView) emptyState.findViewById(R.id.empty_state_text)).setText(String.format("No %s were found", tag));
+                        }
+                    }
                 }
             }
-        });
 
-        return rootView;
+            );
+
+            return rootView;
+        }
+
+
     }
-
-
-}
