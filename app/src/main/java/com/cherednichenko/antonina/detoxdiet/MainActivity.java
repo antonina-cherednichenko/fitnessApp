@@ -1,5 +1,9 @@
 package com.cherednichenko.antonina.detoxdiet;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,12 +24,59 @@ public class MainActivity extends AppCompatActivity {
                 "font/Roboto-Regular.ttf");
 
         TextView helloText = (TextView) findViewById(R.id.hello_text);
+        helloText.setAlpha(0);
+        final ObjectAnimator helloAnim = ObjectAnimator.ofFloat(helloText, View.ALPHA, 0, 1);
+        helloAnim.setDuration(2000);
+
+
         TextView followText = (TextView) findViewById(R.id.follow_text);
+        followText.setAlpha(0);
+        final ObjectAnimator followAnim = ObjectAnimator.ofFloat(followText, View.ALPHA, 0, 1);
+        followAnim.setDuration(2000);
+
         TextView findText = (TextView) findViewById(R.id.find_text);
+        findText.setAlpha(0);
+        final ObjectAnimator findAnim = ObjectAnimator.ofFloat(findText, View.ALPHA, 0, 1);
+        findAnim.setDuration(2000);
+
+
         TextView stayTunedText = (TextView) findViewById(R.id.stay_tuned_text);
+        stayTunedText.setAlpha(0);
+        final ObjectAnimator stayAnim = ObjectAnimator.ofFloat(stayTunedText, View.ALPHA, 0, 1);
+        stayAnim.setDuration(2000);
+
+
+        helloAnim.start();
+        helloAnim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                findAnim.start();
+            }
+        });
+
+        findAnim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                followAnim.start();
+            }
+        });
+
+        followAnim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                stayAnim.start();
+            }
+        });
+
+        stayAnim.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+        });
+
 
         helloText.setTypeface(robotoBold);
-
         findText.setTypeface(robotoRegular);
         followText.setTypeface(robotoRegular);
         stayTunedText.setTypeface(robotoRegular);
