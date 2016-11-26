@@ -105,29 +105,39 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            //use the query to search your data somehow
+            String query = intent.getStringExtra(SearchManager.QUERY).trim();
 
             FragmentManager fragmentManager = getSupportFragmentManager();
-            Fragment prevFragment = fragmentManager.findFragmentById(R.id.content_frame);
+            Fragment fragment = new AllDetoxDietTabFragment();
 
+            //use the query to search your data somehow
+            Fragment prevFragment = fragmentManager.findFragmentById(R.id.content_frame);
             int tab = 0;
             if (prevFragment != null && prevFragment instanceof TabSelected) {
                 tab = ((TabSelected) prevFragment).search();
             }
 
+            if (query.equals("")) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
+                bundle.putString("searchQuery", query);
+                bundle.putInt("tab", tab);
+                fragment.setArguments(bundle);
 
-            Fragment fragment = new AllDetoxDietTabFragment();
-            Bundle bundle = new Bundle();
-            bundle.putInt("mode", DetoxDietLaunchMode.SEARCH.getMode());
-            bundle.putString("searchQuery", query);
-            bundle.putInt("tab", tab);
-            fragment.setArguments(bundle);
+            } else {
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("mode", DetoxDietLaunchMode.SEARCH.getMode());
+                bundle.putString("searchQuery", query);
+                bundle.putInt("tab", tab);
+                fragment.setArguments(bundle);
+            }
 
             if (fragment != null) {
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, fragment)
+                        .addToBackStack(null)
                         .commit();
             }
         }

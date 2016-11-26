@@ -82,12 +82,14 @@ public class AllDetoxDietTabFragment extends Fragment implements TabSelected {
         Bundle detoxBundle = new Bundle();
         detoxBundle.putSerializable("receipes", (Serializable) DataProcessor.getDetoxPrograms(programs));
         detoxBundle.putString("tag", tag + "Detox Programs");
+        detoxBundle.putString("mode", "detox");
         detoxFragment.setArguments(detoxBundle);
 
         Fragment dietFragment = new DetoxDietProgramsListFragment();
         Bundle dietBundle = new Bundle();
         dietBundle.putSerializable("receipes", (Serializable) DataProcessor.getDietPrograms(programs));
         dietBundle.putString("tag", tag + "Diets");
+        dietBundle.putString("mode", "diet");
         dietFragment.setArguments(dietBundle);
 
         Fragment scheduleFragment = new ScheduleFragment();
