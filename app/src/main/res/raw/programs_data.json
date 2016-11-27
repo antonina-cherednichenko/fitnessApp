@@ -967,18 +967,18 @@
     {
       "name": "Cabbage Soup Diet",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet2/program.jpeg",
-      "description": "This diet is a low-fat, high-fiber diet that centers around a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet. Ready to try ?",
+      "description": "This diet is a low-fat, high-fiber diet that centers on a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet. Ready to try ?",
       "duration": 7,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "This GM diet is a low-fat, high-fiber diet that centers around a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet. Ready to try ?",
+      "shortDescription": "This GM diet is a low-fat, high-fiber diet that centers on a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet. Ready to try ?",
       "category": "diet",
       "sourceName": "fitwirr",
       "sourceUrl": "http://www.fitwirr.com/health/tips/gm-diet-plan",
       "schedule": [
         {
           "name": "Description",
-          "description": "This GM diet is a low-fat, high-fiber diet that centers around a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet.",
+          "description": "This GM diet is a low-fat, high-fiber diet that centers on a fat-free cabbage soup. This cabbage soup appears on your meal plan every day for the entire week, and it's the only thing that you'll eat repeatedly during the entire course of your diet.",
           "photo": "",
           "photoOnly": 3
         },
@@ -1035,18 +1035,18 @@
     {
       "name": "3-Day Military Diet",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet3/program.jpg",
-      "description": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim? or is it really legitimate? Check out now.",
+      "description": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim, or is it really legitimate? Check out now.",
       "duration": 3,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim? or is it really legitimate? Check out now.",
+      "shortDescription": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim, or is it really legitimate? Check out now.",
       "category": "diet",
       "sourceName": "fitwirr",
       "sourceUrl": "http://fitwirr.com/health/tips/3-day-diet",
       "schedule": [
         {
           "name": "Description",
-          "description": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim? or is it really legitimate? Follow this 3-day challenge and discover yourself.",
+          "description": "How would you like to lose 10 pounds in 3 days or 30 pounds in 30 days? This is what the 3 day military diet plan has been enticing people with. It promises you can lose weight very quickly—in mere 3 days. Is it just another bogus claim, or is it really legitimate? Follow this 3-day challenge and discover yourself.",
           "photo": "",
           "photoOnly": 3
         },
@@ -1133,18 +1133,18 @@
     {
       "name": "1-Day Fat Burn Plan",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet4/program.jpg",
-      "description": "Are you looking for some fast, simple and effective solution to burn fat? Try this 1 day program and check the results. ",
+      "description": "Are you looking for a fast, simple and effective solution to burn fat? Try this 1 day program and see the results. ",
       "duration": 1,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "Are you looking for some fast, simple and effective solution to burn fat? Try this 1 day program and check the results.",
+      "shortDescription": "Are you looking for a fast, simple and effective solution to burn fat? Try this 1 day program and see the results.",
       "category": "diet",
       "sourceName": "fitwirr",
       "sourceUrl": "http://fitwirr.com/health/tips/lose-weight",
       "schedule": [
         {
           "name": "Description",
-          "description": "Are you looking for some fast, simple and effective solution to burn fat? Try this 1 day program and check the results. For better results we recommend to follow this schedule at least twice a month.",
+          "description": "Are you looking for a fast, simple and effective solution to burn fat? Try this 1 day program and see the results. For better results we recommend to follow this schedule at least twice a month.",
           "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet4/program.png",
           "photoOnly": 2
         },
@@ -1189,18 +1189,18 @@
     {
       "name": "10 Pounds Loss Diet",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet5/program.jpg",
-      "description": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Ready to know, check that out…",
+      "description": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Are you ready to try it?",
       "duration": 7,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Ready to know, check that out…",
+      "shortDescription": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Are you ready to try it?",
       "category": "diet",
       "sourceName": "healthyhomestead",
       "sourceUrl": "http://healthyhomestead.com/lose-10-pounds-in-a-week/",
       "schedule": [
         {
           "name": "Description",
-          "description": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Ready to know, check that out…",
+          "description": "There is one thing everyone wants from a diet. To lose pounds, but not starve themselves out. Well, what if I tell you there is a way to do just that? Are you ready to try it?",
           "photo": "https://mighty-bayou-30907.herokuapp.com/images/diet5/program.png",
           "photoOnly": 2
         },
@@ -1369,18 +1369,18 @@
     {
       "name": "600 Calories a Day Diet",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet8/program.jpg",
-      "description": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects it’s proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
+      "description": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects its proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
       "duration": 2,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects it’s proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
+      "shortDescription": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects its proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
       "category": "diet",
       "sourceName": "usefulweightlossideas",
       "sourceUrl": "http://usefulweightlossideas.blogspot.com/2014/06/3-day-weight-loss-diet.html?m=1",
       "schedule": [
         {
           "name": "Description",
-          "description": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects it’s proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
+          "description": "This diet is really a trend diet plan that’s been around since the '80s. Some of the positive aspects its proponents claim include a faster weight loss, a rise in vitality in addition to a decrease in cholesterol levels. it is especially attractive to many because it should be only 2-4 days long.",
           "photo": "",
           "photoOnly": 3
         },
@@ -1419,11 +1419,11 @@
     {
       "name": "3-Day Weight Loss",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet9/program.jpeg",
-      "description": "Simple 3-day plan for cleaning your body and burning fat sometimes can be essential part of your weekly routine. Find out this diet plan which can help you...",
+      "description": "A simple 3-day plan for cleaning your body and burning fat that can be essential part of your weekly routine. Find out if this diet plan can work for you...",
       "duration": 3,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "",
+      "shortDescription": "A simple 3-day plan for cleaning your body and burning fat that can be essential part of your weekly routine. Find out if this diet plan can work for you...",
       "category": "diet",
       "sourceName": "bestproductreviewsites",
       "sourceUrl": "http://bestproductreviewsites.com/phenq/3-day-diet-plan-for-weight-loss/",
@@ -1463,11 +1463,11 @@
     {
       "name": "10-Day Weight Loss",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet10/program.jpeg",
-      "description": "Would you like to lose some extra weight? This is what this diet plan has been enticing people with. It promises you can lose weight in 10 days. Is it just another bogus claim? or is it really legitimate? Follow this 10-day challenge and discover yourself.",
+      "description": "Would you like to lose some extra weight? That is what this diet plan has been enticing people with. It promises you can lose weight in 10 days. Is it just another bogus claim, or is it really legitimate? Follow this 10-day challenge and discover yourself.",
       "duration": 10,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "Would you like to lose some extra weight? This is what this diet plan has been enticing people with. It promises you can lose weight in 10 days. Is it just another bogus claim? or is it really legitimate? Follow this 10-day challenge and discover yourself.",
+      "shortDescription": "Would you like to lose some extra weight? That is what this diet plan has been enticing people with. It promises you can lose weight in 10 days. Is it just another bogus claim, or is it really legitimate? Follow this 10-day challenge and discover yourself.",
       "category": "diet",
       "sourceName": "healthbeckon",
       "sourceUrl": "http://www.healthbeckon.com/simple-daily-calender-lose-weight-10-days/",
@@ -1519,18 +1519,18 @@
     {
       "name": "Flat Belly Stomach",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet11/program.jpeg",
-      "description": "Are you dreaming about flat belly stomach? Your answer is yes? Continue reading.",
+      "description": "Are you dreaming about flat belly stomach? Is your answer yes? Continue reading.",
       "duration": 1,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "Are you dreaming about flat belly stomach? Your answer is yes? Continue reading.",
+      "shortDescription": "Are you dreaming about flat belly stomach? Is your answer yes? Continue reading.",
       "category": "diet",
       "sourceName": "southerncurlsandpearls",
       "sourceUrl": "http://www.southerncurlsandpearls.com/",
       "schedule": [
         {
           "name": "Description",
-          "description": "Are you dreaming about flat belly stomach? Your answer is yes? Continue reading. Repeat the following menu from 1 to 7 days. Good luck!",
+          "description": "Are you dreaming about flat belly stomach? Is your answer yes? Continue reading. Repeat the following menu from 1 to 7 days. Good luck!",
           "photo": "",
           "photoOnly": 3
         },
@@ -1569,18 +1569,18 @@
     {
       "name": "800 Calories Diet",
       "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/diet12/program.jpg",
-      "description": "Looking for fun, fast and easy way to clean your body and lose fat? Check this plan. Take the challenge and wait for results.",
+      "description": "Looking for a fun, fast and easy way to clean your body and lose fat? Review this plan. Take the challenge and see the results.",
       "duration": 1,
       "new": 1,
       "recommended": 1,
-      "shortDescription": "Looking for fun, fast and easy way to clean your body and lose fat? Check this plan. Take the challenge and wait for results.",
+      "shortDescription": "Looking for a fun, fast and easy way to clean your body and lose fat? Review this plan. Take the challenge and see the results.",
       "category": "diet",
       "sourceName": "hcgezdrops",
       "sourceUrl": "https://s-media-cache-ak0.pinimg.com/originals/3e/a5/8e/3ea58e840ccc79e4b4eee80c712327a5.jpg",
       "schedule": [
         {
           "name": "Description",
-          "description": "Looking for fun, fast and easy way to clean your body and lose fat? Check this plan. Take the challenge and wait for results. You will see 2 sample menus, select the one you like.",
+          "description": "Looking for a fun, fast and easy way to clean your body and lose fat? Review this plan. Take the challenge and see the results. You will see 2 sample menus, select the one you like.",
           "photo": "",
           "photoOnly": 3
         },
