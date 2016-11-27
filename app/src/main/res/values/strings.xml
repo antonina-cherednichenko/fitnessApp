@@ -28,8 +28,8 @@
     <string name="navbar_schedule">Schedule</string>
     <string name="navbar_about">About</string>
     <string name="navheader_text">Detox and Diets</string>
-    <string name="about_message_text">Thanks for your interest!</string>
-    <string name="about_contact_text">If you have any questions, please contact antonina.cherednichenko@gmail.com</string>
+    <string name="about_message_text">Thank you for the interest!</string>
+    <string name="about_contact_text">If you have any questions or suggestions, please contact </string>
     <string name="check_connection">Check your internet connection</string>
 
 

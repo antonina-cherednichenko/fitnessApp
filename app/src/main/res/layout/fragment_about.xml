@@ -8,6 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+
     <TextView
         android:id="@+id/about_contact_text"
         android:layout_width="wrap_content"
@@ -17,6 +18,7 @@
         android:text="@string/about_contact_text" />
 
     <TextView
+        android:id="@+id/thanks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/about_contact_text"
@@ -24,5 +26,15 @@
         android:text="@string/about_message_text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/email_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/about_contact_text"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        android:text="@string/about_contact_text" />
+
 
 </RelativeLayout>
