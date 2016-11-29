@@ -98,6 +98,11 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //No call for super(). Bug on API Level > 11.
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleIntent(intent);
@@ -315,12 +320,16 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
             bundle.putInt("mode", DetoxDietLaunchMode.STANDARD.getMode());
             fragment.setArguments(bundle);
 
-            if (fragment != null) {
-                // Insert the fragment by replacing any existing fragment
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, fragment)
-                        .commit();
+            try {
+                if (fragment != null) {
+                    // Insert the fragment by replacing any existing fragment
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame, fragment)
+                            .commit();
+                }
+            } catch (Exception exc) {
+                exc.printStackTrace();
             }
 
             progressBar.setVisibility(ProgressBar.INVISIBLE);

@@ -26,24 +26,24 @@ public class MainActivity extends AppCompatActivity {
         TextView helloText = (TextView) findViewById(R.id.hello_text);
         helloText.setAlpha(0);
         final ObjectAnimator helloAnim = ObjectAnimator.ofFloat(helloText, View.ALPHA, 0, 1);
-        helloAnim.setDuration(2000);
+        helloAnim.setDuration(1750);
 
 
         TextView followText = (TextView) findViewById(R.id.follow_text);
         followText.setAlpha(0);
         final ObjectAnimator followAnim = ObjectAnimator.ofFloat(followText, View.ALPHA, 0, 1);
-        followAnim.setDuration(2000);
+        followAnim.setDuration(1750);
 
         TextView findText = (TextView) findViewById(R.id.find_text);
         findText.setAlpha(0);
         final ObjectAnimator findAnim = ObjectAnimator.ofFloat(findText, View.ALPHA, 0, 1);
-        findAnim.setDuration(2000);
+        findAnim.setDuration(1750);
 
 
         TextView stayTunedText = (TextView) findViewById(R.id.stay_tuned_text);
         stayTunedText.setAlpha(0);
         final ObjectAnimator stayAnim = ObjectAnimator.ofFloat(stayTunedText, View.ALPHA, 0, 1);
-        stayAnim.setDuration(2000);
+        stayAnim.setDuration(1750);
 
 
         helloAnim.start();
