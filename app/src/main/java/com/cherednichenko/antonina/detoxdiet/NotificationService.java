@@ -28,12 +28,15 @@ public class NotificationService extends BroadcastReceiver {
     public void onReceive(Context context, Intent alarmIntent) {
         ProgramInfo receipe = (ProgramInfo) alarmIntent.getSerializableExtra("receipe_info");
         if (receipe == null) {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
+            //There is some mistake in new Android version, added this workaround
+            //check here http://stackoverflow.com/questions/38775285/android-7-broadcastreceiver-onreceive-intent-getextras-missing-data
+            DateFormat dateFormat = new SimpleDateFormat(context.getResources().getString(R.string.preferences_date_format));
             Calendar cal = Calendar.getInstance();
             String receipeKey = dateFormat.format(cal.getTime());
 
-            SharedPreferences sharedPref = context.getSharedPreferences("schedule", Context.MODE_PRIVATE);
-            String json = sharedPref.getString(receipeKey, "No reminder found");
+            SharedPreferences sharedPref = context.getSharedPreferences(context.getResources().getString(R.string.schedule_prefernces), Context.MODE_PRIVATE);
+            String json = sharedPref.getString(receipeKey, "No program found");
             try {
                 Gson gson = new Gson();
                 receipe = gson.fromJson(json, ProgramInfo.class);

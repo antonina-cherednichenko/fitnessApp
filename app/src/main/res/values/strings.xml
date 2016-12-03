@@ -32,6 +32,8 @@
     <string name="about_contact_text">If you have any questions or suggestions, please contact </string>
     <string name="check_connection">Check your internet connection</string>
 
+    <string name="schedule_prefernces">schedule</string>
+    <string name="preferences_date_format">yyyy/MM/dd HH:mm</string>
 
     <string-array name="navigation_drawer_items_array">
         <item>Programs</item>

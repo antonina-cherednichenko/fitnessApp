@@ -131,10 +131,10 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         calendar.set(this.year, this.monthOfYear, this.dayOfMonth, hourOfDay, minute, second);
 
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        DateFormat dateFormat = new SimpleDateFormat(getResources().getString(R.string.preferences_date_format));
         String receipeKey = dateFormat.format(calendar.getTime());
 
-        SharedPreferences userDetails = this.getSharedPreferences("schedule", MODE_PRIVATE);
+        SharedPreferences userDetails = this.getSharedPreferences(getResources().getString(R.string.schedule_prefernces), MODE_PRIVATE);
         SharedPreferences.Editor edit = userDetails.edit();
         edit.clear();
 
