@@ -3,6 +3,7 @@ package com.cherednichenko.antonina.detoxdiet.detox_diet_program_info;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -19,11 +20,14 @@ import com.cherednichenko.antonina.detoxdiet.NotificationService;
 import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ProgramInfoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
@@ -121,10 +125,22 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         serviceIntent.putExtra("receipe_info", receipe);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,
-                serviceIntent, PendingIntent.FLAG_ONE_SHOT);
+                serviceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(this.year, this.monthOfYear, this.dayOfMonth, hourOfDay, minute, second);
+
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        String receipeKey = dateFormat.format(calendar.getTime());
+
+        SharedPreferences userDetails = this.getSharedPreferences("schedule", MODE_PRIVATE);
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.clear();
+
+        Gson gson = new Gson();
+        edit.putString(receipeKey, gson.toJson(receipe));
+        edit.commit();
 
         long scheduleTime = calendar.getTimeInMillis();
         alarm.set(

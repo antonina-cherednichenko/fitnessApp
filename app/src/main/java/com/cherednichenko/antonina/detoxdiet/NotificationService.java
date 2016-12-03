@@ -6,11 +6,18 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity;
+import com.google.gson.Gson;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Created by tonya on 10/9/16.
@@ -20,25 +27,42 @@ public class NotificationService extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent alarmIntent) {
         ProgramInfo receipe = (ProgramInfo) alarmIntent.getSerializableExtra("receipe_info");
-        Intent intent = new Intent(context, ProgramInfoActivity.class);
-        intent.putExtra("receipe_info", receipe);
+        if (receipe == null) {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+            Calendar cal = Calendar.getInstance();
+            String receipeKey = dateFormat.format(cal.getTime());
 
-        int requestID = (int) System.currentTimeMillis(); //unique requestID to differentiate between various notification with same NotifId
-        int flags = PendingIntent.FLAG_CANCEL_CURRENT; // cancel old intent and create new one
-        PendingIntent pIntent = PendingIntent.getActivity(context, requestID, intent, flags);
+            SharedPreferences sharedPref = context.getSharedPreferences("schedule", Context.MODE_PRIVATE);
+            String json = sharedPref.getString(receipeKey, "No reminder found");
+            try {
+                Gson gson = new Gson();
+                receipe = gson.fromJson(json, ProgramInfo.class);
+            } catch (Exception exc) {
+                exc.printStackTrace();
+            }
+        }
 
-        Notification noti = new NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.glass)
-                .setContentTitle("Detox and Diet reminds")
-                .setContentText("Now is time for " + receipe.getName())
-                .setContentIntent(pIntent)
-                .setAutoCancel(true)
-                .build();
+        if (receipe != null) {
+            Intent intent = new Intent(context, ProgramInfoActivity.class);
 
-        NotificationManager mNotificationManager =
-                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+            int requestID = (int) System.currentTimeMillis(); //unique requestID to differentiate between various notification with same NotifId
+            int flags = PendingIntent.FLAG_CANCEL_CURRENT; // cancel old intent and create new one
+            PendingIntent pIntent = PendingIntent.getActivity(context, requestID, intent, flags);
 
-        mNotificationManager.notify(0, noti);
+            Notification noti = new NotificationCompat.Builder(context)
+                    .setSmallIcon(R.drawable.glass)
+                    .setContentTitle("Detox and Diet reminds")
+                    .setContentText("Now is time for " + receipe.getName())
+                    .setContentIntent(pIntent)
+                    .setAutoCancel(true)
+                    .build();
+
+            NotificationManager mNotificationManager =
+                    (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+            mNotificationManager.notify(0, noti);
+
+        }
 
     }
 }
