@@ -34,6 +34,7 @@
 
     <string name="schedule_prefernces">schedule</string>
     <string name="preferences_date_format">yyyy/MM/dd HH:mm</string>
+    <string name="extra_receipe">receipe_info</string>
 
     <string-array name="navigation_drawer_items_array">
         <item>Programs</item>

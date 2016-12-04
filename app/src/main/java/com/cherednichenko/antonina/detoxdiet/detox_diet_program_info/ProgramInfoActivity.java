@@ -122,7 +122,7 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
         AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent serviceIntent = new Intent(this, NotificationService.class);
-        serviceIntent.putExtra("receipe_info", receipe);
+        serviceIntent.putExtra(getResources().getString(R.string.extra_receipe), receipe);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,
                 serviceIntent, PendingIntent.FLAG_UPDATE_CURRENT);

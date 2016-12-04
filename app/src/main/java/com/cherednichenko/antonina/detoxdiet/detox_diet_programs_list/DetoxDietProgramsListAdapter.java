@@ -9,6 +9,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
@@ -29,11 +30,14 @@ import com.cherednichenko.antonina.detoxdiet.R;
 import com.cherednichenko.antonina.detoxdiet.db.ProgramsDatabaseHelper;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_data.ProgramInfo;
 import com.cherednichenko.antonina.detoxdiet.detox_diet_program_info.ProgramInfoActivity;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -225,12 +229,23 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
             final int position = this.getAdapterPosition();
             ProgramInfo receipe = receipeList.get(position);
-            serviceIntent.putExtra("receipe_info", receipe);
+            serviceIntent.putExtra(context.getResources().getString(R.string.extra_receipe), receipe);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0,
                     serviceIntent, PendingIntent.FLAG_ONE_SHOT);
 
             Calendar calendar = Calendar.getInstance();
             calendar.set(this.year, this.monthOfYear, this.dayOfMonth, hourOfDay, minute, second);
+
+            DateFormat dateFormat = new SimpleDateFormat(context.getResources().getString(R.string.preferences_date_format));
+            String receipeKey = dateFormat.format(calendar.getTime());
+
+            SharedPreferences userDetails = context.getSharedPreferences(context.getResources().getString(R.string.schedule_prefernces), context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = userDetails.edit();
+            edit.clear();
+
+            Gson gson = new Gson();
+            edit.putString(receipeKey, gson.toJson(receipe));
+            edit.commit();
 
             long scheduleTime = calendar.getTimeInMillis();
             alarm.set(
