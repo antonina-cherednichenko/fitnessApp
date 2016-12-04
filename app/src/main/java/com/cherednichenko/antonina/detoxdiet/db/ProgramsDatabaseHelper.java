@@ -21,8 +21,8 @@ import java.util.List;
 public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "DDDatabase1";
-    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "DetoxDietsDB";
+    private static final int DATABASE_VERSION = 1;
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
