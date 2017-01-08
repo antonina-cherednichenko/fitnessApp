@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onInfoClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, IntroductionActivity.class);
+        Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
         startActivity(intent);
     }
 

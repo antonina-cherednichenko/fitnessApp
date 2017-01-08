@@ -20,7 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IntroductionActivity" />
         <activity
             android:name=".NavigationDrawerWithFragmentsActivity"
             android:launchMode="singleTop"
@@ -35,6 +34,10 @@
         </activity>
         <activity
             android:name=".detox_diet_program_info.ProgramInfoActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".WelcomeActivity"
             android:screenOrientation="portrait" />
 
         <receiver android:name=".NotificationService" />
