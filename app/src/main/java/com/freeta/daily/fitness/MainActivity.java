@@ -28,57 +28,57 @@ public class MainActivity extends AppCompatActivity {
         helloAnim.setDuration(1750);
 
 
-        TextView followText = (TextView) findViewById(R.id.follow_text);
-        followText.setAlpha(0);
-        final ObjectAnimator followAnim = ObjectAnimator.ofFloat(followText, View.ALPHA, 0, 1);
-        followAnim.setDuration(1750);
+//        TextView followText = (TextView) findViewById(R.id.follow_text);
+//        followText.setAlpha(0);
+//        final ObjectAnimator followAnim = ObjectAnimator.ofFloat(followText, View.ALPHA, 0, 1);
+//        followAnim.setDuration(1400);
+//
+//        TextView findText = (TextView) findViewById(R.id.find_text);
+//        findText.setAlpha(0);
+//        final ObjectAnimator findAnim = ObjectAnimator.ofFloat(findText, View.ALPHA, 0, 1);
+//        findAnim.setDuration(1400);
 
-        TextView findText = (TextView) findViewById(R.id.find_text);
-        findText.setAlpha(0);
-        final ObjectAnimator findAnim = ObjectAnimator.ofFloat(findText, View.ALPHA, 0, 1);
-        findAnim.setDuration(1750);
 
-
-        TextView stayTunedText = (TextView) findViewById(R.id.stay_tuned_text);
-        stayTunedText.setAlpha(0);
-        final ObjectAnimator stayAnim = ObjectAnimator.ofFloat(stayTunedText, View.ALPHA, 0, 1);
-        stayAnim.setDuration(1750);
+//        TextView stayTunedText = (TextView) findViewById(R.id.stay_tuned_text);
+//        stayTunedText.setAlpha(0);
+//        final ObjectAnimator stayAnim = ObjectAnimator.ofFloat(stayTunedText, View.ALPHA, 0, 1);
+//        stayAnim.setDuration(1400);
 
 
         helloAnim.start();
-        helloAnim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                findAnim.start();
-            }
-        });
+//        helloAnim.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                stayAnim.start();
+//            }
+//        });
 
-        findAnim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                followAnim.start();
-            }
-        });
+//        findAnim.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                followAnim.start();
+//            }
+//        });
+//
+//        followAnim.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//                stayAnim.start();
+//            }
+//        });
 
-        followAnim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                stayAnim.start();
-            }
-        });
-
-        stayAnim.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-
-            }
-        });
+//        stayAnim.addListener(new AnimatorListenerAdapter() {
+//            @Override
+//            public void onAnimationEnd(Animator animation) {
+//
+//            }
+//        });
 
 
         helloText.setTypeface(robotoBold);
-        findText.setTypeface(robotoRegular);
-        followText.setTypeface(robotoRegular);
-        stayTunedText.setTypeface(robotoRegular);
+//        findText.setTypeface(robotoRegular);
+//        followText.setTypeface(robotoRegular);
+//        stayTunedText.setTypeface(robotoRegular);
     }
 
     public void onInfoClicked(View view) {
