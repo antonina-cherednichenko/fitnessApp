@@ -286,12 +286,12 @@ public class NavigationDrawerWithFragmentsActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             HttpURLConnection urlConnection = null;
             try {
-                URL urlVersion = new URL("https://mighty-bayou-30907.herokuapp.com/version");
+                URL urlVersion = new URL("https://mighty-bayou-30907.herokuapp.com/version_fd");
                 urlConnection = (HttpURLConnection) urlVersion.openConnection();
                 InputStream inVersion = new BufferedInputStream(urlConnection.getInputStream());
                 int version = Integer.parseInt(IOUtils.toString(inVersion));
                 if (DataProcessor.version < version) {
-                    URL urlData = new URL("https://mighty-bayou-30907.herokuapp.com/data");
+                    URL urlData = new URL("https://mighty-bayou-30907.herokuapp.com/data_fd");
                     urlConnection = (HttpURLConnection) urlData.openConnection();
                     InputStream inData = new BufferedInputStream(urlConnection.getInputStream());
                     String result = IOUtils.toString(inData);
