@@ -54,7 +54,7 @@ public class NotificationService extends BroadcastReceiver {
             PendingIntent pIntent = PendingIntent.getActivity(context, requestID, intent, flags);
 
             Notification noti = new NotificationCompat.Builder(context)
-                    .setSmallIcon(R.drawable.glass)
+                    .setSmallIcon(R.drawable.no_data)
                     .setContentTitle("Detox and Diet reminds")
                     .setContentText("Now is time for " + receipe.getName())
                     .setContentIntent(pIntent)
