@@ -81,22 +81,14 @@ public class AllDetoxDietTabFragment extends Fragment implements TabSelected {
         Fragment detoxFragment = new DetoxDietProgramsListFragment();
         Bundle detoxBundle = new Bundle();
         detoxBundle.putSerializable("receipes", (Serializable) DataProcessor.getDetoxPrograms(programs));
-        detoxBundle.putString("tag", tag + "Detox Programs");
+        detoxBundle.putString("tag", tag + "Fitness Programs");
         detoxBundle.putString("mode", "detox");
         detoxFragment.setArguments(detoxBundle);
 
-        Fragment dietFragment = new DetoxDietProgramsListFragment();
-        Bundle dietBundle = new Bundle();
-        dietBundle.putSerializable("receipes", (Serializable) DataProcessor.getDietPrograms(programs));
-        dietBundle.putString("tag", tag + "Diets");
-        dietBundle.putString("mode", "diet");
-        dietFragment.setArguments(dietBundle);
-
         Fragment scheduleFragment = new ScheduleFragment();
 
-        //adapter.addFragment(allFragment, "ALL");
         adapter.addFragment(detoxFragment, getResources().getString(R.string.tab_detox));
-        adapter.addFragment(dietFragment, getResources().getString(R.string.tab_diet));
+
         adapter.addFragment(scheduleFragment, getResources().getString(R.string.tab_schedule));
         viewPager.setAdapter(adapter);
     }

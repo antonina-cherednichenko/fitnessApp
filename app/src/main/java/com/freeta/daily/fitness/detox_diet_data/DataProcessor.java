@@ -158,7 +158,7 @@ public class DataProcessor {
                 receipe.setDays(days);
                 receipe.setDescription(program.getString("description"));
                 receipe.setDuration(program.getInt("duration"));
-                receipe.setCategory(program.getString("category"));
+                receipe.setCategory("detox");
                 receipe.setLiked(0);
                 receipe.setRecommended(program.getInt("recommended"));
                 receipe.setIsNew(program.getInt("new"));
