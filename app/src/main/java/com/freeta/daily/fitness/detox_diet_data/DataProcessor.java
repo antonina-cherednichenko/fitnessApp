@@ -147,15 +147,15 @@ public class DataProcessor {
             JSONArray allPrograms = jsonData.getJSONArray("data");
             for (int i = 0; i < allPrograms.length(); i++) {
                 JSONObject program = allPrograms.getJSONObject(i);
-                JSONArray schedule = program.getJSONArray("schedule");
-                List<DayInfo> days = new ArrayList<>();
-                for (int j = 0; j < schedule.length(); j++) {
-                    JSONObject day = schedule.getJSONObject(j);
-                    days.add(new DayInfo(day.getString("name"), day.getString("description"),
-                            day.getString("photo"), day.getInt("photoOnly")));
-                }
+//                JSONArray schedule = program.getJSONArray("schedule");
+//                List<DayInfo> days = new ArrayList<>();
+//                for (int j = 0; j < schedule.length(); j++) {
+//                    JSONObject day = schedule.getJSONObject(j);
+//                    days.add(new DayInfo(day.getString("name"), day.getString("description"),
+//                            day.getString("photo"), day.getInt("photoOnly")));
+//                }
                 ProgramInfo receipe = new ProgramInfo();
-                receipe.setDays(days);
+//                receipe.setDays(days);
                 receipe.setDescription(program.getString("description"));
                 receipe.setDuration(program.getInt("duration"));
                 receipe.setCategory("detox");

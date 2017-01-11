@@ -39,6 +39,8 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
     private int monthOfYear;
     private int dayOfMonth;
 
+    private ImageView view;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,23 +49,14 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
         Intent intent = getIntent();
         receipe = (ProgramInfo) intent.getSerializableExtra("receipe_info");
 
-        RecyclerView dayList = (RecyclerView) findViewById(R.id.dayCardList);
-        dayList.setHasFixedSize(true);
+        //RecyclerView dayList = (RecyclerView) findViewById(R.id.dayCardList);
+//        dayList.setHasFixedSize(true);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-
-//        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        dayList.setLayoutManager(llm);
-
-        DayAdapter adapter = new DayAdapter(this, receipe.getDays());
-        dayList.setAdapter(adapter);
 
         collapsingToolbar.setTitle(" ");
         ImageView programImage = (ImageView) findViewById(R.id.toolbar_header_image);

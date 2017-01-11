@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
 
-import com.freeta.daily.fitness.detox_diet_data.DayInfo;
 import com.freeta.daily.fitness.detox_diet_data.EventInfo;
 import com.freeta.daily.fitness.detox_diet_data.ProgramInfo;
 
@@ -26,7 +25,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Table Names
     private static final String TABLE_PROGRAMS = "programs";
-    private static final String TABLE_DAYS = "days";
     private static final String TABLE_SCHEDULE = "schedule";
 
 
@@ -95,15 +93,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_FROM_SOURCE_URL + " TEXT" +
                 ")";
 
-        String CREATE_DAYS_TABLE = "CREATE TABLE " + TABLE_DAYS +
-                "(" +
-                KEY_DAY_ID + " INTEGER PRIMARY KEY," +
-                KEY_DAY_NAME + " TEXT," +
-                KEY_DAY_DESCRIPTION + " TEXT," +
-                KEY_DAY_PHOTO + " TEXT," +
-                KEY_DAY_PHOTO_ONLY + " INTEGER," +
-                KEY_DAY_PROGRAM_ID_FK + " INTEGER REFERENCES " + TABLE_PROGRAMS + // Define a foreign key
-                ")";
 
         String CREATE_SCHEDULE_TABLE = "CREATE TABLE " + TABLE_SCHEDULE +
                 "(" +
@@ -113,37 +102,9 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 ")";
         try {
             db.execSQL(CREATE_PROGRAMS_TABLE);
-            db.execSQL(CREATE_DAYS_TABLE);
             db.execSQL(CREATE_SCHEDULE_TABLE);
         } catch (Exception e) {
             Log.d(TAG, "Error creating database");
-        }
-    }
-
-    // Insert a post into the database
-    public void addDay(DayInfo day, long programId) {
-        // Create and/or open the database for writing
-        SQLiteDatabase db = getWritableDatabase();
-
-        // It's a good idea to wrap our insert in a transaction. This helps with performance and ensures
-        // consistency of the database.
-        db.beginTransaction();
-        try {
-            ContentValues values = new ContentValues();
-            values.put(KEY_DAY_PROGRAM_ID_FK, programId);
-            values.put(KEY_DAY_NAME, day.getName());
-            values.put(KEY_DAY_DESCRIPTION, day.getDescription());
-            values.put(KEY_DAY_PHOTO, day.getPhoto());
-            values.put(KEY_DAY_PHOTO_ONLY, day.getOnlyPhoto());
-
-
-            // Notice how we haven't specified the primary key. SQLite auto increments the primary key column.
-            db.insertOrThrow(TABLE_DAYS, null, values);
-            db.setTransactionSuccessful();
-        } catch (Exception e) {
-            Log.d(TAG, "Error while trying to add post to database");
-        } finally {
-            db.endTransaction();
         }
     }
 
@@ -186,9 +147,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             } else {
                 programId = (int) db.insertOrThrow(TABLE_PROGRAMS, null, values);
 
-                for (DayInfo day : program.getDays()) {
-                    addDay(day, programId);
-                }
                 db.setTransactionSuccessful();
             }
 
@@ -272,27 +230,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
                     newProgram.setFromSourceName(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_NAME)));
                     newProgram.setFromSourceUrl(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_URL)));
-                    List<DayInfo> days = new ArrayList<>();
-                    int programId = cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_ID));
 
-                    String PROGRAMS_DAYS_SELECT_QUERY =
-                            String.format("SELECT * FROM %s WHERE %s = ?",
-                                    TABLE_DAYS, KEY_DAY_PROGRAM_ID_FK);
-
-                    Cursor dayCursor = db.rawQuery(PROGRAMS_DAYS_SELECT_QUERY, new String[]{String.valueOf(programId)});
-                    if (dayCursor.moveToFirst()) {
-                        do {
-                            DayInfo newDay = new DayInfo();
-                            newDay.setDescription(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_DESCRIPTION)));
-                            newDay.setName(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_NAME)));
-                            newDay.setPhoto(dayCursor.getString(dayCursor.getColumnIndex(KEY_DAY_PHOTO)));
-                            newDay.setOnlyPhoto(dayCursor.getInt(dayCursor.getColumnIndex(KEY_DAY_PHOTO_ONLY)));
-
-                            days.add(newDay);
-
-                        } while (dayCursor.moveToNext());
-                    }
-                    newProgram.setDays(days);
                     programs.add(newProgram);
                 } while (cursor.moveToNext());
             }
@@ -355,7 +293,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             // Simplest implementation is to drop all old tables and recreate them
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_DAYS);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCHEDULE);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROGRAMS);
 

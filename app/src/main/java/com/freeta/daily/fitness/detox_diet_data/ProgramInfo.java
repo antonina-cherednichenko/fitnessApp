@@ -12,7 +12,6 @@ public class ProgramInfo implements Serializable {
     private int liked;
     private int isNew;
     private int recommended;
-    private List<DayInfo> days;
     private String name;
     private int duration;
     private String shortDescription;
@@ -52,10 +51,6 @@ public class ProgramInfo implements Serializable {
         this.duration = duration;
     }
 
-    public void setDays(List<DayInfo> days) {
-        this.days = days;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -70,10 +65,6 @@ public class ProgramInfo implements Serializable {
 
     public void setPhotoURL(String photoURL) {
         this.photoURL = photoURL;
-    }
-
-    public List<DayInfo> getDays() {
-        return days;
     }
 
     public String getDescription() {

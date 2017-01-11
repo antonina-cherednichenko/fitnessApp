@@ -52,9 +52,7 @@ public class DetoxDietProgramsListFragment extends Fragment {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
 
-
         Bundle args = getArguments();
-
 
         if (args != null) {
             receipes = (List<ProgramInfo>) args.getSerializable("receipes");
