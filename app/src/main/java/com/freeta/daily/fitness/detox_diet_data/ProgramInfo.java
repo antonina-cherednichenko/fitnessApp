@@ -1,7 +1,6 @@
 package com.freeta.daily.fitness.detox_diet_data;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by tonya on 8/29/16.
@@ -18,6 +17,15 @@ public class ProgramInfo implements Serializable {
     private String category;
     private String fromSourceName;
     private String fromSourceUrl;
+    private String photoInstructionsURL;
+
+    public String getPhotoInstructionsURL() {
+        return photoInstructionsURL;
+    }
+
+    public void setPhotoInstructionsURL(String photoInstructionsURL) {
+        this.photoInstructionsURL = photoInstructionsURL;
+    }
 
     public int getIsNew() {
         return isNew;

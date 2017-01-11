@@ -10,50 +10,8 @@
       "shortDescription": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding.",
       "sourceName": "modwedding",
       "sourceUrl": "http://www.modwedding.com/2015/09/find-best-diet-plan-wedding/",
-      "schedule": [
-        {
-          "name": "Description",
-          "description": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding. Replace at least one of your daily meals with the following receipe.",
-          "photo": "",
-          "photoOnly": 3
-        },
-        {
-          "name": "Day 1",
-          "description": "",
-          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day1.png",
-          "photoOnly": 1
-        },
-        {
-          "name": "Day 2",
-          "description": "",
-          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day2.png",
-          "photoOnly": 1
-        },
-        {
-          "name": "Day 3",
-          "description": "",
-          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day3.png",
-          "photoOnly": 1
-        },
-        {
-          "name": "Day 4",
-          "description": "",
-          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day4.png",
-          "photoOnly": 1
-        },
-        {
-          "name": "Day 5",
-          "description": "",
-          "photo": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/wedding_detox_day5.png",
-          "photoOnly": 1
-        },
-        {
-          "name": "Attention",
-          "description": "We recommend you to consult your physician before starting any detox or diet programs",
-          "photo": "",
-          "photoOnly": 3
-        }
-      ]
+      "photoInstructionsURL": ""
+
     }
   ]
 }

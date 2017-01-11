@@ -9,8 +9,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +18,6 @@ import com.freeta.daily.fitness.NotificationService;
 import com.freeta.daily.fitness.R;
 import com.freeta.daily.fitness.db.ProgramsDatabaseHelper;
 import com.freeta.daily.fitness.detox_diet_data.ProgramInfo;
-
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
@@ -31,6 +28,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 public class ProgramInfoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
     private ProgramInfo receipe;
@@ -39,7 +38,8 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
     private int monthOfYear;
     private int dayOfMonth;
 
-    private ImageView view;
+    private ImageView photoInstructionsView;
+    private PhotoViewAttacher mAttacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,11 @@ public class ProgramInfoActivity extends AppCompatActivity implements TimePicker
 
         Intent intent = getIntent();
         receipe = (ProgramInfo) intent.getSerializableExtra("receipe_info");
+
+        photoInstructionsView = (ImageView) findViewById(R.id.instructions_image);
+        Picasso.with(this).load(receipe.getPhotoInstructionsURL()).into(photoInstructionsView);
+
+        mAttacher = new PhotoViewAttacher(photoInstructionsView);
 
         //RecyclerView dayList = (RecyclerView) findViewById(R.id.dayCardList);
 //        dayList.setHasFixedSize(true);

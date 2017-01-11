@@ -20,7 +20,7 @@ import java.util.List;
 public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "DetoxDietsDB";
+    private static final String DATABASE_NAME = "DailyFitnessDB";
     private static final int DATABASE_VERSION = 1;
 
     // Table Names
@@ -41,17 +41,10 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_PROGRAM_CATEGORY = "category";
     private static final String KEY_PROGRAM_FROM_SOURCE_NAME = "source_name";
     private static final String KEY_PROGRAM_FROM_SOURCE_URL = "source_url";
+    private static final String KEY_PHOTO_INSTRUCTIONS_URL = "photo_instructions_url";
 
-    // Days Table Columns
-    private static final String KEY_DAY_ID = "id";
-    private static final String KEY_DAY_PROGRAM_ID_FK = "programId";
-    private static final String KEY_DAY_NAME = "dayName";
-    private static final String KEY_DAY_PHOTO = "dayPhoto";
-    private static final String KEY_DAY_PHOTO_ONLY = "dayPhotoOnly";
-    private static final String KEY_DAY_DESCRIPTION = "dayDescription";
 
     //Schedule events columns
-    // Days Table Columns
     private static final String KEY_EVENT_ID = "id";
     private static final String KEY_EVENT_PROGRAM_ID_FK = "programId";
     private static final String KEY_EVENT_TIME = "time";
@@ -90,7 +83,8 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_DURATION + " INTEGER," +
                 KEY_PROGRAM_CATEGORY + " TEXT," +
                 KEY_PROGRAM_FROM_SOURCE_NAME + " TEXT," +
-                KEY_PROGRAM_FROM_SOURCE_URL + " TEXT" +
+                KEY_PROGRAM_FROM_SOURCE_URL + " TEXT," +
+                KEY_PHOTO_INSTRUCTIONS_URL + " TEXT" +
                 ")";
 
 
@@ -127,6 +121,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_CATEGORY, program.getCategory());
             values.put(KEY_PROGRAM_FROM_SOURCE_NAME, program.getFromSourceName());
             values.put(KEY_PROGRAM_FROM_SOURCE_URL, program.getFromSourceUrl());
+            values.put(KEY_PHOTO_INSTRUCTIONS_URL, program.getPhotoInstructionsURL());
 
             int rows = db.update(TABLE_PROGRAMS, values, KEY_PROGRAM_NAME + "= ?", new String[]{program.getName()});
             if (rows == 1) {
@@ -230,6 +225,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
                     newProgram.setFromSourceName(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_NAME)));
                     newProgram.setFromSourceUrl(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_URL)));
+                    newProgram.setPhotoInstructionsURL(cursor.getString(cursor.getColumnIndex(KEY_PHOTO_INSTRUCTIONS_URL)));
 
                     programs.add(newProgram);
                 } while (cursor.moveToNext());
