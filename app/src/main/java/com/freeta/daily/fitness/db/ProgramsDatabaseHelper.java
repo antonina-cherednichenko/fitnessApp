@@ -37,7 +37,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_PROGRAM_RECOMMENDED = "recommended";
     private static final String KEY_PROGRAM_NEW = "new";
     private static final String KEY_PROGRAM_PHOTO_URL = "photo";
-    private static final String KEY_PROGRAM_DURATION = "duration";
     private static final String KEY_PROGRAM_CATEGORY = "category";
     private static final String KEY_PROGRAM_FROM_SOURCE_NAME = "source_name";
     private static final String KEY_PROGRAM_FROM_SOURCE_URL = "source_url";
@@ -80,7 +79,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                 KEY_PROGRAM_NEW + " INThEGER," +
                 KEY_PROGRAM_RECOMMENDED + " INTEGER," +
                 KEY_PROGRAM_PHOTO_URL + " TEXT," +
-                KEY_PROGRAM_DURATION + " INTEGER," +
                 KEY_PROGRAM_CATEGORY + " TEXT," +
                 KEY_PROGRAM_FROM_SOURCE_NAME + " TEXT," +
                 KEY_PROGRAM_FROM_SOURCE_URL + " TEXT," +
@@ -111,7 +109,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
         try {
             ContentValues values = new ContentValues();
             values.put(KEY_PROGRAM_DESC, program.getDescription());
-            values.put(KEY_PROGRAM_DURATION, program.getDuration());
             values.put(KEY_PROGRAM_LIKED, program.getLiked());
             values.put(KEY_PROGRAM_NEW, program.getIsNew());
             values.put(KEY_PROGRAM_NEW, program.getRecommended());
@@ -220,7 +217,6 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
                     newProgram.setLiked(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_LIKED)));
                     newProgram.setIsNew(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_NEW)));
                     newProgram.setRecommended(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_RECOMMENDED)));
-                    newProgram.setDuration(cursor.getInt(cursor.getColumnIndex(KEY_PROGRAM_DURATION)));
                     newProgram.setPhotoURL(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_PHOTO_URL)));
                     newProgram.setCategory(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_CATEGORY)));
                     newProgram.setFromSourceName(cursor.getString(cursor.getColumnIndex(KEY_PROGRAM_FROM_SOURCE_NAME)));

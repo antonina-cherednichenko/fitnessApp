@@ -12,7 +12,6 @@ public class ProgramInfo implements Serializable {
     private int isNew;
     private int recommended;
     private String name;
-    private int duration;
     private String shortDescription;
     private String category;
     private String fromSourceName;
@@ -55,10 +54,6 @@ public class ProgramInfo implements Serializable {
         this.shortDescription = shortDescription;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -77,10 +72,6 @@ public class ProgramInfo implements Serializable {
 
     public String getDescription() {
         return description;
-    }
-
-    public int getDuration() {
-        return duration;
     }
 
     public int getLiked() {

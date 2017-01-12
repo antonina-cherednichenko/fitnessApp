@@ -74,8 +74,8 @@ public class ScheduleFragment extends Fragment {
 
             Calendar end = Calendar.getInstance();
             ProgramInfo program = dbEvent.getProgram();
-            end.add(Calendar.DAY_OF_YEAR, program.getDuration());
-            BaseCalendarEvent event = new BaseCalendarEvent(program.getName(), program.getShortDescription(), String.format("%s days", program.getDuration()),
+            end.add(Calendar.DAY_OF_YEAR, 1);
+            BaseCalendarEvent event = new BaseCalendarEvent(program.getName(), program.getShortDescription(), "Daily Workout",
                     ContextCompat.getColor(getContext(), R.color.colorPrimary), start, end, true);
             calendarEvents.add(event);
         }

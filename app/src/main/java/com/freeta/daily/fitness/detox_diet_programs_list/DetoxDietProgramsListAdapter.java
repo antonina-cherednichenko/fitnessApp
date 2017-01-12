@@ -69,7 +69,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
         receipeViewHolder.name.setText(pi.getName());
         receipeViewHolder.description.setText(pi.getDescription());
-        receipeViewHolder.duration.setText(String.format("%s %s", pi.getDuration(), context.getResources().getQuantityString(R.plurals.days, pi.getDuration())));
         String sourceLink = String.format("Source: <font color=#00BFFF><u> %s</u></font>", pi.getFromSourceName());
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -201,7 +200,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
 
     public class ReceipeViewHolder extends RecyclerView.ViewHolder implements TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
         public TextView name;
-        public TextView duration;
         public TextView description;
         public ImageView image;
         public ImageButton liked;
@@ -215,7 +213,6 @@ public class DetoxDietProgramsListAdapter extends RecyclerView.Adapter<DetoxDiet
             super(v);
 
             name = (TextView) v.findViewById(R.id.receipe_name);
-            duration = (TextView) v.findViewById(R.id.duration_info);
             description = (TextView) v.findViewById(R.id.receipe_description);
             image = (ImageView) v.findViewById(R.id.receipe_image);
             liked = (ImageButton) v.findViewById(R.id.btnLike);

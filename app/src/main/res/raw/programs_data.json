@@ -1,17 +1,26 @@
 {
   "data": [
     {
-      "name": "Wedding Detox",
-      "photoURL": "https://mighty-bayou-30907.herokuapp.com/images/wedding_detox/program.jpeg",
-      "description": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding.",
-      "duration": 5,
+      "name": "Vinyasa Or Flow Yoga",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/fitness_images/1/1.png",
+      "description": "Vinyasa or flow yoga is when your movements are synchronized to your breath, and the moves flow together. Your breathing is very important, because you must move from one pose to the next on an inhale or an exhale through the nose. Sun salutations is an important part of the Vinyasa yoga practice. This sequence is a perfect way to start your day. Try doing these moves in the morning when you wake up to get your heart rate pumping and your muscles stretched.",
       "new": 0,
       "recommended": 0,
-      "shortDescription": "Many brides want to look their best on the big day and may even go to extreme measures to do so. Before you shell out major bucks on a juice cleanse or put yourself on a deprivation diet, follow these tips and tricks on detoxing naturally before the wedding.",
-      "sourceName": "modwedding",
-      "sourceUrl": "http://www.modwedding.com/2015/09/find-best-diet-plan-wedding/",
-      "photoInstructionsURL": ""
-
+      "shortDescription": "Vinyasa or flow yoga is when your movements are synchronized to your breath, and the moves flow together. Your breathing is very important, because you must move from one pose to the next on an inhale or an exhale through the nose. Sun salutations is an important part of the Vinyasa yoga practice. This sequence is a perfect way to start your day. Try doing these moves in the morning when you wake up to get your heart rate pumping and your muscles stretched.",
+      "sourceName": "northwestpharmacy",
+      "sourceUrl": "https://www.northwestpharmacy.com/healthperch/vinyasa-yoga-sun-salutation-instructographic/",
+      "photoInstructionsURL": "https://mighty-bayou-30907.herokuapp.com/fitness_images/1/2.jpg"
+    },
+    {
+      "name": "Body-weight Tabata Workout",
+      "photoURL": "https://mighty-bayou-30907.herokuapp.com/fitness_images/2/1.png",
+      "description": "This workout is made up of three tabata supersets. For each tabata superset, set an interval timer for 8 rounds of 20 seconds of work and 10 seconds of rest. During the work intervals, you’ll alternate between the two exercises. In other words: 20 seconds Exercise 1 / 10 seconds rest / 20 seconds Exercise 2 / 10 seconds rest and so on. Rest as needed between tabata supersets, but try to limit it to 60 seconds if possible.",
+      "new": 0,
+      "recommended": 0,
+      "shortDescription": "This workout is made up of three tabata supersets. For each tabata superset, set an interval timer for 8 rounds of 20 seconds of work and 10 seconds of rest. During the work intervals, you’ll alternate between the two exercises. In other words: 20 seconds Exercise 1 / 10 seconds rest / 20 seconds Exercise 2 / 10 seconds rest and so on. Rest as needed between tabata supersets, but try to limit it to 60 seconds if possible.",
+      "sourceName": "pumpsandiron.com/",
+      "sourceUrl": "http://pumpsandiron.com/2016/06/14/12-minute-bodyweight-tabata-workout-series-lower-body-legs-glutes/",
+      "photoInstructionsURL": "https://mighty-bayou-30907.herokuapp.com/fitness_images/2/2.jpg"
     }
   ]
 }

@@ -149,7 +149,6 @@ public class DataProcessor {
                 JSONObject program = allPrograms.getJSONObject(i);
                 ProgramInfo receipe = new ProgramInfo();
                 receipe.setDescription(program.getString("description"));
-                receipe.setDuration(program.getInt("duration"));
                 receipe.setCategory("detox");
                 receipe.setLiked(0);
                 receipe.setRecommended(program.getInt("recommended"));
