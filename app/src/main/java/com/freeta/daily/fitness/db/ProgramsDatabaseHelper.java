@@ -20,7 +20,7 @@ import java.util.List;
 public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
-    private static final String DATABASE_NAME = "DailyFitnessDB";
+    private static final String DATABASE_NAME = "FitnessDB";
     private static final int DATABASE_VERSION = 1;
 
     // Table Names
@@ -111,7 +111,7 @@ public class ProgramsDatabaseHelper extends SQLiteOpenHelper {
             values.put(KEY_PROGRAM_DESC, program.getDescription());
             values.put(KEY_PROGRAM_LIKED, program.getLiked());
             values.put(KEY_PROGRAM_NEW, program.getIsNew());
-            values.put(KEY_PROGRAM_NEW, program.getRecommended());
+            values.put(KEY_PROGRAM_RECOMMENDED, program.getRecommended());
             values.put(KEY_PROGRAM_NAME, program.getName());
             values.put(KEY_PROGRAM_PHOTO_URL, program.getPhotoURL());
             values.put(KEY_PROGRAM_SHORT_DESC, program.getShortDescription());
