@@ -1,10 +1,13 @@
 package com.freeta.daily.fitness.detox_diet_program_info;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.freeta.daily.fitness.R;
@@ -38,6 +41,12 @@ public class ProgramInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(receipe.getName());
 
+        showInfoSnackbar(photoInstructionsView, getResources().getString(R.string.zoom_scroll_hint));
+
+    }
+
+    public void showInfoSnackbar(View view, String info) {
+        Snackbar.make(view, info, Snackbar.LENGTH_LONG).show();
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -56,6 +56,8 @@
     <string name="main_text2">The Latest Exercises For You</string>
     <string name="main_or_text">OR</string>
 
+    <string name="zoom_scroll_hint">Please use zoom and scroll if needed to view instructions here</string>
+
 
 
 </resources>
